@@ -192,3 +192,22 @@ details p { margin: 16px 0 0; }
   .photo-thumbs { gap: 7px; }
   .founder-photo { max-width: 270px; }
 }
+/* Review refinements: balanced opening and neutral benefit cards. */
+#main-content .hero-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: start; gap: 32px; }
+.hero-copy { padding-top: 28px; }
+#main-content .hero-copy h1 { font-size: clamp(2.3rem, 4vw, 3.8rem); line-height: 1.08; margin-bottom: 20px; }
+.hero-copy .lead { font-size: 1.1rem; }
+.hero-photo { min-width: 0; width: 100%; max-width: 470px; justify-self: end; }
+.photo-track { max-width: 100%; }
+.photo-thumbs { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.photo-thumbs img { max-height: 76px; object-fit: contain; }
+.facts > div, .facts > div:nth-child(even) { background: var(--cream); box-shadow: none; border-color: var(--green) !important; }
+.facts > div::before, .facts > div:nth-child(even)::before { display: none; }
+.facts strong { color: var(--green); }
+#main-content .facts { margin-top: 8px; }
+@media(max-width:720px) {
+ #main-content .hero-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
+ .hero-copy { padding-top: 0; }
+ .hero-photo { justify-self: center; max-width: 420px; }
+ #main-content .hero-copy h1 { font-size: clamp(2.2rem,8vw,3rem); }
+}
