@@ -251,3 +251,5 @@ details p { margin: 16px 0 0; }
 @media (max-width: 800px) {
   .site-header .header-inner .main-nav { position: relative; top: -6px; }
 }
+/* Final approved separator beneath customer quotes. */
+#main-content .customer-quotes { border-bottom: 1px solid #9CAE9E; }
