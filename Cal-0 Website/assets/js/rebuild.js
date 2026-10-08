@@ -173,3 +173,9 @@
     document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp"; });
   }
 })();
+/* Keep the retailer inquiry last, just above the footer. */
+(() => {
+ const main = document.querySelector("#main-content");
+ const wholesale = document.querySelector("#wholesale");
+ if (main && wholesale) main.append(wholesale);
+})();
