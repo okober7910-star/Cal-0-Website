@@ -241,3 +241,14 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  image.style.objectFit = 'contain';
  image.style.background = '#EAF0DF';
 });
+/* Additional stockists belong in the dropdown, not duplicate featured retailers. */
+(() => {
+ const stores = document.querySelector('#stores');
+ if (!stores) return;
+ const details = stores.querySelector('details');
+ const list = stores.querySelector('[data-store-list]');
+ if (list) { list.replaceChildren(); list.hidden = true; }
+ if (details) details.querySelector('summary').textContent = 'More Local Stores';
+ const note = stores.querySelector('[data-stores-intro]');
+ if (note) note.textContent = 'For additional convenience store and gas station stockists, contact us for current locations.';
+})();
