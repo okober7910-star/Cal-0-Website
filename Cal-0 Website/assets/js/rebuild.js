@@ -234,3 +234,10 @@
  style.textContent = '.featured-stores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.featured-stores a{display:grid;gap:4px;padding:16px;border:2px solid #0F4D3F;border-radius:14px;line-height:1.35}.featured-stores strong{font-size:1.05rem}.featured-stores span{font-size:.85rem}.retail-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}.retail-photos figure{overflow:hidden;border-radius:18px}.retail-photos img{width:100%;height:320px;object-fit:cover;object-position:center}.store-grid{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:720px){.featured-stores{grid-template-columns:repeat(2,minmax(0,1fr))}.retail-photos img{height:220px}.store-grid{grid-template-columns:1fr}}@media(max-width:420px){.retail-photos{grid-template-columns:1fr}}';
  document.head.append(style);
 })();
+/* Preserve the full uploaded photographs rather than cropping faces. */
+document.querySelectorAll('.retail-photos img').forEach(image => {
+ image.style.height = 'auto';
+ image.style.aspectRatio = '4 / 3';
+ image.style.objectFit = 'contain';
+ image.style.background = '#EAF0DF';
+});
