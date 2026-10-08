@@ -252,3 +252,82 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const note = stores.querySelector('[data-stores-intro]');
  if (note) note.textContent = 'For additional convenience store and gas station stockists, contact us for current locations.';
 })();
+/* Founder-requested header and new real-world photography. */
+(() => {
+ document.querySelectorAll('.site-logo').forEach(logo => {
+  logo.replaceChildren();
+  const word = document.createElement('span'); word.className='brand-word'; word.textContent='Cal-0'; logo.append(word);
+ });
+ const base='https://raw.githubusercontent.com/okober7910-star/Cal-0-Website/main/Cal-0%20Website/assets/images/';
+ const founder=document.querySelector('.founder-photo img');
+ if(founder){founder.src=base+'4998EBAA-9C87-4F8B-8C02-428B6650AB24_1_105_c.jpeg';founder.alt='Oliver holding Cal-0 at Take-A-Bite';founder.width=768;founder.height=1024;}
+ const pouch=document.querySelector('#about .rounded-photo img');
+ if(pouch){pouch.src=base+'ED7DAB44-EDBB-43D4-AFBD-031344472FDF_1_105_c.jpeg';pouch.alt='The actual Cal-0 mango konjac jelly pouch held in hand';pouch.width=768;pouch.height=1024;}
+ const style=document.createElement('style');
+ style.textContent='.header-inner{display:grid;grid-template-columns:160px minmax(0,1fr) 160px;gap:12px}.site-logo{margin:0;justify-self:start}.brand-word{display:inline-block;font-family:Trebuchet MS,Arial,sans-serif;font-size:42px;line-height:1;font-weight:900;letter-spacing:-3px;color:#0F4D3F;font-style:normal}.main-nav{justify-self:center;justify-content:center;width:auto;gap:22px;order:initial;font-size:1rem}.header-inner>.button{justify-self:end}.founder-photo{max-width:360px}.founder-photo img{aspect-ratio:3/4;object-fit:cover;object-position:center 35%}#about .rounded-photo img{aspect-ratio:1;object-fit:cover;object-position:center 35%}@media(max-width:800px){.header-inner{grid-template-columns:1fr 1fr}.main-nav{grid-column:1/-1;grid-row:2;gap:16px;width:100%;font-size:.85rem}.header-inner>.button{grid-column:2;grid-row:1}.brand-word{font-size:36px}}';
+ document.head.append(style);
+})();
+/* Public placement directory. No private contacts, payments or invoice details. */
+(() => {
+ const section=document.querySelector('#stores'); if(!section)return;
+ const locations=[
+ ['Windmill Farms','6386 Del Cerro Blvd, San Diego, CA 92120','placement'],
+ ['Happy Liquor','2567 University Ave, San Diego, CA 92104','placement'],
+ ['7-Eleven, Adams Avenue','3436 Adams Ave, San Diego, CA 92116','placement'],
+ ['7-Eleven, Ohio Street','4687 Ohio St, San Diego, CA 92116','placement'],
+ ['Chevron','2290 Camino Del Rio North, San Diego, CA','placement'],
+ ["Adam’s Wine & Spirits",'','trial'],
+ ['Take A Hike','7448 Jackson Dr, San Diego, CA 92119','placement'],
+ ['Cheers Liquor & Deli','6983 Navajo Rd, San Diego, CA 92119','placement'],
+ ["Keil’s Fresh Foods",'7403 Jackson Dr, San Diego, CA 92119','placement'],
+ ['The Strand Liquor','600 Palm Ave, Imperial Beach, CA 91932','placement'],
+ ["Monroe’s Market",'4502 Oregon St, San Diego, CA 92116','samples'],
+ ['KRISP, Downtown','1427 First Ave, San Diego, CA 92101','placement'],
+ ['Helix Liquor (Mama Liquor)','444 W Chase Ave, El Cajon, CA 92020','placement'],
+ ["Liticker’s Liquor & Deli",'4955 Voltaire St, San Diego, CA 92107','placement'],
+ ['OB Quick Stop Liquor','4984 Voltaire St, San Diego, CA 92107','placement'],
+ ['One Stop Shop','5040 Newport Ave, San Diego, CA 92107','placement'],
+ ['High Vibes Smoke Shop PB','4150 Mission Blvd, Ste 155, San Diego, CA 92109','placement'],
+ ['OB Corner','4991 Newport Ave, San Diego, CA 92107','samples'],
+ ['KRISP, Ocean Beach','4976 Newport Ave, San Diego, CA 92107','placement'],
+ ["Boney’s Bayside Market",'155 Orange Ave, Coronado, CA 92118','placement'],
+ ['7-Eleven, Balboa Avenue','7807 Balboa Ave, San Diego, CA 92111','placement'],
+ ['7-Eleven, Clairemont Mesa West','7801 Clairemont Mesa Blvd, San Diego, CA 92111','placement'],
+ ['7-Eleven, Clairemont Mesa East','9187 Clairemont Mesa Blvd, San Diego, CA 92123','placement'],
+ ['7-Eleven, Mesa College Drive','7488 Mesa College Dr, San Diego, CA 92111','placement'],
+ ['7-Eleven, Mission Gorge 5829','5829 Mission Gorge Rd, San Diego, CA 92120','placement'],
+ ['7-Eleven, Mission Gorge 6401','6401 Mission Gorge Rd, San Diego, CA 92120','placement'],
+ ['7-Eleven, Mission Gorge 7427','7427 Mission Gorge Rd, San Diego, CA 92120','placement'],
+ ['Shell','4794 Voltaire St, San Diego, CA 92107','placement'],
+ ["Pat’s Liquor Store",'5096 Voltaire St, San Diego, CA 92107','placement'],
+ ['7-Eleven, Midway 3185','3185 Midway Dr, San Diego, CA 92110','samples'],
+ ['7-Eleven, Sports Arena','3146 Sports Arena Blvd, San Diego, CA 92110','placement'],
+ ['7-Eleven, Midway 2387','2387 Midway Dr, San Diego, CA 92110','placement'],
+ ['7-Eleven, University Avenue','2404 University Ave, San Diego, CA 92104','placement'],
+ ['7-Eleven, El Cajon Boulevard','1995 El Cajon Blvd, San Diego, CA 92104','limited'],
+ ['7-Eleven, Garnet Avenue','1305 Garnet Ave, San Diego, CA 92109','limited'],
+ ['7-Eleven, Voltaire 4205','4205 Voltaire St, San Diego, CA 92107','limited'],
+ ['Vine Ripe Market','8191 Fletcher Pkwy, La Mesa, CA 91942','samples']
+ ];
+ const heading=section.querySelector('h2');if(heading)heading.textContent='Cal-0 near you.';
+ const intro=section.querySelector('.section-heading .lead');
+ const trials=locations.filter(row=>row[2]==='samples').length;
+ if(intro)intro.textContent=locations.length+' local placements across markets, convenience stores, liquor stores and gas stations, including '+trials+' sample-only locations. Check current stock before visiting.';
+ const details=section.querySelector('details');
+ if(details)details.querySelector('summary').textContent='View All Stores, Convenience Stores & Stations ('+locations.length+')';
+ const note=section.querySelector('[data-stores-intro]');
+ if(note)note.textContent='Placement list updated October 7, 2026. Sample and limited trial locations are marked below; placement does not guarantee current shelf stock.';
+ const list=section.querySelector('[data-store-list]');if(!list)return;
+ list.replaceChildren();list.hidden=false;
+ locations.forEach(row=>{
+  const card=document.createElement('article');card.className='store-card';
+  const name=document.createElement('h3');name.textContent=row[0];
+  const address=document.createElement('address');address.textContent=row[1]||'Address confirmation pending';
+  const label=document.createElement('p');label.className='small';
+  label.textContent=row[2]==='samples'?'Samples only; retail stock not confirmed':row[2]==='limited'?'Limited introductory placement; call before visiting':row[2]==='trial'?'Trial case placed; check availability':'Product placed; check current stock';
+  card.append(name,address,label);
+  if(row[1]){const link=document.createElement('a');link.className='text-link';link.textContent='Get Directions';link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(row[0]+', '+row[1]);link.target='_blank';link.rel='noopener noreferrer';card.append(link);}
+  list.append(card);
+ });
+ const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa · Trial samples';
+})();
