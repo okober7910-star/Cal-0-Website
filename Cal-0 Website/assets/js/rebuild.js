@@ -425,3 +425,16 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  style.textContent=':root{--cream:#F6EFDF}body{background:#F6EFDF}.site-header{background:#F6EFDF}#main-content .hero,#main-content .story-section,#main-content .faq-section,#main-content .wholesale-section{background:#F6EFDF}#main-content #about{background:#F0E7D3}#main-content #nutrition{background:#F0E7D3}#stores .featured-stores a{background:#F3EBD9}#stores .neighborhood-group{background:#F6EFDF}#stores .neighborhood-cards .store-card{background:#FAF5EB}#main-content .facts{border-top-width:3px;border-bottom-width:3px}#main-content .eyebrow{border-bottom-width:4px}#main-content .instagram-inner{background:#0C4236}';
  document.head.append(style);
 })();
+/* Supplied customer quotes and a single-row header. */
+(() => {
+ const about=document.querySelector('#about');
+ if(about && !document.querySelector('.customer-quotes')){
+  const section=document.createElement('section');section.className='customer-quotes';section.setAttribute('aria-label','Customer quotes');
+  const inner=document.createElement('div');inner.className='container quote-row';
+  ['Incredible Mango Flavor','The best Konjac Jelly I have ever had.'].forEach(text=>{const quote=document.createElement('blockquote');quote.textContent='“'+text+'”';inner.append(quote);});
+  section.append(inner);about.before(section);
+ }
+ const style=document.createElement('style');
+ style.textContent='.customer-quotes{padding:18px 0;background:#F0E7D3}.quote-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.quote-row blockquote{margin:0;padding:12px 18px;border-left:3px solid #F2B331;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:800;line-height:1.45}.site-header .header-inner{grid-template-columns:125px minmax(0,1fr) 145px;column-gap:12px}.site-header .header-inner .main-nav{grid-column:2;grid-row:1;order:initial;position:static;top:auto;width:100%;min-width:0;flex-wrap:nowrap;gap:16px;justify-content:center;font-size:.9rem}.site-header .header-inner .main-nav a{white-space:nowrap;flex-shrink:0}.site-header .header-inner>.button{grid-column:3;grid-row:1}@media(max-width:800px){.site-header .header-inner{grid-template-columns:90px minmax(0,1fr) 120px;column-gap:10px}.site-header .brand-word{font-size:34px}.site-header .header-inner .main-nav{gap:12px;font-size:.8rem;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin}.site-header .header-inner>.button{font-size:.78rem;padding:10px 12px}}@media(max-width:480px){.site-header .header-inner{grid-template-columns:70px minmax(0,1fr) 105px;column-gap:8px}.site-header .brand-word{font-size:30px}.quote-row{grid-template-columns:1fr;gap:4px}.quote-row blockquote{padding:10px 14px}}';
+ document.head.append(style);
+})();
