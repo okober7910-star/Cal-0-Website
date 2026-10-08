@@ -409,3 +409,19 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  style.textContent='#stores .neighborhood-directory{display:block}#stores .neighborhood-group{margin:10px 0;border:1px solid #C7D4CB;border-radius:12px;overflow:hidden;background:#FFFAF0}#stores .neighborhood-group>summary{padding:15px 18px;font-size:1rem;font-weight:800;color:#0F4D3F}#stores .neighborhood-group[open]>summary{background:#0F4D3F;color:#FFFAF0}#stores .neighborhood-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}#stores .neighborhood-cards .store-card{margin:0;border:1px solid #D6DED3;border-radius:12px;padding:18px}#stores .store-status>summary{font-weight:900;font-size:1.12rem}#stores .store-status{border:2px solid #0F4D3F}#main-content h2{font-weight:850;letter-spacing:-.045em}#main-content .eyebrow{font-weight:850;display:inline-block;border-bottom:3px solid #F2B331;padding-bottom:5px}#story .founder-grid{border-left:5px solid #0F4D3F;padding-left:24px}#main-content .instagram-inner{background:#0F4D3F;color:#FFFAF0;padding:24px;border:0;border-radius:18px}#main-content .instagram-inner h2,#main-content .instagram-inner p{color:#FFFAF0}#main-content .instagram-inner .button{background:#FFFAF0;color:#0F4D3F;border-color:#FFFAF0}.button:not(.button-outline){font-weight:800}.photo-thumbs button[aria-pressed="true"]{border-width:3px}.featured-stores a:hover{background:#0F4D3F;color:#FFFAF0}@media(max-width:720px){#stores .neighborhood-cards{grid-template-columns:1fr;padding:12px}#story .founder-grid{padding-left:16px}#main-content .instagram-inner{padding:20px}}';
  document.head.append(style);
 })();
+/* Final neighborhood correction and subtly richer cream palette. */
+(() => {
+ const directory=document.querySelector('.neighborhood-directory');
+ if(directory){
+  const groups=Array.from(directory.querySelectorAll('.neighborhood-group'));
+  const destination=groups.find(group=>group.querySelector('summary').textContent.startsWith('North Park & University Heights'));
+  const source=groups.find(group=>group.querySelector('summary').textContent.startsWith('Location to confirm'));
+  if(destination && source){
+   const card=Array.from(source.querySelectorAll('.store-card')).find(card=>card.querySelector('h3').textContent==='Adam’s Wine & Spirits');
+   if(card){destination.querySelector('.neighborhood-cards').append(card);source.remove();destination.querySelector('summary').textContent='North Park, University Heights & Kensington ('+destination.querySelectorAll('.store-card').length+')';}
+  }
+ }
+ const style=document.createElement('style');
+ style.textContent=':root{--cream:#F6EFDF}body{background:#F6EFDF}.site-header{background:#F6EFDF}#main-content .hero,#main-content .story-section,#main-content .faq-section,#main-content .wholesale-section{background:#F6EFDF}#main-content #about{background:#F0E7D3}#main-content #nutrition{background:#F0E7D3}#stores .featured-stores a{background:#F3EBD9}#stores .neighborhood-group{background:#F6EFDF}#stores .neighborhood-cards .store-card{background:#FAF5EB}#main-content .facts{border-top-width:3px;border-bottom-width:3px}#main-content .eyebrow{border-bottom-width:4px}#main-content .instagram-inner{background:#0C4236}';
+ document.head.append(style);
+})();
