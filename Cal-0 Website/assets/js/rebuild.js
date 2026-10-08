@@ -331,3 +331,27 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  });
  const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa · Trial samples';
 })();
+/* Review: concise availability wording, fifth featured market and compact story. */
+(() => {
+ const section=document.querySelector('#stores');
+ if(section){
+  const intro=section.querySelector('.section-heading .lead');
+  if(intro)intro.textContent='Find Cal-0 across 37 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  const note=section.querySelector('[data-stores-intro]');
+  if(note)note.textContent='Locations from our October 7, 2026 placement report. Availability varies; contact the store before visiting.';
+  section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
+  const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
+  const featured=section.querySelector('.featured-stores');
+  if(featured){
+   const link=document.createElement('a');link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("Keil's Fresh Foods, 7403 Jackson Dr, San Diego, CA 92119");link.target='_blank';link.rel='noopener noreferrer';
+   const name=document.createElement('strong');name.textContent='Keil’s Fresh Foods';
+   const area=document.createElement('span');area.textContent='San Carlos';
+   link.append(name,area);featured.append(link);
+  }
+ }
+ const pouch=document.querySelector('#about .rounded-photo img');
+ if(pouch){pouch.src='assets/images/product-front-beach.webp';pouch.alt='Cal-0 mango konjac jelly pouch on a tropical beach';pouch.width=800;pouch.height=800;}
+ const style=document.createElement('style');
+ style.textContent='.featured-stores{grid-template-columns:repeat(5,minmax(0,1fr))}#story .founder-grid{grid-template-columns:260px minmax(0,1fr);gap:32px;max-width:980px;align-items:center}#story .founder-photo{width:260px;max-width:100%}#story .founder-photo img{aspect-ratio:4/5;object-fit:cover;object-position:center 32%}#story h2{font-size:clamp(2rem,3vw,2.8rem);margin-bottom:16px}#story p{margin-bottom:14px}#story .lead{font-size:1.1rem}#story.section{padding-block:14px}#about .rounded-photo img{object-fit:contain;aspect-ratio:1}@media(max-width:900px){.featured-stores{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:720px){#story .founder-grid{grid-template-columns:1fr;gap:18px}#story .founder-photo{width:230px}.featured-stores{grid-template-columns:repeat(2,minmax(0,1fr))}}';
+ document.head.append(style);
+})();
