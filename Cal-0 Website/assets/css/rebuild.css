@@ -211,3 +211,39 @@ details p { margin: 16px 0 0; }
  .hero-photo { justify-self: center; max-width: 420px; }
  #main-content .hero-copy h1 { font-size: clamp(2.2rem,8vw,3rem); }
 }
+/* Compact editorial opening, grouped navigation and open benefit ribbon. */
+.header-inner { min-height: 74px; padding-block: 8px; justify-content: flex-start; gap: 24px; }
+.site-logo { flex-basis: 158px; margin-right: auto; }
+.site-logo img { width: 158px; }
+.main-nav { gap: 14px; font-size: .88rem; }
+#main-content .hero { padding-top: 16px; }
+#main-content .hero-grid { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); align-items: center; gap: 24px; }
+.hero-copy { padding-top: 0; }
+#main-content .hero-copy h1 { font-size: clamp(2.7rem,5.15vw,4.7rem); line-height: 1.03; letter-spacing: -.055em; margin-bottom: 22px; }
+.hero-copy .lead { font-size: clamp(1.12rem,1.8vw,1.3rem); max-width: 600px; line-height: 1.5; }
+.hero-copy .pack-detail { font-size: 1.1rem; margin-bottom: 12px; }
+.hero-copy .button-row { margin-block: 18px 12px; }
+.hero-photo { max-width: 400px; }
+.photo-controls { margin-top: 4px; }
+#main-content .facts { gap: 0; margin-top: 12px; padding-block: 20px; border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+.facts > div, .facts > div:nth-child(even) { border: 0 !important; border-radius: 0; box-shadow: none; background: transparent; padding: 6px 12px; }
+.facts > div + div { border-left: 1px solid #B0BFB2 !important; }
+.facts > div::before { display: none; }
+.facts strong { font-size: clamp(2rem,3.8vw,3.2rem); letter-spacing: -.055em; }
+.facts span { font-size: .85rem; letter-spacing: .09em; text-transform: uppercase; }
+#main-content .section { padding-block: 16px; }
+#main-content #about .split, #main-content #story .split, #main-content #stores > .container, #main-content #nutrition .split { padding-top: 10px; }
+#main-content .split { gap: 24px; }
+@media(max-width:960px) { .header-inner { gap: 8px 16px; } .main-nav { gap: 14px; } }
+@media(max-width:720px) {
+ .site-logo { flex-basis: 136px; } .site-logo img { width: 136px; }
+ #main-content .hero-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
+ #main-content .hero-copy h1 { font-size: clamp(2.5rem,8.8vw,3.7rem); }
+ .hero-photo { max-width: 390px; }
+ .main-nav { gap: 6px 14px; }
+ #main-content .facts { padding-block: 12px; }
+ .facts > div { padding: 10px 6px; }
+ .facts > div:nth-child(3) { border-left: 0 !important; }
+ .facts > div:nth-child(n+3) { border-top: 1px solid #B0BFB2 !important; }
+ #main-content .section { padding-block: 12px; }
+}
