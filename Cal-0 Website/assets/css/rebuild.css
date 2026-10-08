@@ -247,3 +247,7 @@ details p { margin: 16px 0 0; }
  .facts > div:nth-child(n+3) { border-top: 1px solid #B0BFB2 !important; }
  #main-content .section { padding-block: 12px; }
 }
+/* Lift the second-row navigation slightly without changing desktop alignment. */
+@media (max-width: 800px) {
+  .site-header .header-inner .main-nav { position: relative; top: -6px; }
+}
