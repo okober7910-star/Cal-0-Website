@@ -355,3 +355,21 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  style.textContent='.featured-stores{grid-template-columns:repeat(5,minmax(0,1fr))}#story .founder-grid{grid-template-columns:260px minmax(0,1fr);gap:32px;max-width:980px;align-items:center}#story .founder-photo{width:260px;max-width:100%}#story .founder-photo img{aspect-ratio:4/5;object-fit:cover;object-position:center 32%}#story h2{font-size:clamp(2rem,3vw,2.8rem);margin-bottom:16px}#story p{margin-bottom:14px}#story .lead{font-size:1.1rem}#story.section{padding-block:14px}#about .rounded-photo img{object-fit:contain;aspect-ratio:1}@media(max-width:900px){.featured-stores{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:720px){#story .founder-grid{grid-template-columns:1fr;gap:18px}#story .founder-photo{width:230px}.featured-stores{grid-template-columns:repeat(2,minmax(0,1fr))}}';
  document.head.append(style);
 })();
+/* Final design review: one retailer row and a compact Instagram invitation. */
+(() => {
+ const style=document.createElement('style');
+ style.textContent='#stores .featured-stores{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:12px;padding-bottom:5px;scroll-snap-type:x proximity}#stores .featured-stores a{flex:1 0 0;min-width:155px;scroll-snap-align:start;padding:14px;box-sizing:border-box}#stores .featured-stores strong{font-size:.95rem}#about .split{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);max-width:1040px;gap:28px;align-items:center}#about .rounded-photo{width:100%;max-width:340px}#about .steps{margin:14px 0}#about .steps li{padding-block:5px}#about .lead{font-size:1.1rem}#about h2{font-size:clamp(2rem,3vw,2.8rem);margin-bottom:16px}.instagram-strip{padding:22px 0}.instagram-inner{border-top:1px solid #D6DED3;border-bottom:1px solid #D6DED3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0}.instagram-inner h2{font-size:1.6rem;margin-bottom:8px}.instagram-inner p{margin:0;font-size:1rem}@media(max-width:720px){#about .split{grid-template-columns:1fr;gap:18px}#about .rounded-photo{max-width:300px}.instagram-inner{align-items:flex-start;flex-direction:column}#stores .featured-stores a{min-width:170px}}';
+ document.head.append(style);
+ const main=document.querySelector('#main-content');
+ const wholesale=document.querySelector('#wholesale');
+ if(main){
+  const section=document.createElement('section');section.className='instagram-strip';
+  const container=document.createElement('div');container.className='container instagram-inner';
+  const copy=document.createElement('div');
+  const title=document.createElement('h2');title.textContent='Follow along on Instagram.';
+  const text=document.createElement('p');text.textContent='New store stops, pouch moments and updates from Cal-0.';
+  copy.append(title,text);
+  const link=document.createElement('a');link.className='button button-outline';link.href='https://www.instagram.com/cal_0_llc/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Follow @cal_0_llc';
+  container.append(copy,link);section.append(container);main.insertBefore(section,wholesale);
+ }
+})();
