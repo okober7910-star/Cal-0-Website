@@ -307,7 +307,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  ['7-Eleven, El Cajon Boulevard','1995 El Cajon Blvd, San Diego, CA 92104','limited'],
  ['7-Eleven, Garnet Avenue','1305 Garnet Ave, San Diego, CA 92109','limited'],
  ['7-Eleven, Voltaire 4205','4205 Voltaire St, San Diego, CA 92107','limited'],
- ['Vine Ripe Market','8191 Fletcher Pkwy, La Mesa, CA 91942','samples']
+ ['Vine Ripe Market','8191 Fletcher Pkwy, La Mesa, CA 91942','samples'],
+ ['7-Eleven, Waring Road','5102 Waring Rd, San Diego, CA 92120','placement'],
+ ['7-Eleven, El Cajon Boulevard 6991','6991 El Cajon Blvd, San Diego, CA 92115','placement']
  ];
  const heading=section.querySelector('h2');if(heading)heading.textContent='Cal-0 near you.';
  const intro=section.querySelector('.section-heading .lead');
@@ -316,7 +318,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const details=section.querySelector('details');
  if(details)details.querySelector('summary').textContent='View All Stores, Convenience Stores & Stations ('+locations.length+')';
  const note=section.querySelector('[data-stores-intro]');
- if(note)note.textContent='Placement list updated October 7, 2026. Sample and limited trial locations are marked below; placement does not guarantee current shelf stock.';
+ if(note)note.textContent='Placement list updated October 8, 2026. Sample and limited trial locations are marked below; placement does not guarantee current shelf stock.';
  const list=section.querySelector('[data-store-list]');if(!list)return;
  list.replaceChildren();list.hidden=false;
  locations.forEach(row=>{
@@ -336,9 +338,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const section=document.querySelector('#stores');
  if(section){
   const intro=section.querySelector('.section-heading .lead');
-  if(intro)intro.textContent='Find Cal-0 across 37 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  if(intro)intro.textContent='Find Cal-0 across 39 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
-  if(note)note.textContent='Locations from our October 7, 2026 placement report. Availability varies; contact the store before visiting.';
+  if(note)note.textContent='Locations from our October 8, 2026 placement report. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
   const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
   const featured=section.querySelector('.featured-stores');
@@ -383,7 +385,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
    ['Midway & Sports Arena',['7-Eleven, Midway 3185','7-Eleven, Sports Arena','7-Eleven, Midway 2387']],
    ['Clairemont & Kearny Mesa',['7-Eleven, Balboa Avenue','7-Eleven, Clairemont Mesa West','7-Eleven, Clairemont Mesa East','7-Eleven, Mesa College Drive']],
-   ['Del Cerro, San Carlos & Mission Gorge',['Windmill Farms','Take A Hike','Cheers Liquor & Deli',"Keil’s Fresh Foods",'7-Eleven, Mission Gorge 5829','7-Eleven, Mission Gorge 6401','7-Eleven, Mission Gorge 7427']],
+   ['Del Cerro, San Carlos & Mission Gorge',['Windmill Farms','Take A Hike','Cheers Liquor & Deli',"Keil’s Fresh Foods",'7-Eleven, Mission Gorge 5829','7-Eleven, Mission Gorge 6401','7-Eleven, Mission Gorge 7427','7-Eleven, Waring Road']],
+   ['College Area',['7-Eleven, El Cajon Boulevard 6991']],
    ['Mission Valley',['Chevron']],
    ['Downtown',['KRISP, Downtown']],
    ['Coronado',["Boney’s Bayside Market"]],
