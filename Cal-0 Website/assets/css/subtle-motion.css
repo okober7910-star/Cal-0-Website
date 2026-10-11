@@ -1,0 +1,95 @@
+/* Two small enhancements to the original CAL-0 site. */
+#main-content .facts.facts-motion-enabled {
+  display: block;
+  position: relative;
+}
+#main-content .facts.facts-motion-enabled .facts-motion-window,
+#main-content .facts.facts-motion-enabled .facts-motion-track,
+#main-content .facts.facts-motion-enabled .facts-motion-group {
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  justify-items: initial;
+}
+#main-content .facts.facts-motion-enabled .facts-motion-window {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.facts-motion-window::-webkit-scrollbar { display: none; }
+#main-content .facts.facts-motion-enabled .facts-motion-track {
+  display: flex;
+  width: max(100%, 680px);
+  animation: cal0-facts-cycle 42s linear infinite;
+}
+#main-content .facts.facts-motion-enabled .facts-motion-group {
+  display: flex;
+  flex: 0 0 100%;
+  min-width: 0;
+}
+#main-content .facts.facts-motion-enabled .facts-motion-item {
+  display: flex;
+  flex: 0 0 25%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 6px 12px;
+  border: 0 !important;
+  border-right: 1px solid #B0BFB2 !important;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#main-content .facts.facts-motion-enabled .facts-motion-item::before,
+#main-content .facts.facts-motion-enabled .facts-motion-window::before {
+  display: none;
+}
+.facts-motion-item strong, .facts-motion-item span { white-space: nowrap; }
+.facts-motion-toggle {
+  position: absolute;
+  z-index: 1;
+  top: 4px;
+  right: 2px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--green);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+.facts-motion-toggle:hover { border-color: #B0BFB2; }
+#main-content .facts.facts-motion-enabled:hover .facts-motion-track,
+#main-content .facts.facts-motion-enabled:focus-within .facts-motion-track,
+#main-content .facts.facts-motion-enabled.is-paused .facts-motion-track,
+#main-content .facts.facts-motion-enabled.is-offscreen .facts-motion-track,
+#main-content .facts.facts-motion-enabled.is-page-hidden .facts-motion-track {
+  animation-play-state: paused;
+}
+/* Added only to offscreen sections, then removed after their first reveal. */
+.cal0-scroll-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms ease, transform 500ms cubic-bezier(.2,.65,.3,1);
+}
+.cal0-scroll-reveal.is-revealed { opacity: 1; transform: none; }
+@keyframes cal0-facts-cycle { to { transform: translateX(-100%); } }
+@media (max-width: 720px) {
+  #main-content .facts.facts-motion-enabled .facts-motion-item { padding: 10px 12px; }
+  #main-content .facts.facts-motion-enabled .facts-motion-track { animation-duration: 36s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #main-content .facts.facts-motion-enabled .facts-motion-track { animation: none; }
+  .cal0-scroll-reveal { opacity: 1; transform: none; transition: none; }
+}
