@@ -282,6 +282,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  ["Keil’s Fresh Foods",'7403 Jackson Dr, San Diego, CA 92119','placement'],
  ['The Strand Liquor','600 Palm Ave, Imperial Beach, CA 91932','placement'],
  ["Monroe’s Market",'4502 Oregon St, San Diego, CA 92116','samples'],
+ ['Heights Market','3355 Adams Avenue, San Diego, CA 92116','placement'],
+ ['Monroe Market','4127 Monroe Avenue, San Diego, CA 92116','placement'],
  ['KRISP, Downtown','1427 First Ave, San Diego, CA 92101','placement'],
  ['Helix Liquor (Mama Liquor)','444 W Chase Ave, El Cajon, CA 92020','placement'],
  ["Liticker’s Liquor & Deli",'4955 Voltaire St, San Diego, CA 92107','placement'],
@@ -341,7 +343,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const section=document.querySelector('#stores');
  if(section){
   const intro=section.querySelector('.section-heading .lead');
-  if(intro)intro.textContent='Find Cal-0 across 42 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  if(intro)intro.textContent='Find Cal-0 across 44 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
   if(note)note.textContent='Locations from our October 8, 2026 placement report. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
@@ -384,7 +386,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  if(list){
   const groups=[
    ['Ocean Beach',["Liticker’s Liquor & Deli",'OB Quick Stop Liquor','One Stop Shop','OB Corner','KRISP, Ocean Beach','Shell',"Pat’s Liquor Store",'7-Eleven, Voltaire 4205','7-Eleven']],
-   ['North Park & University Heights',['Happy Liquor','7-Eleven, Adams Avenue','7-Eleven, Ohio Street',"Monroe’s Market",'7-Eleven, University Avenue','7-Eleven, El Cajon Boulevard']],
+   ['North Park & University Heights',['Happy Liquor','7-Eleven, Adams Avenue','7-Eleven, Ohio Street',"Monroe’s Market",'Heights Market','Monroe Market','7-Eleven, University Avenue','7-Eleven, El Cajon Boulevard']],
    ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
    ['Midway & Sports Arena',['7-Eleven, Midway 3185','7-Eleven, Sports Arena','7-Eleven, Midway 2387']],
    ['Clairemont & Kearny Mesa',['7-Eleven, Balboa Avenue','7-Eleven, Clairemont Mesa West','7-Eleven, Clairemont Mesa East','7-Eleven, Mesa College Drive','Mesa Mart','Kearny Mesa Market']],
