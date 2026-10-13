@@ -309,6 +309,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  ['7-Eleven, El Cajon Boulevard','1995 El Cajon Blvd, San Diego, CA 92104','limited'],
  ['7-Eleven, Garnet Avenue','1305 Garnet Ave, San Diego, CA 92109','limited'],
  ['7-Eleven, Voltaire 4205','4205 Voltaire St, San Diego, CA 92107','limited'],
+ ['7-Eleven','2190 Bacon Street, San Diego, CA','placement'],
  ['Vine Ripe Market','8191 Fletcher Pkwy, La Mesa, CA 91942','samples'],
  ['7-Eleven, Waring Road','5102 Waring Rd, San Diego, CA 92120','placement'],
  ['7-Eleven, El Cajon Boulevard 6991','6991 El Cajon Blvd, San Diego, CA 92115','placement']
@@ -340,7 +341,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const section=document.querySelector('#stores');
  if(section){
   const intro=section.querySelector('.section-heading .lead');
-  if(intro)intro.textContent='Find Cal-0 across 41 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  if(intro)intro.textContent='Find Cal-0 across 42 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
   if(note)note.textContent='Locations from our October 8, 2026 placement report. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
@@ -382,7 +383,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const list=document.querySelector('#stores [data-store-list]');
  if(list){
   const groups=[
-   ['Ocean Beach',["Liticker’s Liquor & Deli",'OB Quick Stop Liquor','One Stop Shop','OB Corner','KRISP, Ocean Beach','Shell',"Pat’s Liquor Store",'7-Eleven, Voltaire 4205']],
+   ['Ocean Beach',["Liticker’s Liquor & Deli",'OB Quick Stop Liquor','One Stop Shop','OB Corner','KRISP, Ocean Beach','Shell',"Pat’s Liquor Store",'7-Eleven, Voltaire 4205','7-Eleven']],
    ['North Park & University Heights',['Happy Liquor','7-Eleven, Adams Avenue','7-Eleven, Ohio Street',"Monroe’s Market",'7-Eleven, University Avenue','7-Eleven, El Cajon Boulevard']],
    ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
    ['Midway & Sports Arena',['7-Eleven, Midway 3185','7-Eleven, Sports Arena','7-Eleven, Midway 2387']],
