@@ -300,6 +300,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  ['Mesa Mart','7611 Linda Vista Road, San Diego, CA','placement'],
  ['Kearny Mesa Market','7631 Linda Vista Road, San Diego, CA','placement'],
  ['7-Eleven, Mission Gorge 5829','5829 Mission Gorge Rd, San Diego, CA 92120','placement'],
+ ['Iowa Meat Farms','6041 Mission Gorge Rd., San Diego, CA 92120','placement'],
  ['7-Eleven, Mission Gorge 6401','6401 Mission Gorge Rd, San Diego, CA 92120','placement'],
  ['7-Eleven, Mission Gorge 7427','7427 Mission Gorge Rd, San Diego, CA 92120','placement'],
  ['Shell','4794 Voltaire St, San Diego, CA 92107','placement'],
@@ -343,7 +344,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const section=document.querySelector('#stores');
  if(section){
   const intro=section.querySelector('.section-heading .lead');
-  if(intro)intro.textContent='Find Cal-0 across 44 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  if(intro)intro.textContent='Find Cal-0 across 45 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
   if(note)note.textContent='Locations from our October 8, 2026 placement report. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
@@ -390,7 +391,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
    ['Midway & Sports Arena',['7-Eleven, Midway 3185','7-Eleven, Sports Arena','7-Eleven, Midway 2387']],
    ['Clairemont & Kearny Mesa',['7-Eleven, Balboa Avenue','7-Eleven, Clairemont Mesa West','7-Eleven, Clairemont Mesa East','7-Eleven, Mesa College Drive','Mesa Mart','Kearny Mesa Market']],
-   ['Del Cerro, San Carlos & Mission Gorge',['Windmill Farms','Take A Hike','Cheers Liquor & Deli',"Keil’s Fresh Foods",'7-Eleven, Mission Gorge 5829','7-Eleven, Mission Gorge 6401','7-Eleven, Mission Gorge 7427','7-Eleven, Waring Road']],
+   ['Del Cerro, San Carlos & Mission Gorge',['Windmill Farms','Take A Hike','Cheers Liquor & Deli',"Keil’s Fresh Foods",'7-Eleven, Mission Gorge 5829','Iowa Meat Farms','7-Eleven, Mission Gorge 6401','7-Eleven, Mission Gorge 7427','7-Eleven, Waring Road']],
    ['College Area',['7-Eleven, El Cajon Boulevard 6991']],
    ['Mission Valley',['Chevron']],
    ['Downtown',['KRISP, Downtown']],
