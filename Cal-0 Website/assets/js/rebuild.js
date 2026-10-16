@@ -271,6 +271,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Nutrimart, Hillcrest','3854 Fifth Ave, San Diego, CA 92103','placement'],
+ ['Nutrimart, Parkway Plaza','549 Parkway Plaza, El Cajon, CA 92020','placement'],
+ ['Nutrimart, La Jolla','8843 Villa La Jolla Dr, La Jolla, CA 92037','placement'],
  ['Windmill Farms','6386 Del Cerro Blvd, San Diego, CA 92120','placement'],
  ['Happy Liquor','2567 University Ave, San Diego, CA 92104','placement'],
  ['7-Eleven, Adams Avenue','3436 Adams Ave, San Diego, CA 92116','placement'],
@@ -344,9 +347,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const section=document.querySelector('#stores');
  if(section){
   const intro=section.querySelector('.section-heading .lead');
-  if(intro)intro.textContent='Find Cal-0 across 45 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
+  if(intro)intro.textContent='Find Cal-0 across 48 local placement locations, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
-  if(note)note.textContent='Locations from our October 8, 2026 placement report. Availability varies; contact the store before visiting.';
+  if(note)note.textContent='Store list updated October 16, 2026. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
   const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
   const featured=section.querySelector('.featured-stores');
@@ -386,6 +389,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const list=document.querySelector('#stores [data-store-list]');
  if(list){
   const groups=[
+   ['Hillcrest',['Nutrimart, Hillcrest']],
+   ['La Jolla',['Nutrimart, La Jolla']],
    ['Ocean Beach',["Liticker’s Liquor & Deli",'OB Quick Stop Liquor','One Stop Shop','OB Corner','KRISP, Ocean Beach','Shell',"Pat’s Liquor Store",'7-Eleven, Voltaire 4205','7-Eleven']],
    ['North Park & University Heights',['Happy Liquor','7-Eleven, Adams Avenue','7-Eleven, Ohio Street',"Monroe’s Market",'Heights Market','Monroe Market','7-Eleven, University Avenue','7-Eleven, El Cajon Boulevard']],
    ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
@@ -398,7 +403,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ['Coronado',["Boney’s Bayside Market"]],
    ['Imperial Beach',['The Strand Liquor']],
    ['La Mesa',['Vine Ripe Market']],
-   ['El Cajon',['Helix Liquor (Mama Liquor)']],
+   ['El Cajon',['Helix Liquor (Mama Liquor)','Nutrimart, Parkway Plaza']],
    ['Location to confirm',["Adam’s Wine & Spirits"]]
   ];
   const cards=Array.from(list.querySelectorAll('.store-card'));
