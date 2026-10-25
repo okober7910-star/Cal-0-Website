@@ -58,6 +58,9 @@
 #main-content #about h2 { font-family: 'CAL0 Condensed', 'Arial Narrow', sans-serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.02; -webkit-text-stroke: 1px #FFFDF7; paint-order: stroke fill; }
 #main-content .hero-copy h1 .hero-number { background: linear-gradient(transparent 89%, rgba(242,179,49,.28) 89%, rgba(242,179,49,.28) 97%, transparent 97%); }
 #main-content .hero-copy h1 .hero-number-main { color: #111; }
+#main-content .hero-copy h1 .hero-first-line { color: var(--deep); }
+#main-content .hero-copy h1 .hero-line-text { color: inherit; }
+#main-content .hero-copy h1 .hero-blank { display: none; }
 .site-header .header-inner .main-nav { border-bottom: 1px solid rgba(15,77,63,.07); padding-bottom: 3px; }
 .site-header .header-inner .main-nav a { min-height: 34px; padding: 5px 9px; border: 1px solid rgba(15,77,63,.1); border-radius: 999px; background: rgba(15,77,63,.022); line-height: 1.2; transition: background-color 180ms ease, border-color 180ms ease; }
 .site-header .header-inner .main-nav a:hover { border-color: rgba(15,77,63,.2); background: rgba(15,77,63,.045); text-decoration: none; }
@@ -89,13 +92,14 @@
   #main-content .hero-copy { padding-top: 0; }
   #main-content .hero-copy h1 { position: relative; box-sizing: border-box; padding-inline: clamp(12px, 4vw, 18px); font-size: clamp(2.05rem, 8.8vw, 2.45rem); margin-bottom: 10px; -webkit-text-stroke-width: .65px; }
   #main-content #about h2 { -webkit-text-stroke-width: .65px; }
-  #main-content .hero-copy h1 .hero-calories { display: inline-block; width: 100%; max-width: 400px; padding-left: 0; text-align: right; white-space: nowrap; }
-  #main-content .hero-copy h1::before,
-  #main-content .hero-copy h1::after { content: ""; position: absolute; width: clamp(40px, 14vw, 60px); height: 10px; opacity: .60; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: repeat-x; background-size: 20px 10px; pointer-events: none; animation: cal0-zigzag 10s linear infinite; }
-  #main-content .hero-copy h1::before { top: .52em; right: clamp(12px, 4vw, 18px); }
-  #main-content .hero-copy h1::after { bottom: .46em; left: clamp(12px, 4vw, 18px); animation-direction: reverse; }
-  .header-motion-paused #main-content .hero-copy h1::before,
-  .header-motion-paused #main-content .hero-copy h1::after { animation-play-state: paused; }
+  #main-content .hero-copy h1 .hero-first-line { display: flex; align-items: center; width: 100%; }
+  #main-content .hero-copy h1 > br { display: none; }
+  #main-content .hero-copy h1 .hero-calories { display: flex; align-items: center; width: 100%; max-width: 400px; padding-left: 0; white-space: nowrap; }
+  #main-content .hero-copy h1 .hero-line-text { flex: 0 0 auto; white-space: nowrap; }
+  #main-content .hero-copy h1 .hero-blank { display: grid; place-items: center; flex: 1 1 0; min-width: 0; align-self: stretch; padding-inline: 4px; }
+  #main-content .hero-copy h1 .hero-blank::before { content: ""; display: block; width: min(100%, clamp(44px, 15vw, 64px)); height: 10px; opacity: .67; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: repeat-x; background-size: 20px 10px; pointer-events: none; animation: cal0-zigzag 10s linear infinite; }
+  #main-content .hero-copy h1 .hero-blank-reverse::before { animation-direction: reverse; }
+  .header-motion-paused #main-content .hero-copy h1 .hero-blank::before { animation-play-state: paused; }
   #main-content .hero-copy .hero-desktop-eyebrow,
   #main-content .hero-copy .hero-desktop-actions { display: none; }
   #main-content .hero-copy .hero-mobile-actions { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); gap: 8px; width: 100%; margin: 0 0 18px; }
@@ -159,8 +163,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .announcement-zigzag,
-  #main-content .hero-copy h1::before,
-  #main-content .hero-copy h1::after { animation: none; }
+  #main-content .hero-copy h1 .hero-blank::before { animation: none; }
   .header-motion-toggle { display: none; }
   .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: auto; }
   .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { animation: none; transform: none; min-width: 100%; }
@@ -179,7 +182,7 @@
 <section class="hero" id="shop"><div class="container hero-grid">
 <figure class="hero-photo"><img src="assets/images/case-and-pouch.webp?v=cal0-images-20261025" alt="Cal-0 Mango Konjac Jelly 10-pack box and mango pouch" width="800" height="800" fetchpriority="high"><figcaption>Ten mango pouches. Ready when you are.</figcaption></figure>
 <p class="hero-proof"><span class="hero-proof-item hero-rating" role="img" aria-label="4.9 out of 5 stars"><span class="hero-stars" aria-hidden="true"><span class="hero-stars-empty">★★★★★</span><span class="hero-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>50+</strong><span>stores</span></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>No</strong><span>artificial sweeteners</span></span></p>
-<div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-number hero-number-main">300mg</span> Vitamin C.<br><span class="hero-calories">Just <span class="hero-number">10</span> calories.</span></h1>
+<div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-first-line"><span class="hero-line-text"><span class="hero-number hero-number-main">300mg</span> Vitamin C.</span><span class="hero-blank" aria-hidden="true"></span></span><br><span class="hero-calories"><span class="hero-blank hero-blank-reverse" aria-hidden="true"></span><span class="hero-line-text">Just <span class="hero-number">10</span> calories.</span></span></h1>
 <div class="button-row hero-mobile-actions"><a class="button button-outline" href="#stores">Find Cal-0 <span>in Stores</span></a><a class="button hero-mobile-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack for $24.99">Shop Now</a></div>
 <p class="eyebrow hero-mobile-eyebrow">Mango Konjac Jelly</p><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row hero-desktop-actions"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div></div>
 </div>
