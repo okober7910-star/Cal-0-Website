@@ -93,3 +93,51 @@
   #main-content .facts.facts-motion-enabled .facts-motion-track { animation: none; }
   .cal0-scroll-reveal { opacity: 1; transform: none; transition: none; }
 }
+/* Customer reviews stay in one row and travel opposite the product facts. */
+#main-content .customer-quotes { position: relative; padding-block: 18px; }
+#main-content .customer-quotes .quote-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+#main-content .customer-quotes .quote-row::-webkit-scrollbar { display: none; }
+#main-content .customer-quotes blockquote { flex: 1 0 auto; padding: 12px 24px; white-space: nowrap; }
+#main-content .customer-quotes.quotes-motion-enabled .quote-row { display: block; }
+#main-content .customer-quotes .quotes-motion-track {
+  display: flex;
+  width: 200%;
+  min-width: 2240px;
+  animation: cal0-quotes-cycle 44s linear infinite;
+}
+#main-content .customer-quotes .quotes-motion-group { display: flex; align-items: center; flex: 0 0 50%; min-width: 0; }
+.quotes-motion-toggle {
+  position: absolute;
+  top: 2px;
+  right: max(16px, calc((100% - 1180px) / 2));
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--green);
+  font-size: 12px;
+  line-height: 1;
+}
+.quotes-motion-toggle:hover { border-color: #B0BFB2; }
+#main-content .customer-quotes:hover .quotes-motion-track,
+#main-content .customer-quotes .quote-row:focus-within .quotes-motion-track,
+#main-content .customer-quotes.is-paused .quotes-motion-track,
+#main-content .customer-quotes.is-offscreen .quotes-motion-track,
+#main-content .customer-quotes.is-page-hidden .quotes-motion-track { animation-play-state: paused; }
+@keyframes cal0-quotes-cycle { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  #main-content .customer-quotes .quotes-motion-track { animation: none; transform: none; }
+  #main-content .customer-quotes .quotes-motion-group[aria-hidden="true"] { display: none; }
+}
+

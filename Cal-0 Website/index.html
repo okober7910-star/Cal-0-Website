@@ -16,9 +16,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="stylesheet" href="assets/css/rebuild.css">
 <script src="assets/js/config.js" defer></script>
-<script src="assets/js/rebuild.js?v=cal0-images-20261025" defer></script>
-<link rel="stylesheet" href="assets/css/subtle-motion.css">
-<script src="assets/js/subtle-motion.js" defer></script>
+<script src="assets/js/rebuild.js?v=reviews-mobile-20261025" defer></script>
+<link rel="stylesheet" href="assets/css/subtle-motion.css?v=reviews-mobile-20261025">
+<script src="assets/js/subtle-motion.js?v=reviews-mobile-20261025" defer></script>
 <style>
 /* A continuous warm canvas, tighter rhythm and quieter section changes. */
 .hero { background: var(--cream); padding-top: 34px; }
@@ -43,7 +43,8 @@
 }
 #main-content .hero-copy { grid-area: copy; }
 #main-content .hero-photo { grid-area: gallery; max-width: none; justify-self: stretch; }
-#main-content .hero-quick-shop { grid-area: shop; display: none; }
+#main-content .hero-proof { grid-area: stats; display: none; }
+#main-content .hero-mobile-shop { display: none; }
 #main-content #about .split {
   max-width: 1180px;
   grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
@@ -54,20 +55,28 @@
 @media (max-width: 720px) {
   #main-content .hero { padding-top: 12px; }
   #main-content .hero-grid {
-    grid-template-areas: "gallery" "shop" "copy";
+    grid-template-areas: "gallery" "stats" "copy";
     grid-template-columns: minmax(0, 1fr);
     gap: 14px;
   }
   #main-content .hero-photo { max-width: 480px; justify-self: center; }
-  #main-content .hero-quick-shop {
-    display: inline-flex;
-    justify-self: center;
-    width: min(100%, 280px);
-    min-height: 46px;
-    padding: 11px 24px;
+  #main-content .hero-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin: 0;
+    font-size: clamp(.62rem, 2.75vw, .75rem);
+    line-height: 1.4;
+    font-weight: 700;
+    white-space: nowrap;
   }
-  #main-content .hero-copy { padding-top: 6px; }
-  #main-content .hero-copy .button-row [data-checkout-link] { display: none; }
+  #main-content .hero-copy { padding-top: 0; }
+  #main-content .hero-copy .button-row { flex-wrap: nowrap; gap: 8px; }
+  #main-content .hero-copy .button-row .hero-desktop-shop { display: none; }
+  #main-content .hero-copy .button-row .button { min-height: 46px; padding: 11px 12px; font-size: clamp(.7rem, 3vw, .82rem); white-space: nowrap; }
+  #main-content .hero-copy .button-row .button-outline { flex: 1 1 auto; min-width: 0; }
+  #main-content .hero-copy .button-row .hero-mobile-shop { display: inline-flex; flex: 0 0 auto; padding-inline: 18px; }
   #main-content .hero-photo .photo-thumbs { gap: 7px; margin-top: 8px; }
   #main-content .hero-photo .photo-thumbs img { height: 44px; max-height: 44px; aspect-ratio: auto; object-fit: contain; }
   #main-content .hero-photo .photo-controls button { min-height: 40px; padding: 6px 14px; }
@@ -86,8 +95,8 @@
 <main id="main-content">
 <section class="hero" id="shop"><div class="container hero-grid">
 <figure class="hero-photo"><img src="assets/images/case-and-pouch.webp?v=cal0-images-20261025" alt="Cal-0 Mango Konjac Jelly 10-pack box and mango pouch" width="800" height="800" fetchpriority="high"><figcaption>Ten mango pouches. Ready when you are.</figcaption></figure>
-<a class="button hero-quick-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack">Shop Now</a>
-<div class="hero-copy"><p class="eyebrow">Mango Konjac Jelly</p><h1>300mg Vitamin C.<br><span>Just 10 calories.</span></h1><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row"><a class="button" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div><p class="small muted">Secure checkout with Stripe. Review shipping and final charges there.</p></div>
+<p class="hero-proof"><span>4.9 stars</span><span aria-hidden="true">·</span><span>50+ stores</span><span aria-hidden="true">·</span><span>300mg Vitamin C</span></p>
+<div class="hero-copy"><p class="eyebrow">Mango Konjac Jelly</p><h1>300mg Vitamin C.<br><span>Just 10 calories.</span></h1><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a><a class="button hero-mobile-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack">Shop Now</a></div><p class="small muted">Secure checkout with Stripe. Review shipping and final charges there.</p></div>
 </div>
 <div class="container facts" aria-label="Product facts per pouch"><div><strong>10</strong><span>calories</span></div><div><strong>300mg</strong><span>Vitamin C</span></div><div><strong>3g</strong><span>added sugar</span></div><div><strong>150mL</strong><span>individual pouch</span></div></div></section>
 <section class="section" id="about"><div class="container split"><figure class="rounded-photo"><img src="assets/images/product-front-beach.webp?v=cal0-images-20261025" alt="Front of the Cal-0 mango konjac jelly pouch" width="800" height="800" loading="lazy"></figure><div><p class="eyebrow">Meet the pouch</p><h2>A lighter snack.<br>A refreshing squeeze.</h2><p class="lead">Konjac gives Cal-0 its jelly-style texture. Enjoy it chilled, a little at a time.</p><ol class="steps"><li><strong>Chill it.</strong> Pop it in the fridge or cooler.</li><li><strong>Squeeze it.</strong> Gently squeeze the closed pouch to mix the jelly.</li><li><strong>Enjoy it.</strong> Open, squeeze a little at a time and chew thoroughly.</li></ol><p class="safety"><strong>Chew thoroughly. Not for children under 3.</strong> Follow the directions and warnings on the package.</p></div></div></section>
@@ -101,4 +110,5 @@
 <footer class="site-footer"><div class="container"><div class="footer-top"><div><p>San Diego, CA</p><a href="mailto:hello@cal-0.com">hello@cal-0.com</a></div><nav aria-label="Footer navigation"><a href="catalog.html">Shop</a><a href="#story">Our Story</a><a href="#stores">Find Us</a><a href="#wholesale">Wholesale</a><a href="contact.html">Contact</a></nav></div><div class="footer-bottom"><span>© <span data-current-year>2026</span> Cal-0 LLC. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></div></footer>
 </body>
 </html>
+
 

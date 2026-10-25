@@ -63,6 +63,56 @@
       }
     }
 
+    const quotes = document.querySelector('#main-content .customer-quotes');
+    const quoteRow = quotes && quotes.querySelector('.quote-row');
+    if (quoteRow) {
+      const items = Array.from(quoteRow.children);
+      if (items.length && items.every(item => item.tagName === 'BLOCKQUOTE')) {
+        const track = document.createElement('div');
+        track.className = 'quotes-motion-track';
+        const group = document.createElement('div');
+        group.className = 'quotes-motion-group';
+        items.forEach(item => group.append(item));
+        const duplicate = group.cloneNode(true);
+        duplicate.setAttribute('aria-hidden', 'true');
+        duplicate.setAttribute('inert', '');
+        track.append(group, duplicate);
+        quoteRow.append(track);
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'quotes-motion-toggle';
+        toggle.textContent = 'Ⅱ';
+        toggle.title = 'Pause moving customer reviews';
+        toggle.setAttribute('aria-label', toggle.title);
+        toggle.setAttribute('aria-pressed', 'false');
+        toggle.addEventListener('click', () => {
+          const paused = quotes.classList.toggle('is-paused');
+          toggle.textContent = paused ? '▶' : 'Ⅱ';
+          toggle.title = paused ? 'Resume moving customer reviews' : 'Pause moving customer reviews';
+          toggle.setAttribute('aria-label', toggle.title);
+          toggle.setAttribute('aria-pressed', String(paused));
+        });
+        quotes.append(toggle);
+        quotes.classList.add('quotes-motion-enabled');
+        const handleVisibility = () => quotes.classList.toggle('is-page-hidden', document.hidden);
+        document.addEventListener('visibilitychange', handleVisibility);
+        handleVisibility();
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(entries => {
+            quotes.classList.toggle('is-offscreen', !entries[0].isIntersecting);
+          });
+          observer.observe(quotes);
+          cleanups.push(() => observer.disconnect());
+        }
+        cleanups.push(() => {
+          document.removeEventListener('visibilitychange', handleVisibility);
+          quoteRow.replaceChildren(...items);
+          toggle.remove();
+          quotes.classList.remove('quotes-motion-enabled', 'is-paused', 'is-offscreen', 'is-page-hidden');
+        });
+      }
+    }
+
     if ('IntersectionObserver' in window) {
       const blocks = Array.from(document.querySelectorAll('#main-content > section:not(.hero) > .container'));
       const observer = new IntersectionObserver(entries => {
@@ -107,3 +157,4 @@
   initialize();
   preference.addEventListener('change', initialize);
 })();
+
