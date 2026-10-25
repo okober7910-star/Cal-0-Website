@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://cal-0.com/</loc></url>
-  <url><loc>https://cal-0.com/catalog</loc></url>
-  <url><loc>https://cal-0.com/contact</loc></url>
-  <url><loc>https://cal-0.com/privacy</loc></url>
-  <url><loc>https://cal-0.com/terms</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://cal-0.com/</loc>
+    <image:image><image:loc>https://cal-0.com/assets/images/case-and-pouch.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/product-back-beach.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/product-benefits-alt.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/nutrition-label.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/product-front-beach.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/nutrition-composite.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://cal-0.com/catalog</loc>
+    <image:image><image:loc>https://cal-0.com/assets/images/case-and-pouch.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/product-back-beach.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/product-benefits-alt.webp</image:loc></image:image>
+    <image:image><image:loc>https://cal-0.com/assets/images/nutrition-label.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://cal-0.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://cal-0.com/privacy</loc>
+  </url>
+  <url>
+    <loc>https://cal-0.com/terms</loc>
+  </url>
+  <url>
+    <loc>https://cal-0.com/what-is-konjac-jelly</loc>
+    <image:image><image:loc>https://cal-0.com/assets/images/case-and-pouch.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://cal-0.com/where-to-buy-cal0</loc>
+    <image:image><image:loc>https://cal-0.com/assets/images/case-and-pouch.webp</image:loc></image:image>
+  </url>
 </urlset>
