@@ -90,10 +90,10 @@
 /* Restore the original image-rich experience without changing checkout. */
 (() => {
   const images = [
-    ["case-and-pouch.webp", "Cal-0 10-pack box and mango pouch", "10-Pack"],
-    ["product-back-beach.webp", "Back of the Cal-0 mango pouch", "Back of Pouch"],
-    ["product-benefits-alt.webp", "Cal-0 mango pouch and product benefits", "Product Benefits"],
-    ["nutrition-label.webp", "Cal-0 Nutrition Facts", "Nutrition Facts"]
+    ["case-and-pouch.webp?v=cal0-images-20261025", "Cal-0 10-pack box and mango pouch", "10-Pack"],
+    ["product-back-beach.webp?v=cal0-images-20261025", "Back of the Cal-0 mango pouch", "Back of Pouch"],
+    ["product-benefits-alt.webp?v=cal0-images-20261025", "Cal-0 mango pouch and product benefits", "Product Benefits"],
+    ["nutrition-label.webp?v=cal0-images-20261025", "Cal-0 Nutrition Facts", "Nutrition Facts"]
   ];
   const host = document.querySelector(".hero-photo") || document.querySelector(".rounded-photo:has([data-product-image])");
   if (host) {
@@ -170,7 +170,7 @@
     nutrition.height = 1254;
     const link = nutrition.closest("a");
     if (link) link.href = nutrition.src;
-    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp"; });
+    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp?v=cal0-images-20261025"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp"; });
   }
 })();
 /* Keep the retailer inquiry last, just above the footer. */
@@ -363,7 +363,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   }
  }
  const pouch=document.querySelector('#about .rounded-photo img');
- if(pouch){pouch.src='assets/images/product-front-beach.webp';pouch.alt='Cal-0 mango konjac jelly pouch on a tropical beach';pouch.width=800;pouch.height=800;}
+ if(pouch){pouch.src='assets/images/product-front-beach.webp?v=cal0-images-20261025';pouch.alt='Cal-0 mango konjac jelly pouch on a tropical beach';pouch.width=800;pouch.height=800;}
  const style=document.createElement('style');
  style.textContent='.featured-stores{grid-template-columns:repeat(5,minmax(0,1fr))}#story .founder-grid{grid-template-columns:260px minmax(0,1fr);gap:32px;max-width:980px;align-items:center}#story .founder-photo{width:260px;max-width:100%}#story .founder-photo img{aspect-ratio:4/5;object-fit:cover;object-position:center 32%}#story h2{font-size:clamp(2rem,3vw,2.8rem);margin-bottom:16px}#story p{margin-bottom:14px}#story .lead{font-size:1.1rem}#story.section{padding-block:14px}#about .rounded-photo img{object-fit:contain;aspect-ratio:1}@media(max-width:900px){.featured-stores{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:720px){#story .founder-grid{grid-template-columns:1fr;gap:18px}#story .founder-photo{width:230px}.featured-stores{grid-template-columns:repeat(2,minmax(0,1fr))}}';
  document.head.append(style);
