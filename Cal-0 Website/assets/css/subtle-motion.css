@@ -108,11 +108,11 @@
 #main-content .customer-quotes.quotes-motion-enabled .quote-row { display: block; }
 #main-content .customer-quotes .quotes-motion-track {
   display: flex;
-  width: 200%;
-  min-width: 2240px;
+  width: max-content;
+  min-width: 200%;
   animation: cal0-quotes-cycle 44s linear infinite;
 }
-#main-content .customer-quotes .quotes-motion-group { display: flex; align-items: center; flex: 0 0 50%; min-width: 0; }
+#main-content .customer-quotes .quotes-motion-group { display: flex; align-items: center; flex: 1 0 auto; min-width: 0; }
 .quotes-motion-toggle {
   position: absolute;
   top: 2px;
