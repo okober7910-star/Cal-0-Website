@@ -108,13 +108,16 @@
     const buttons = [];
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let photoAnimation = 0;
+    let photoTarget = 0;
     function cancelPhotoMotion() {
       if (photoAnimation) cancelAnimationFrame(photoAnimation);
       photoAnimation = 0;
       track.style.scrollSnapType = '';
+      photoTarget = Math.round(track.scrollLeft / track.clientWidth) || 0;
     }
     function goToPhoto(index) {
       cancelPhotoMotion();
+      photoTarget = index;
       const start = track.scrollLeft;
       const target = index * track.clientWidth;
       if (motionPreference.matches || Math.abs(target - start) < 1) {
@@ -137,7 +140,7 @@
     window.addEventListener('resize', cancelPhotoMotion, {passive: true});
     motionPreference.addEventListener('change', cancelPhotoMotion);
     track.addEventListener('keydown', event => {
-      const current = Math.round(track.scrollLeft / track.clientWidth);
+      const current = photoAnimation ? photoTarget : Math.round(track.scrollLeft / track.clientWidth);
       let next;
       if (event.key === 'ArrowRight') next = (current + 1) % images.length;
       else if (event.key === 'ArrowLeft') next = (current - 1 + images.length) % images.length;
@@ -187,7 +190,7 @@
       button.textContent = direction < 0 ? "Previous" : "Next";
       button.setAttribute("aria-label", direction < 0 ? "Previous product photo" : "Next product photo");
       button.addEventListener("click", () => {
-        const current = Math.round(track.scrollLeft / track.clientWidth);
+        const current = photoAnimation ? photoTarget : Math.round(track.scrollLeft / track.clientWidth);
         const next = (current + direction + images.length) % images.length;
         goToPhoto(next);
       });
@@ -197,7 +200,8 @@
     track.addEventListener("scroll", () => {
       const current = Math.min(3, Math.max(0, Math.round(track.scrollLeft / track.clientWidth)));
       buttons.forEach((button, index) => button.setAttribute("aria-pressed", String(index === current)));
-      status.textContent = (current + 1) + " / 4";
+      const label = (current + 1) + " / 4";
+      if (status.textContent !== label) status.textContent = label;
     }, {passive: true});
     host.replaceChildren(track, thumbs, controls);
     const oldNav = document.querySelector(".gallery-nav");
