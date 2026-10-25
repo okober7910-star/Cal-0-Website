@@ -106,6 +106,47 @@
     const thumbs = document.createElement("div");
     thumbs.className = "photo-thumbs";
     const buttons = [];
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let photoAnimation = 0;
+    function cancelPhotoMotion() {
+      if (photoAnimation) cancelAnimationFrame(photoAnimation);
+      photoAnimation = 0;
+      track.style.scrollSnapType = '';
+    }
+    function goToPhoto(index) {
+      cancelPhotoMotion();
+      const start = track.scrollLeft;
+      const target = index * track.clientWidth;
+      if (motionPreference.matches || Math.abs(target - start) < 1) {
+        track.scrollTo({left: target, behavior: 'auto'});
+        return;
+      }
+      const startedAt = performance.now();
+      track.style.scrollSnapType = 'none';
+      function step(now) {
+        const progress = Math.min(1, (now - startedAt) / 450);
+        const eased = progress < .5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
+        track.scrollLeft = start + (target - start) * eased;
+        if (progress < 1) photoAnimation = requestAnimationFrame(step);
+        else { photoAnimation = 0; track.style.scrollSnapType = ''; }
+      }
+      photoAnimation = requestAnimationFrame(step);
+    }
+    track.addEventListener('pointerdown', cancelPhotoMotion, {passive: true});
+    track.addEventListener('wheel', cancelPhotoMotion, {passive: true});
+    window.addEventListener('resize', cancelPhotoMotion, {passive: true});
+    motionPreference.addEventListener('change', cancelPhotoMotion);
+    track.addEventListener('keydown', event => {
+      const current = Math.round(track.scrollLeft / track.clientWidth);
+      let next;
+      if (event.key === 'ArrowRight') next = (current + 1) % images.length;
+      else if (event.key === 'ArrowLeft') next = (current - 1 + images.length) % images.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = images.length - 1;
+      else return;
+      event.preventDefault();
+      goToPhoto(next);
+    });
     images.forEach((item, index) => {
       const slide = document.createElement("div");
       slide.className = "photo-slide";
@@ -130,7 +171,7 @@
       thumb.loading = "lazy";
       button.append(thumb);
       button.addEventListener("click", () => {
-        track.scrollTo({left: track.clientWidth * index, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+        goToPhoto(index);
       });
       buttons.push(button);
       thumbs.append(button);
@@ -148,7 +189,7 @@
       button.addEventListener("click", () => {
         const current = Math.round(track.scrollLeft / track.clientWidth);
         const next = (current + direction + images.length) % images.length;
-        track.scrollTo({left: next * track.clientWidth, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+        goToPhoto(next);
       });
       controls.append(button);
       if (direction < 0) controls.append(status);
@@ -456,4 +497,5 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  style.textContent='.customer-quotes{padding:18px 0;background:#F0E7D3}.quote-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.quote-row blockquote{margin:0;padding:12px 18px;border-left:3px solid #F2B331;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:800;line-height:1.45}.site-header .header-inner{grid-template-columns:125px minmax(0,1fr) 145px;column-gap:12px}.site-header .header-inner .main-nav{grid-column:2;grid-row:1;order:initial;position:static;top:auto;width:100%;min-width:0;flex-wrap:nowrap;gap:16px;justify-content:center;font-size:.9rem}.site-header .header-inner .main-nav a{white-space:nowrap;flex-shrink:0}.site-header .header-inner>.button{grid-column:3;grid-row:1}@media(max-width:800px){.site-header .header-inner{grid-template-columns:90px minmax(0,1fr) 120px;column-gap:10px}.site-header .brand-word{font-size:34px}.site-header .header-inner .main-nav{gap:12px;font-size:.8rem;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin}.site-header .header-inner>.button{font-size:.78rem;padding:10px 12px}}@media(max-width:480px){.site-header .header-inner{grid-template-columns:70px minmax(0,1fr) 105px;column-gap:8px}.site-header .brand-word{font-size:30px}.quote-row{grid-template-columns:1fr;gap:4px}.quote-row blockquote{padding:10px 14px}}';
  document.head.append(style);
 })();
+
 
