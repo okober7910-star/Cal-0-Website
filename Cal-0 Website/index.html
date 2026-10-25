@@ -20,6 +20,7 @@
 <script src="assets/js/rebuild.js?v=hero-polish-20261025" defer></script>
 <link rel="stylesheet" href="assets/css/subtle-motion.css?v=reviews-mobile-20261025">
 <script src="assets/js/subtle-motion.js?v=reviews-mobile-20261025" defer></script>
+<script src="assets/js/header-motion.js?v=finishing-20261025" defer></script>
 <style>
 @font-face { font-family: 'CAL0 Condensed'; src: url('assets/fonts/barlow-condensed-bold.woff') format('woff'); font-style: normal; font-weight: 700; font-display: swap; }
 /* A continuous warm canvas, tighter rhythm and quieter section changes. */
@@ -49,13 +50,14 @@
 #main-content .hero-proof { grid-area: stats; display: flex; align-items: center; justify-content: space-between; gap: 4px; margin: 0; font-size: clamp(.6rem, 1vw, .78rem); line-height: 1.4; font-weight: 500; white-space: nowrap; }
 #main-content .hero-proof-item { display: inline-flex; align-items: center; gap: 3px; }
 #main-content .hero-proof strong { color: var(--green); font-size: 1.25em; font-weight: 900; }
-#main-content .hero-proof-dot { font-size: 1.65em; font-weight: 900; line-height: 1; color: var(--green); }
+#main-content .hero-proof-dot { font-size: 2.1em; font-weight: 900; line-height: 1; color: var(--green); }
 #main-content .hero-stars { position: relative; display: inline-block; color: #F2B331; font-family: Arial, sans-serif; font-size: 12px; line-height: 1; letter-spacing: .02em; }
 #main-content .hero-stars-empty { opacity: .22; }
 #main-content .hero-stars-fill { position: absolute; left: 0; top: 0; width: 98%; overflow: hidden; white-space: nowrap; }
 #main-content .hero-copy h1,
-#main-content #about h2 { font-family: 'CAL0 Condensed', 'Arial Narrow', sans-serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.02; }
+#main-content #about h2 { font-family: 'CAL0 Condensed', 'Arial Narrow', sans-serif; font-weight: 700; letter-spacing: -.01em; line-height: 1.02; -webkit-text-stroke: 1px #FFFDF7; paint-order: stroke fill; }
 #main-content .hero-copy h1 .hero-number { background: linear-gradient(transparent 89%, rgba(242,179,49,.28) 89%, rgba(242,179,49,.28) 97%, transparent 97%); }
+#main-content .hero-copy h1 .hero-number-main { color: #111; }
 .site-header .header-inner .main-nav { border-bottom: 1px solid rgba(15,77,63,.07); padding-bottom: 3px; }
 .site-header .header-inner .main-nav a { min-height: 34px; padding: 5px 9px; border: 1px solid rgba(15,77,63,.1); border-radius: 999px; background: rgba(15,77,63,.022); line-height: 1.2; transition: background-color 180ms ease, border-color 180ms ease; }
 .site-header .header-inner .main-nav a:hover { border-color: rgba(15,77,63,.2); background: rgba(15,77,63,.045); text-decoration: none; }
@@ -85,7 +87,9 @@
     font-size: clamp(.6rem, 2.55vw, .72rem);
   }
   #main-content .hero-copy { padding-top: 0; }
-  #main-content .hero-copy h1 { font-size: clamp(2.05rem, 8.8vw, 2.45rem); margin-bottom: 10px; }
+  #main-content .hero-copy h1 { font-size: clamp(2.05rem, 8.8vw, 2.45rem); margin-bottom: 10px; -webkit-text-stroke-width: .65px; }
+  #main-content #about h2 { -webkit-text-stroke-width: .65px; }
+  #main-content .hero-copy h1 .hero-calories { display: inline-block; padding-left: clamp(22px, 8vw, 38px); max-width: 100%; white-space: nowrap; }
   #main-content .hero-copy .hero-desktop-eyebrow,
   #main-content .hero-copy .hero-desktop-actions { display: none; }
   #main-content .hero-copy .hero-mobile-actions { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr); gap: 8px; width: 100%; margin: 0 0 18px; }
@@ -100,6 +104,10 @@
   #main-content .hero-photo .photo-controls { display: none; }
   #main-content #about .split { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   #main-content #about .rounded-photo { max-width: 400px; }
+  #main-content #about { padding-bottom: 6px; }
+  #main-content #about .safety { margin-bottom: 0; padding: 12px 16px; }
+  #main-content #story { padding-top: 6px; }
+  #main-content #story .founder-grid { padding-top: 0; gap: 14px; }
 }
 @media (max-width: 720px) and (max-height: 740px) {
   #main-content .hero-photo .photo-slide { aspect-ratio: auto; height: min(calc(100svh - 400px), calc(100vw - 32px)); min-height: 160px; }
@@ -110,11 +118,50 @@
   #main-content .hero-photo .photo-thumbs button,
   #main-content .hero-photo .photo-controls button { transition: none; }
 }
+/* A quiet announcement accent and a contained, usable mobile menu loop. */
+.announcement-bar { position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 7px 32px; font-family: 'CAL0 Condensed', 'Arial Narrow', sans-serif; font-weight: 700; font-size: clamp(.66rem, 2.8vw, .8rem); line-height: 1.15; letter-spacing: .08em; text-transform: uppercase; }
+.announcement-label { color: #FFE2A7; }
+.announcement-serving { color: #FFFAF0; }
+.announcement-mango { font-family: system-ui, sans-serif; font-size: 1.15em; line-height: 1; }
+.announcement-zigzag { flex: 0 0 clamp(12px, 5vw, 56px); height: 10px; opacity: .65; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: repeat-x; background-size: 20px 10px; animation: cal0-zigzag 8s linear infinite; }
+.announcement-zigzag-right { animation-direction: reverse; }
+.header-motion-toggle { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #FFFAF0; opacity: .65; font: 10px/1 Arial, sans-serif; }
+.header-motion-toggle:hover, .header-motion-toggle:focus-visible { opacity: 1; }
+.announcement-bar:hover .announcement-zigzag,
+.header-motion-paused .announcement-zigzag { animation-play-state: paused; }
+.site-header .header-inner .main-nav .nav-motion-track,
+.site-header .header-inner .main-nav .nav-motion-group { display: contents; }
+.site-header .header-inner .main-nav .nav-motion-clone { display: none; }
+@keyframes cal0-zigzag { to { background-position-x: 20px; } }
+@keyframes cal0-nav-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (min-width: 1024px) {
+  #main-content .hero-proof { font-size: .9rem; padding-block: 3px; }
+  #main-content .hero-stars { font-size: 14px; }
+}
+@media (max-width: 800px) {
+  .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: hidden; scrollbar-width: none; }
+  .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { display: flex; width: max-content; min-width: 200%; gap: 0; animation: cal0-nav-right 54s linear infinite; }
+  .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-group { display: flex; align-items: center; flex: 1 0 auto; gap: 10px; padding-inline: 5px; }
+  .site-header .header-inner .main-nav.nav-motion-ready:hover .nav-motion-track { animation-play-state: paused; }
+  .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible),
+  .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: auto; }
+  .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible) .nav-motion-track,
+  .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { animation: none; transform: none; min-width: 100%; }
+  .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible) .nav-motion-clone,
+  .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-clone { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .announcement-zigzag { animation: none; }
+  .header-motion-toggle { display: none; }
+  .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: auto; }
+  .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { animation: none; transform: none; min-width: 100%; }
+  .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-clone { display: none; }
+}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
-<div class="announcement-bar">Mango Konjac Jelly · Best served chilled</div>
+<div class="announcement-bar"><span class="announcement-zigzag" aria-hidden="true"></span><span class="announcement-label">Mango Konjac Jelly</span><span class="announcement-mango" aria-hidden="true">🥭</span><span class="announcement-serving">Best served chilled</span><span class="announcement-zigzag announcement-zigzag-right" aria-hidden="true"></span><button class="header-motion-toggle" type="button" aria-label="Pause header motion" aria-pressed="false">Ⅱ</button></div>
 <header class="site-header"><div class="container header-inner">
 <a class="site-logo" href="index.html" aria-label="Cal-0 home"><img src="assets/images/logo-wordmark.svg" alt="Cal-0" width="270" height="90"></a>
 <nav class="main-nav" aria-label="Main navigation"><a href="catalog.html">Shop</a><a href="#story">Our Story</a><a href="#stores">Find Us</a><a href="#wholesale">Wholesale</a><a href="contact.html">Contact</a></nav>
@@ -123,7 +170,7 @@
 <section class="hero" id="shop"><div class="container hero-grid">
 <figure class="hero-photo"><img src="assets/images/case-and-pouch.webp?v=cal0-images-20261025" alt="Cal-0 Mango Konjac Jelly 10-pack box and mango pouch" width="800" height="800" fetchpriority="high"><figcaption>Ten mango pouches. Ready when you are.</figcaption></figure>
 <p class="hero-proof"><span class="hero-proof-item hero-rating" role="img" aria-label="4.9 out of 5 stars"><span class="hero-stars" aria-hidden="true"><span class="hero-stars-empty">★★★★★</span><span class="hero-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>50+</strong><span>stores</span></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>No</strong><span>artificial sweeteners</span></span></p>
-<div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-number">300mg</span> Vitamin C.<br><span>Just <span class="hero-number">10</span> calories.</span></h1>
+<div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-number hero-number-main">300mg</span> Vitamin C.<br><span class="hero-calories">Just <span class="hero-number">10</span> calories.</span></h1>
 <div class="button-row hero-mobile-actions"><a class="button button-outline" href="#stores">Find Cal-0 <span>in Stores</span></a><a class="button hero-mobile-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack for $24.99">Shop Now</a></div>
 <p class="eyebrow hero-mobile-eyebrow">Mango Konjac Jelly</p><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row hero-desktop-actions"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div></div>
 </div>
@@ -139,6 +186,7 @@
 <footer class="site-footer"><div class="container"><div class="footer-top"><div><p>San Diego, CA</p><a href="mailto:hello@cal-0.com">hello@cal-0.com</a></div><nav aria-label="Footer navigation"><a href="catalog.html">Shop</a><a href="#story">Our Story</a><a href="#stores">Find Us</a><a href="#wholesale">Wholesale</a><a href="contact.html">Contact</a></nav></div><div class="footer-bottom"><span>© <span data-current-year>2026</span> Cal-0 LLC. All rights reserved.</span><div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div></div></footer>
 </body>
 </html>
+
 
 
 
