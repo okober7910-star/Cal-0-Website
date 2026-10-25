@@ -119,7 +119,7 @@
       <div class="drawer-content">
         <article class="cart-item">
           <div class="cart-item-image">
-            <img src="${escapeHtml(product.image || "assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name || "Cal-0 Mango Konjac Jelly")}" width="180" height="180">
+            <img src="${escapeHtml(product.image || "/assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name || "Cal-0 Mango Konjac Jelly")}" width="180" height="180">
           </div>
           <div>
             <h3>${escapeHtml(product.name || "Cal-0 Mango Konjac 10 Pack")}</h3>
@@ -330,7 +330,7 @@
       if (matchesProduct) {
         html += `
           <a class="search-result-card" href="/#shop">
-            <img src="${escapeHtml(product.image || "assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="180" height="180">
+            <img src="${escapeHtml(product.image || "/assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="180" height="180">
             <span><strong>${escapeHtml(product.name)}</strong><br><span>${money.format(Number(product.price || 0))}</span></span>
           </a>`;
       }
@@ -366,7 +366,7 @@
     grid.innerHTML = `
       <article class="catalog-product-card">
         <a class="catalog-card-image" href="/#shop">
-          <img src="${escapeHtml(product.image || "assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="800" height="800">
+          <img src="${escapeHtml(product.image || "/assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="800" height="800">
         </a>
         <div class="catalog-card-body">
           <h2><a href="/#shop">${escapeHtml(product.name)}</a></h2>

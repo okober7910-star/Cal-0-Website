@@ -34,7 +34,7 @@
       link.setAttribute("aria-current", "true");
     });
   });
-  const list = document.querySelector("[data-store-list]");
+  const list = document.querySelector("[data-store-list]:not([data-static-store-directory])");
   const stores = Array.isArray(config.stores) ? config.stores : [];
   const confirmedStores = stores.filter(store => {
     return store && store.confirmed === true && store.name && store.address;
@@ -261,7 +261,7 @@
  });
  section.insertBefore(photos,dropdown);
  if (dropdown) dropdown.querySelector('summary').textContent = 'All Store Locations & Directions';
- const list = section.querySelector('[data-store-list]');
+ const list = section.querySelector('[data-store-list]:not([data-static-store-directory])');
  if (list) {
   list.replaceChildren(); list.hidden = false;
   stores.forEach(store => {
@@ -291,7 +291,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const stores = document.querySelector('#stores');
  if (!stores) return;
  const details = stores.querySelector('details');
- const list = stores.querySelector('[data-store-list]');
+ const list = stores.querySelector('[data-store-list]:not([data-static-store-directory])');
  if (list) { list.replaceChildren(); list.hidden = true; }
  if (details) details.querySelector('summary').textContent = 'More Local Stores';
  const note = stores.querySelector('[data-stores-intro]');
@@ -375,7 +375,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  if(details)details.querySelector('summary').textContent='View All Stores, Convenience Stores & Stations ('+locations.length+')';
  const note=section.querySelector('[data-stores-intro]');
  if(note)note.textContent='Placement list updated October 8, 2026. Sample and limited trial locations are marked below; placement does not guarantee current shelf stock.';
- const list=section.querySelector('[data-store-list]');if(!list)return;
+ const list=section.querySelector('[data-store-list]:not([data-static-store-directory])');if(!list)return;
  list.replaceChildren();list.hidden=false;
  locations.forEach(row=>{
   const card=document.createElement('article');card.className='store-card';
@@ -433,7 +433,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 })();
 /* Neighborhood directory and restrained bold accents; preserve approved layout. */
 (() => {
- const list=document.querySelector('#stores [data-store-list]');
+ const list=document.querySelector('#stores [data-store-list]:not([data-static-store-directory])');
  if(list){
   const groups=[
    ['South Park',['The Bottle House']],

@@ -32,7 +32,7 @@ window.CAL0_CONFIG = Object.freeze({
     currency: "USD",
     casePack: 10,
     pouchSize: "150 mL",
-    image: "assets/images/case-and-pouch.webp"
+    image: "/assets/images/case-and-pouch.webp"
   },
 
 
