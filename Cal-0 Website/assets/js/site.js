@@ -320,16 +320,16 @@
       const productTerms = `${product.name} mango konjac jelly vitamin c snack nutrition shop`.toLowerCase();
       const matchesProduct = productTerms.includes(normalized) || normalized.split(/\s+/).some((term) => productTerms.includes(term));
       const pageMatches = [
-        { title: "About Cal-0", url: "index.html#about", terms: "about story san diego oliver" },
-        { title: "Nutrition", url: "index.html#nutrition", terms: "nutrition ingredients vitamin c calories sugar" },
-        { title: "Frequently Asked Questions", url: "index.html#faq", terms: "faq questions konjac how eat drink snack" },
-        { title: "Contact", url: "contact.html", terms: "contact email phone retailer wholesale" }
+        { title: "About Cal-0", url: "/#about", terms: "about story san diego oliver" },
+        { title: "Nutrition", url: "/#nutrition", terms: "nutrition ingredients vitamin c calories sugar" },
+        { title: "Frequently Asked Questions", url: "/#faq", terms: "faq questions konjac how eat drink snack" },
+        { title: "Contact", url: "/contact", terms: "contact email phone retailer wholesale" }
       ].filter((item) => item.terms.includes(normalized) || normalized.split(/\s+/).some((term) => item.terms.includes(term)));
 
       let html = "";
       if (matchesProduct) {
         html += `
-          <a class="search-result-card" href="index.html#shop">
+          <a class="search-result-card" href="/#shop">
             <img src="${escapeHtml(product.image || "assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="180" height="180">
             <span><strong>${escapeHtml(product.name)}</strong><br><span>${money.format(Number(product.price || 0))}</span></span>
           </a>`;
@@ -365,13 +365,13 @@
     count.textContent = "1 item";
     grid.innerHTML = `
       <article class="catalog-product-card">
-        <a class="catalog-card-image" href="index.html#shop">
+        <a class="catalog-card-image" href="/#shop">
           <img src="${escapeHtml(product.image || "assets/images/case-and-pouch.webp")}" alt="${escapeHtml(product.name)}" width="800" height="800">
         </a>
         <div class="catalog-card-body">
-          <h2><a href="index.html#shop">${escapeHtml(product.name)}</a></h2>
+          <h2><a href="/#shop">${escapeHtml(product.name)}</a></h2>
           <p class="catalog-card-price">${money.format(Number(product.price || 0))}</p>
-          <a class="button button-primary button-block" href="index.html#shop">View product</a>
+          <a class="button button-primary button-block" href="/#shop">View product</a>
         </div>
       </article>`;
   }

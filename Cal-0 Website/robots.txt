@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://cal-o.com/sitemap.xml
+Sitemap: https://cal-0.com/sitemap.xml
