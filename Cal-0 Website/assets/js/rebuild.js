@@ -372,7 +372,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const trials=locations.filter(row=>row[2]==='samples').length;
  if(intro)intro.textContent=locations.length+' local placements across markets, convenience stores, liquor stores and gas stations, including '+trials+' sample-only locations. Check current stock before visiting.';
  const details=section.querySelector('details');
- if(details)details.querySelector('summary').textContent='View All Stores, Convenience Stores & Stations ('+locations.length+')';
+ if(details)details.querySelector('summary').textContent='View all stores (50+)';
  const note=section.querySelector('[data-stores-intro]');
  if(note)note.textContent='Placement list updated October 8, 2026. Sample and limited trial locations are marked below; placement does not guarantee current shelf stock.';
  const list=section.querySelector('[data-store-list]:not([data-static-store-directory])');if(!list)return;
