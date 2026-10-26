@@ -91,7 +91,7 @@
 (() => {
   const images = [
     ["case-and-pouch.webp?v=cal0-images-20261025", "Cal-0 10-pack box and mango pouch", "10-Pack"],
-    ["product-back-tropical-real.webp?v=real-back-theme-20261025", "Real photo of the back of the CAL-0 mango konjac jelly pouch", "Back of Pouch"],
+    ["product-back-approved.webp?v=approved-back-20261025", "Back of the CAL-0 mango konjac jelly pouch", "Back of Pouch"],
     ["product-benefits-alt.webp?v=cal0-images-20261025", "Cal-0 mango pouch and product benefits", "Product Benefits"],
     ["nutrition-label.webp?v=cal0-images-20261025", "Cal-0 Nutrition Facts", "Nutrition Facts"]
   ];
