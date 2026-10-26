@@ -1,2 +1,2 @@
-# Keep old back-of-pouch image links pointing to the real photo.
-/assets/images/product-back-beach.webp /assets/images/product-back-real.jpg 301
+# Keep old back-of-pouch image links pointing to the themed real photo.
+/assets/images/product-back-beach.webp /assets/images/product-back-tropical-real.webp 301
