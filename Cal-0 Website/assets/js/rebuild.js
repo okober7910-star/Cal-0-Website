@@ -91,7 +91,7 @@
 (() => {
   const images = [
     ["case-and-pouch.webp?v=cal0-images-20261025", "Cal-0 10-pack box and mango pouch", "10-Pack"],
-    ["product-back-beach.webp?v=cal0-images-20261025", "Back of the Cal-0 mango pouch", "Back of Pouch"],
+    ["product-back-real.jpg", "Real photo of the back of the CAL-0 mango konjac jelly pouch", "Back of Pouch"],
     ["product-benefits-alt.webp?v=cal0-images-20261025", "Cal-0 mango pouch and product benefits", "Product Benefits"],
     ["nutrition-label.webp?v=cal0-images-20261025", "Cal-0 Nutrition Facts", "Nutrition Facts"]
   ];
@@ -156,8 +156,8 @@
       const picture = document.createElement("img");
       picture.src = "assets/images/" + item[0];
       picture.alt = item[1];
-      picture.width = 800;
-      picture.height = 800;
+      picture.width = index === 1 ? 1536 : 800;
+      picture.height = index === 1 ? 2048 : 800;
       if (index > 0) picture.loading = "lazy";
       slide.append(picture);
       track.append(slide);
