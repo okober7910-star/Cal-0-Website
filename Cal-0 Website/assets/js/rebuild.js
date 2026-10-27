@@ -316,6 +316,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Sky Fuel','1699 E Main St, El Cajon, CA','placement'],
  ['ARCO','1619 G St, San Diego, CA 92101','placement'],
  ['The Bottle House','3012 Grape St, San Diego, CA 92102','placement'],
  ['Nutrimart, Hillcrest','3854 Fifth Ave, San Diego, CA 92103','placement'],
@@ -451,7 +452,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ['Coronado',["Boney’s Bayside Market"]],
    ['Imperial Beach',['The Strand Liquor']],
    ['La Mesa',['Vine Ripe Market']],
-   ['El Cajon',['Helix Liquor (Mama Liquor)','Nutrimart, Parkway Plaza']],
+   ['El Cajon',['Helix Liquor (Mama Liquor)','Nutrimart, Parkway Plaza','Sky Fuel']],
    ['Location to confirm',["Adam’s Wine & Spirits"]]
   ];
   const cards=Array.from(list.querySelectorAll('.store-card'));
