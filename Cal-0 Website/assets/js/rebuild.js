@@ -299,17 +299,13 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 })();
 /* Founder-requested header and new real-world photography. */
 (() => {
- document.querySelectorAll('.site-logo').forEach(logo => {
-  logo.replaceChildren();
-  const word = document.createElement('span'); word.className='brand-word'; word.textContent='Cal-0'; logo.append(word);
- });
  const base='https://raw.githubusercontent.com/okober7910-star/Cal-0-Website/main/Cal-0%20Website/assets/images/';
  const founder=document.querySelector('.founder-photo img');
  if(founder){founder.src=base+'4998EBAA-9C87-4F8B-8C02-428B6650AB24_1_105_c.jpeg';founder.alt='Oliver holding Cal-0 at Take-A-Bite';founder.width=768;founder.height=1024;}
  const pouch=document.querySelector('#about .rounded-photo img');
  if(pouch){pouch.src=base+'ED7DAB44-EDBB-43D4-AFBD-031344472FDF_1_105_c.jpeg';pouch.alt='The actual Cal-0 mango konjac jelly pouch held in hand';pouch.width=768;pouch.height=1024;}
  const style=document.createElement('style');
- style.textContent='.header-inner{display:grid;grid-template-columns:160px minmax(0,1fr) 160px;gap:12px}.site-logo{margin:0;justify-self:start}.brand-word{display:inline-block;font-family:Trebuchet MS,Arial,sans-serif;font-size:42px;line-height:1;font-weight:900;letter-spacing:-3px;color:#0F4D3F;font-style:normal}.main-nav{justify-self:center;justify-content:center;width:auto;gap:22px;order:initial;font-size:1rem}.header-inner>.button{justify-self:end}.founder-photo{max-width:360px}.founder-photo img{aspect-ratio:3/4;object-fit:cover;object-position:center 35%}#about .rounded-photo img{aspect-ratio:1;object-fit:cover;object-position:center 35%}@media(max-width:800px){.header-inner{grid-template-columns:1fr 1fr}.main-nav{grid-column:1/-1;grid-row:2;gap:16px;width:100%;font-size:.85rem}.header-inner>.button{grid-column:2;grid-row:1}.brand-word{font-size:36px}}';
+ style.textContent='.header-inner{display:grid;grid-template-columns:160px minmax(0,1fr) 160px;gap:12px}.site-logo{margin:0;justify-self:start}.main-nav{justify-self:center;justify-content:center;width:auto;gap:22px;order:initial;font-size:1rem}.header-inner>.button{justify-self:end}.founder-photo{max-width:360px}.founder-photo img{aspect-ratio:3/4;object-fit:cover;object-position:center 35%}#about .rounded-photo img{aspect-ratio:1;object-fit:cover;object-position:center 35%}@media(max-width:800px){.header-inner{grid-template-columns:1fr 1fr}.main-nav{grid-column:1/-1;grid-row:2;gap:16px;width:100%;font-size:.85rem}.header-inner>.button{grid-column:2;grid-row:1}}';
  document.head.append(style);
 })();
 /* Public placement directory. No private contacts, payments or invoice details. */
@@ -499,7 +495,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   section.append(inner);about.before(section);
  }
  const style=document.createElement('style');
- style.textContent='.customer-quotes{padding:18px 0;background:#F0E7D3}.quote-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.quote-row blockquote{margin:0;padding:12px 18px;border-left:3px solid #F2B331;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:800;line-height:1.45}.site-header .header-inner{grid-template-columns:125px minmax(0,1fr) 145px;column-gap:12px}.site-header .header-inner .main-nav{grid-column:2;grid-row:1;order:initial;position:static;top:auto;width:100%;min-width:0;flex-wrap:nowrap;gap:16px;justify-content:center;font-size:.9rem}.site-header .header-inner .main-nav a{white-space:nowrap;flex-shrink:0}.site-header .header-inner>.button{grid-column:3;grid-row:1}@media(max-width:800px){.site-header .header-inner{grid-template-columns:90px minmax(0,1fr) 120px;column-gap:10px}.site-header .brand-word{font-size:34px}.site-header .header-inner .main-nav{gap:12px;font-size:.8rem;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin}.site-header .header-inner>.button{font-size:.78rem;padding:10px 12px}}@media(max-width:480px){.site-header .header-inner{grid-template-columns:70px minmax(0,1fr) 105px;column-gap:8px}.site-header .brand-word{font-size:30px}.quote-row{grid-template-columns:1fr;gap:4px}.quote-row blockquote{padding:10px 14px}}';
+ style.textContent='.customer-quotes{padding:18px 0;background:#F0E7D3}.quote-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.quote-row blockquote{margin:0;padding:12px 18px;border-left:3px solid #F2B331;font-size:clamp(1rem,1.6vw,1.25rem);font-weight:800;line-height:1.45}.site-header .header-inner{grid-template-columns:150px minmax(0,1fr) 145px;column-gap:12px}.site-header .header-inner .main-nav{grid-column:2;grid-row:1;order:initial;position:static;top:auto;width:100%;min-width:0;flex-wrap:nowrap;gap:16px;justify-content:center;font-size:.9rem}.site-header .header-inner .main-nav a{white-space:nowrap;flex-shrink:0}.site-header .header-inner>.button{grid-column:3;grid-row:1}@media(max-width:800px){.site-header .header-inner{grid-template-columns:104px minmax(0,1fr) 120px;column-gap:10px}.site-header .header-inner .main-nav{gap:12px;font-size:.8rem;overflow-x:auto;justify-content:flex-start;scrollbar-width:thin}.site-header .header-inner>.button{font-size:.78rem;padding:10px 12px}}@media(max-width:480px){.site-header .header-inner{grid-template-columns:98px minmax(0,1fr) 105px;column-gap:8px}.quote-row{grid-template-columns:1fr;gap:4px}.quote-row blockquote{padding:10px 14px}}@media(max-width:360px){.site-header .header-inner{grid-template-columns:88px minmax(0,1fr) 105px}}';
  document.head.append(style);
 })();
 

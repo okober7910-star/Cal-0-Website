@@ -253,3 +253,16 @@ details p { margin: 16px 0 0; }
 }
 /* Final approved separator beneath customer quotes. */
 #main-content .customer-quotes { border-bottom: 1px solid #9CAE9E; }
+
+/* Approved CAL-0 vector wordmark. Keep product photography and page type intact. */
+.site-header .site-logo { display: block; width: 150px; min-width: 0; flex-basis: 150px; }
+.site-header .site-logo img { display: block; width: 100%; height: auto; }
+@media (max-width: 800px) {
+ .site-header .site-logo { width: 104px; flex-basis: 104px; }
+}
+@media (max-width: 480px) {
+ .site-header .site-logo { width: 98px; flex-basis: 98px; }
+}
+@media (max-width: 360px) {
+ .site-header .site-logo { width: 88px; flex-basis: 88px; }
+}
