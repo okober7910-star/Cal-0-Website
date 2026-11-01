@@ -159,6 +159,8 @@
       picture.width = index === 1 ? 1254 : 800;
       picture.height = index === 1 ? 1254 : 800;
       if (index > 0) picture.loading = "lazy";
+      else picture.fetchPriority = "high";
+      picture.decoding = "async";
       slide.append(picture);
       track.append(slide);
       const button = document.createElement("button");
@@ -250,13 +252,13 @@
  const dropdown = section.querySelector('details');
  section.insertBefore(featured,dropdown);
  const photos = document.createElement('div'); photos.className = 'retail-photos';
- const base = 'https://raw.githubusercontent.com/okober7910-star/Cal-0-Website/71f93f856cef69169cb69f72e9efbf31d39eea6d/Cal-0%20Website/assets/images/';
+ const base = '/assets/images/';
  [
   ['C60350A5-6951-416A-9C4B-85C29963435E_1_105_c.jpeg','Cal-0 mango jelly pouches on a local market shelf'],
   ['CoronadoCal-0.jpeg','Cal-0 photographed in Coronado']
  ].forEach(photo => {
   const figure = document.createElement('figure'); const image = document.createElement('img');
-  image.src = base + photo[0]; image.alt = photo[1]; image.loading = 'lazy';
+  image.src = base + photo[0]; image.alt = photo[1]; image.loading = 'lazy'; image.width = 768; image.height = 1024; image.decoding = 'async';
   figure.append(image); photos.append(figure);
  });
  section.insertBefore(photos,dropdown);
@@ -299,11 +301,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 })();
 /* Founder-requested header and new real-world photography. */
 (() => {
- const base='https://raw.githubusercontent.com/okober7910-star/Cal-0-Website/main/Cal-0%20Website/assets/images/';
+ const base='/assets/images/';
  const founder=document.querySelector('.founder-photo img');
  if(founder){founder.src=base+'4998EBAA-9C87-4F8B-8C02-428B6650AB24_1_105_c.jpeg';founder.alt='Oliver holding Cal-0 at Take-A-Bite';founder.width=768;founder.height=1024;}
- const pouch=document.querySelector('#about .rounded-photo img');
- if(pouch){pouch.src=base+'ED7DAB44-EDBB-43D4-AFBD-031344472FDF_1_105_c.jpeg';pouch.alt='The actual Cal-0 mango konjac jelly pouch held in hand';pouch.width=768;pouch.height=1024;}
  const style=document.createElement('style');
  style.textContent='.header-inner{display:grid;grid-template-columns:160px minmax(0,1fr) 160px;gap:12px}.site-logo{margin:0;justify-self:start}.main-nav{justify-self:center;justify-content:center;width:auto;gap:22px;order:initial;font-size:1rem}.header-inner>.button{justify-self:end}.founder-photo{max-width:360px}.founder-photo img{aspect-ratio:3/4;object-fit:cover;object-position:center 35%}#about .rounded-photo img{aspect-ratio:1;object-fit:cover;object-position:center 35%}@media(max-width:800px){.header-inner{grid-template-columns:1fr 1fr}.main-nav{grid-column:1/-1;grid-row:2;gap:16px;width:100%;font-size:.85rem}.header-inner>.button{grid-column:2;grid-row:1}}';
  document.head.append(style);

@@ -26,7 +26,7 @@ window.CAL0_CONFIG = Object.freeze({
 
   product: {
     id: "cal0-mango-konjac-10-pack",
-    name: "Cal-0 Mango Konjac 10 Pack",
+    name: "CAL-0 Mango Konjac Jelly 10-Pack",
     shortName: "Mango Konjac Jelly",
     price: 24.99,
     currency: "USD",

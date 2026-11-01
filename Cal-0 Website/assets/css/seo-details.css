@@ -1,0 +1,37 @@
+/* Product and retailer details; scoped to the new sections and pages. */
+.catalog-page .page-hero h1 { max-width: 22ch; font-size: clamp(2.35rem, 4.6vw, 4.2rem); }
+.catalog-page .seo-breadcrumbs { margin-bottom: 24px; color: var(--muted); font-size: .85rem; }
+.catalog-page .seo-breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px 0; list-style: none; margin: 0; padding: 0; }
+.catalog-page .seo-breadcrumbs li + li::before { content: "/"; margin-inline: 10px; }
+.catalog-page .seo-breadcrumbs a { text-decoration: underline; text-underline-offset: 4px; }
+.catalog-page .seo-details { border-top: 1px solid var(--line); }
+.catalog-page .seo-details-heading { max-width: 70ch; margin-bottom: 28px; }
+.catalog-page .seo-details h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; }
+.catalog-page .seo-details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.catalog-page .seo-detail-card { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); }
+.catalog-page .seo-detail-card h3 { font-size: 1.3rem; letter-spacing: -.02em; }
+.catalog-page .seo-detail-card p:last-child { margin-bottom: 0; }
+.catalog-page .seo-nutrition-table { width: 100%; border-collapse: collapse; }
+.catalog-page .seo-nutrition-table caption { text-align: left; font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; }
+.catalog-page .seo-nutrition-table th, .catalog-page .seo-nutrition-table td { padding: 10px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.catalog-page .seo-nutrition-table th { font-weight: 600; padding-right: 20px; }
+.catalog-page .seo-nutrition-table td { color: var(--green); font-weight: 800; white-space: nowrap; }
+.catalog-page .seo-product-faq { margin-top: 42px; }
+.catalog-page .seo-product-faq details { border-top: 1px solid var(--line); padding-block: 10px; }
+.catalog-page .seo-product-faq details:last-child { border-bottom: 1px solid var(--line); }
+.catalog-page .seo-product-faq summary { min-height: 44px; padding-block: 10px; font-weight: 800; cursor: pointer; }
+.catalog-page .seo-product-faq details p { max-width: 78ch; margin: 8px 0 18px; }
+.catalog-page .seo-retailer-callout { margin-top: 36px; padding: 24px; border: 1px solid var(--line); border-left: 4px solid var(--mango); border-radius: 16px; }
+.catalog-page .seo-retailer-callout h2 { font-size: 1.6rem; margin-bottom: 14px; }
+.catalog-page .seo-retailer-callout p { max-width: 78ch; margin: 0; }
+.wholesale-page .resource-hero h1 { max-width: 20ch; }
+.wholesale-page .resource-callout p, .wholesale-page .resource-article p { overflow-wrap: anywhere; }
+.wholesale-page .resource-callout .small { margin-top: 18px; }
+.wholesale-page .seo-wholesale-faq h3 { margin-top: 24px; }
+@media (max-width: 720px) {
+ .catalog-page .seo-breadcrumbs { font-size: .78rem; margin-bottom: 20px; }
+ .catalog-page .page-hero h1 { font-size: clamp(2.1rem, 9vw, 3.1rem); }
+ .catalog-page .seo-details-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+ .catalog-page .seo-detail-card, .catalog-page .seo-retailer-callout { padding: 20px; }
+ .catalog-page .seo-product-faq { margin-top: 30px; }
+}
