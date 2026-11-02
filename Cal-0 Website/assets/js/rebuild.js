@@ -312,6 +312,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Anderson’s Liquor Beer & Wine','4131 Home Ave, San Diego, CA 92105','placement'],
+ ['Ramona Chevron','1210 Main St, Ramona, CA 92065','placement'],
  ['Sky Fuel','1699 E Main St, El Cajon, CA','placement'],
  ['ARCO','1619 G St, San Diego, CA 92101','placement'],
  ['The Bottle House','3012 Grape St, San Diego, CA 92102','placement'],
@@ -433,6 +435,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const list=document.querySelector('#stores [data-store-list]:not([data-static-store-directory])');
  if(list){
   const groups=[
+   ['San Diego — Home Avenue',['Anderson’s Liquor Beer & Wine']],
+   ['Ramona',['Ramona Chevron']],
    ['South Park',['The Bottle House']],
    ['Hillcrest',['Nutrimart, Hillcrest']],
    ['La Jolla',['Nutrimart, La Jolla']],
