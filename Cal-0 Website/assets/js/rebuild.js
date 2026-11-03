@@ -312,6 +312,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Shell','1145 S 28th St, San Diego, CA 92113','placement','shell-south-28th'],
  ['Anderson’s Liquor Beer & Wine','4131 Home Ave, San Diego, CA 92105','placement'],
  ['Ramona Chevron','1210 Main St, Ramona, CA 92065','placement'],
  ['Sky Fuel','1699 E Main St, El Cajon, CA','placement'],
@@ -378,6 +379,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  list.replaceChildren();list.hidden=false;
  locations.forEach(row=>{
   const card=document.createElement('article');card.className='store-card';
+  if(row[3])card.dataset.storeKey=row[3];
   const name=document.createElement('h3');name.textContent=row[0];
   const address=document.createElement('address');address.textContent=row[1]||'Address confirmation pending';
   const label=document.createElement('p');label.className='small';
@@ -453,17 +455,18 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ['Imperial Beach',['The Strand Liquor']],
    ['La Mesa',['Vine Ripe Market']],
    ['El Cajon',['Helix Liquor (Mama Liquor)','Nutrimart, Parkway Plaza','Sky Fuel']],
+   ['San Diego — South 28th Street',['shell-south-28th']],
    ['Location to confirm',["Adam’s Wine & Spirits"]]
   ];
   const cards=Array.from(list.querySelectorAll('.store-card'));
-  const lookup=new Map(cards.map(card=>[card.querySelector('h3').textContent,card]));
+  const lookup=new Map(cards.map(card=>[card.dataset.storeKey||card.querySelector('h3').textContent,card]));
   list.replaceChildren();list.classList.add('neighborhood-directory');
   groups.forEach(([area,names])=>{
    const matched=names.map(name=>lookup.get(name)).filter(Boolean);if(!matched.length)return;
    const group=document.createElement('details');group.className='neighborhood-group';
    const summary=document.createElement('summary');summary.textContent=area+' ('+matched.length+')';
    const grid=document.createElement('div');grid.className='neighborhood-cards';
-   matched.forEach(card=>{grid.append(card);lookup.delete(card.querySelector('h3').textContent);});
+   matched.forEach(card=>{grid.append(card);lookup.delete(card.dataset.storeKey||card.querySelector('h3').textContent);});
    group.append(summary,grid);list.append(group);
   });
   if(lookup.size){const group=document.createElement('details');group.className='neighborhood-group';const title=document.createElement('summary');title.textContent='Other locations';const grid=document.createElement('div');grid.className='neighborhood-cards';lookup.forEach(card=>grid.append(card));group.append(title,grid);list.append(group);}
