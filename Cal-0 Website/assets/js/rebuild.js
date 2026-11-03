@@ -326,7 +326,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  ['7-Eleven, Adams Avenue','3436 Adams Ave, San Diego, CA 92116','placement'],
  ['7-Eleven, Ohio Street','4687 Ohio St, San Diego, CA 92116','placement'],
  ['Chevron','2290 Camino Del Rio North, San Diego, CA','placement'],
- ["Adam’s Wine & Spirits",'','trial'],
+ ["Adams Wine & Spirits",'2740 Adams Ave, San Diego, CA 92116','trial'],
  ['Take A Hike','7448 Jackson Dr, San Diego, CA 92119','placement'],
  ['Cheers Liquor & Deli','6983 Navajo Rd, San Diego, CA 92119','placement'],
  ["Keil’s Fresh Foods",'7403 Jackson Dr, San Diego, CA 92119','placement'],
@@ -437,14 +437,13 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const list=document.querySelector('#stores [data-store-list]:not([data-static-store-directory])');
  if(list){
   const groups=[
+   ["Central San Diego", ["Happy Liquor", "7-Eleven, Adams Avenue", "7-Eleven, Ohio Street", "Monroe’s Market", "Heights Market", "Monroe Market", "7-Eleven, University Avenue", "7-Eleven, El Cajon Boulevard", "Anderson’s Liquor Beer & Wine", "The Bottle House", "Nutrimart, Hillcrest", "7-Eleven, El Cajon Boulevard 6991", "Adams Wine & Spirits"], "North Park, University Heights, Normal Heights, Kensington, Hillcrest, South Park, Fairmount Park and College Area/Rolando."],
    ["Ocean Beach, Point Loma & Midway", ["Liticker’s Liquor & Deli", "OB Quick Stop Liquor", "One Stop Shop", "OB Corner", "KRISP, Ocean Beach", "Shell", "Pat’s Liquor Store", "7-Eleven, Voltaire 4205", "7-Eleven", "7-Eleven, Midway 3185", "7-Eleven, Sports Arena", "7-Eleven, Midway 2387"], ""],
-   ["Central San Diego", ["Happy Liquor", "7-Eleven, Adams Avenue", "7-Eleven, Ohio Street", "Monroe’s Market", "Heights Market", "Monroe Market", "7-Eleven, University Avenue", "7-Eleven, El Cajon Boulevard", "Anderson’s Liquor Beer & Wine", "The Bottle House", "Nutrimart, Hillcrest", "7-Eleven, El Cajon Boulevard 6991"], "North Park, University Heights, Normal Heights, Kensington, Hillcrest, South Park, Fairmount Park and College Area/Rolando."],
    ["Mission Valley, Del Cerro & San Carlos", ["Windmill Farms", "Take A Hike", "Cheers Liquor & Deli", "Keil’s Fresh Foods", "7-Eleven, Mission Gorge 5829", "Iowa Meat Farms", "7-Eleven, Mission Gorge 6401", "7-Eleven, Mission Gorge 7427", "7-Eleven, Waring Road", "Chevron"], "Includes Mission Gorge."],
    ["Clairemont, Kearny Mesa & Linda Vista", ["7-Eleven, Balboa Avenue", "7-Eleven, Clairemont Mesa West", "7-Eleven, Clairemont Mesa East", "7-Eleven, Mesa College Drive", "Mesa Mart", "Kearny Mesa Market"], ""],
    ["La Mesa & El Cajon", ["Helix Liquor (Mama Liquor)", "Nutrimart, Parkway Plaza", "Sky Fuel", "Vine Ripe Market"], ""],
    ["Pacific Beach & La Jolla", ["High Vibes Smoke Shop PB", "7-Eleven, Garnet Avenue", "Nutrimart, La Jolla"], ""],
    ["Downtown & Barrio Logan", ["KRISP, Downtown", "ARCO", "shell-south-28th"], ""],
-   ["Location to confirm", ["Adam’s Wine & Spirits"], ""],
    ["Ramona", ["Ramona Chevron"], ""],
    ["Coronado", ["Boney’s Bayside Market"], ""],
    ["Imperial Beach", ["The Strand Liquor"], ""]
