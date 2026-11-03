@@ -437,37 +437,30 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  const list=document.querySelector('#stores [data-store-list]:not([data-static-store-directory])');
  if(list){
   const groups=[
-   ['San Diego — Home Avenue',['Anderson’s Liquor Beer & Wine']],
-   ['Ramona',['Ramona Chevron']],
-   ['South Park',['The Bottle House']],
-   ['Hillcrest',['Nutrimart, Hillcrest']],
-   ['La Jolla',['Nutrimart, La Jolla']],
-   ['Ocean Beach',["Liticker’s Liquor & Deli",'OB Quick Stop Liquor','One Stop Shop','OB Corner','KRISP, Ocean Beach','Shell',"Pat’s Liquor Store",'7-Eleven, Voltaire 4205','7-Eleven']],
-   ['North Park & University Heights',['Happy Liquor','7-Eleven, Adams Avenue','7-Eleven, Ohio Street',"Monroe’s Market",'Heights Market','Monroe Market','7-Eleven, University Avenue','7-Eleven, El Cajon Boulevard']],
-   ['Pacific Beach',['High Vibes Smoke Shop PB','7-Eleven, Garnet Avenue']],
-   ['Midway & Sports Arena',['7-Eleven, Midway 3185','7-Eleven, Sports Arena','7-Eleven, Midway 2387']],
-   ['Clairemont & Kearny Mesa',['7-Eleven, Balboa Avenue','7-Eleven, Clairemont Mesa West','7-Eleven, Clairemont Mesa East','7-Eleven, Mesa College Drive','Mesa Mart','Kearny Mesa Market']],
-   ['Del Cerro, San Carlos & Mission Gorge',['Windmill Farms','Take A Hike','Cheers Liquor & Deli',"Keil’s Fresh Foods",'7-Eleven, Mission Gorge 5829','Iowa Meat Farms','7-Eleven, Mission Gorge 6401','7-Eleven, Mission Gorge 7427','7-Eleven, Waring Road']],
-   ['College Area',['7-Eleven, El Cajon Boulevard 6991']],
-   ['Mission Valley',['Chevron']],
-   ['Downtown',['KRISP, Downtown','ARCO']],
-   ['Coronado',["Boney’s Bayside Market"]],
-   ['Imperial Beach',['The Strand Liquor']],
-   ['La Mesa',['Vine Ripe Market']],
-   ['El Cajon',['Helix Liquor (Mama Liquor)','Nutrimart, Parkway Plaza','Sky Fuel']],
-   ['San Diego — South 28th Street',['shell-south-28th']],
-   ['Location to confirm',["Adam’s Wine & Spirits"]]
+   ["Ocean Beach, Point Loma & Midway", ["Liticker’s Liquor & Deli", "OB Quick Stop Liquor", "One Stop Shop", "OB Corner", "KRISP, Ocean Beach", "Shell", "Pat’s Liquor Store", "7-Eleven, Voltaire 4205", "7-Eleven", "7-Eleven, Midway 3185", "7-Eleven, Sports Arena", "7-Eleven, Midway 2387"], ""],
+   ["Central San Diego", ["Happy Liquor", "7-Eleven, Adams Avenue", "7-Eleven, Ohio Street", "Monroe’s Market", "Heights Market", "Monroe Market", "7-Eleven, University Avenue", "7-Eleven, El Cajon Boulevard", "Anderson’s Liquor Beer & Wine", "The Bottle House", "Nutrimart, Hillcrest", "7-Eleven, El Cajon Boulevard 6991"], "North Park, University Heights, Normal Heights, Kensington, Hillcrest, South Park, Fairmount Park and College Area/Rolando."],
+   ["Mission Valley, Del Cerro & San Carlos", ["Windmill Farms", "Take A Hike", "Cheers Liquor & Deli", "Keil’s Fresh Foods", "7-Eleven, Mission Gorge 5829", "Iowa Meat Farms", "7-Eleven, Mission Gorge 6401", "7-Eleven, Mission Gorge 7427", "7-Eleven, Waring Road", "Chevron"], "Includes Mission Gorge."],
+   ["Clairemont, Kearny Mesa & Linda Vista", ["7-Eleven, Balboa Avenue", "7-Eleven, Clairemont Mesa West", "7-Eleven, Clairemont Mesa East", "7-Eleven, Mesa College Drive", "Mesa Mart", "Kearny Mesa Market"], ""],
+   ["La Mesa & El Cajon", ["Helix Liquor (Mama Liquor)", "Nutrimart, Parkway Plaza", "Sky Fuel", "Vine Ripe Market"], ""],
+   ["Pacific Beach & La Jolla", ["High Vibes Smoke Shop PB", "7-Eleven, Garnet Avenue", "Nutrimart, La Jolla"], ""],
+   ["Downtown & Barrio Logan", ["KRISP, Downtown", "ARCO", "shell-south-28th"], ""],
+   ["Location to confirm", ["Adam’s Wine & Spirits"], ""],
+   ["Ramona", ["Ramona Chevron"], ""],
+   ["Coronado", ["Boney’s Bayside Market"], ""],
+   ["Imperial Beach", ["The Strand Liquor"], ""]
   ];
   const cards=Array.from(list.querySelectorAll('.store-card'));
   const lookup=new Map(cards.map(card=>[card.dataset.storeKey||card.querySelector('h3').textContent,card]));
   list.replaceChildren();list.classList.add('neighborhood-directory');
-  groups.forEach(([area,names])=>{
+  groups.forEach(([area,names,description])=>{
    const matched=names.map(name=>lookup.get(name)).filter(Boolean);if(!matched.length)return;
    const group=document.createElement('details');group.className='neighborhood-group';
    const summary=document.createElement('summary');summary.textContent=area+' ('+matched.length+')';
    const grid=document.createElement('div');grid.className='neighborhood-cards';
    matched.forEach(card=>{grid.append(card);lookup.delete(card.dataset.storeKey||card.querySelector('h3').textContent);});
-   group.append(summary,grid);list.append(group);
+   group.append(summary);
+   if(description){const note=document.createElement('p');note.className='small';note.textContent=description;group.append(note);}
+   group.append(grid);list.append(group);
   });
   if(lookup.size){const group=document.createElement('details');group.className='neighborhood-group';const title=document.createElement('summary');title.textContent='Other locations';const grid=document.createElement('div');grid.className='neighborhood-cards';lookup.forEach(card=>grid.append(card));group.append(title,grid);list.append(group);}
  }
@@ -475,18 +468,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  style.textContent='#stores .neighborhood-directory{display:block}#stores .neighborhood-group{margin:10px 0;border:1px solid #C7D4CB;border-radius:12px;overflow:hidden;background:#FFFAF0}#stores .neighborhood-group>summary{padding:15px 18px;font-size:1rem;font-weight:800;color:#0F4D3F}#stores .neighborhood-group[open]>summary{background:#0F4D3F;color:#FFFAF0}#stores .neighborhood-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:16px}#stores .neighborhood-cards .store-card{margin:0;border:1px solid #D6DED3;border-radius:12px;padding:18px}#stores .store-status>summary{font-weight:900;font-size:1.12rem}#stores .store-status{border:2px solid #0F4D3F}#main-content h2{font-weight:850;letter-spacing:-.045em}#main-content .eyebrow{font-weight:850;display:inline-block;border-bottom:3px solid #F2B331;padding-bottom:5px}#story .founder-grid{border-left:5px solid #0F4D3F;padding-left:24px}#main-content .instagram-inner{background:#0F4D3F;color:#FFFAF0;padding:24px;border:0;border-radius:18px}#main-content .instagram-inner h2,#main-content .instagram-inner p{color:#FFFAF0}#main-content .instagram-inner .button{background:#FFFAF0;color:#0F4D3F;border-color:#FFFAF0}.button:not(.button-outline){font-weight:800}.photo-thumbs button[aria-pressed="true"]{border-width:3px}.featured-stores a:hover{background:#0F4D3F;color:#FFFAF0}@media(max-width:720px){#stores .neighborhood-cards{grid-template-columns:1fr;padding:12px}#story .founder-grid{padding-left:16px}#main-content .instagram-inner{padding:20px}}';
  document.head.append(style);
 })();
-/* Final neighborhood correction and subtly richer cream palette. */
+/* Subtly richer cream palette. */
 (() => {
- const directory=document.querySelector('.neighborhood-directory');
- if(directory){
-  const groups=Array.from(directory.querySelectorAll('.neighborhood-group'));
-  const destination=groups.find(group=>group.querySelector('summary').textContent.startsWith('North Park & University Heights'));
-  const source=groups.find(group=>group.querySelector('summary').textContent.startsWith('Location to confirm'));
-  if(destination && source){
-   const card=Array.from(source.querySelectorAll('.store-card')).find(card=>card.querySelector('h3').textContent==='Adam’s Wine & Spirits');
-   if(card){destination.querySelector('.neighborhood-cards').append(card);source.remove();destination.querySelector('summary').textContent='North Park, University Heights & Kensington ('+destination.querySelectorAll('.store-card').length+')';}
-  }
- }
  const style=document.createElement('style');
  style.textContent=':root{--cream:#F6EFDF}body{background:#F6EFDF}.site-header{background:#F6EFDF}#main-content .hero,#main-content .story-section,#main-content .faq-section,#main-content .wholesale-section{background:#F6EFDF}#main-content #about{background:#F0E7D3}#main-content #nutrition{background:#F0E7D3}#stores .featured-stores a{background:#F3EBD9}#stores .neighborhood-group{background:#F6EFDF}#stores .neighborhood-cards .store-card{background:#FAF5EB}#main-content .facts{border-top-width:3px;border-bottom-width:3px}#main-content .eyebrow{border-bottom-width:4px}#main-content .instagram-inner{background:#0C4236}';
  document.head.append(style);
