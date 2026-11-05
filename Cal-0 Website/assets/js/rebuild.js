@@ -428,7 +428,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const title=document.createElement('h2');title.textContent='Follow along on Instagram.';
   const text=document.createElement('p');text.textContent='New store stops, pouch moments and updates from Cal-0.';
   copy.append(title,text);
-  const link=document.createElement('a');link.className='button button-outline';link.href='https://www.instagram.com/cal_0_llc/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Follow @cal_0_llc';
+  const link=document.createElement('a');link.className='button button-outline';link.href='https://www.instagram.com/cal0llc/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Follow @cal0llc';
   container.append(copy,link);section.append(container);main.insertBefore(section,wholesale);
  }
 })();
