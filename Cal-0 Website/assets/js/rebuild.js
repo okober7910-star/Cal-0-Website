@@ -312,6 +312,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Golden Bagel Cafe','2744 Fletcher Pkwy, El Cajon, CA 92020','placement'],
  ['Shell','1145 S 28th St, San Diego, CA 92113','placement','shell-south-28th'],
  ['Anderson’s Liquor Beer & Wine','4131 Home Ave, San Diego, CA 92105','placement'],
  ['Ramona Chevron','1210 Main St, Ramona, CA 92065','placement'],
@@ -397,7 +398,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const intro=section.querySelector('.section-heading .lead');
   if(intro)intro.textContent='Find Cal-0 in 50+ stores, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
-  if(note)note.textContent='Store list updated October 18, 2026. Availability varies; contact the store before visiting.';
+  if(note)note.textContent='Store list updated November 9, 2026. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
   const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
   const featured=section.querySelector('.featured-stores');
@@ -441,7 +442,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ["Ocean Beach, Point Loma & Midway", ["Liticker’s Liquor & Deli", "OB Quick Stop Liquor", "One Stop Shop", "OB Corner", "KRISP, Ocean Beach", "Shell", "Pat’s Liquor Store", "7-Eleven, Voltaire 4205", "7-Eleven", "7-Eleven, Midway 3185", "7-Eleven, Sports Arena", "7-Eleven, Midway 2387"], ""],
    ["Mission Valley, Del Cerro & San Carlos", ["Windmill Farms", "Take A Hike", "Cheers Liquor & Deli", "Keil’s Fresh Foods", "7-Eleven, Mission Gorge 5829", "Iowa Meat Farms", "7-Eleven, Mission Gorge 6401", "7-Eleven, Mission Gorge 7427", "7-Eleven, Waring Road", "Chevron"], "Includes Mission Gorge."],
    ["Clairemont, Kearny Mesa & Linda Vista", ["7-Eleven, Balboa Avenue", "7-Eleven, Clairemont Mesa West", "7-Eleven, Clairemont Mesa East", "7-Eleven, Mesa College Drive", "Mesa Mart", "Kearny Mesa Market"], ""],
-   ["La Mesa & El Cajon", ["Helix Liquor (Mama Liquor)", "Nutrimart, Parkway Plaza", "Sky Fuel", "Vine Ripe Market"], ""],
+   ["La Mesa & El Cajon", ["Golden Bagel Cafe", "Helix Liquor (Mama Liquor)", "Nutrimart, Parkway Plaza", "Sky Fuel", "Vine Ripe Market"], ""],
    ["Pacific Beach & La Jolla", ["High Vibes Smoke Shop PB", "7-Eleven, Garnet Avenue", "Nutrimart, La Jolla"], ""],
    ["Downtown & Barrio Logan", ["KRISP, Downtown", "ARCO", "shell-south-28th"], ""],
    ["Ramona", ["Ramona Chevron"], ""],
