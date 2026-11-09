@@ -312,6 +312,9 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ["Valley Marketplace — Reseda", "18345 Vanowen Street, Reseda, CA 91335", "listed"],
+ ["Valley Marketplace — Simi Valley", "1117 E. Los Angeles Ave, Simi Valley, CA 93065", "listed"],
+ ["Valley Marketplace — Valencia / Santa Clarita", "23975 Newhall Ranch Road, Valencia, CA 91355", "listed"],
  ['Golden Bagel Cafe','2744 Fletcher Pkwy, El Cajon, CA 92020','placement'],
  ['Shell','1145 S 28th St, San Diego, CA 92113','placement','shell-south-28th'],
  ['Anderson’s Liquor Beer & Wine','4131 Home Ave, San Diego, CA 92105','placement'],
@@ -384,7 +387,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const name=document.createElement('h3');name.textContent=row[0];
   const address=document.createElement('address');address.textContent=row[1]||'Address confirmation pending';
   const label=document.createElement('p');label.className='small';
-  label.textContent=row[2]==='samples'?'Samples only; retail stock not confirmed':row[2]==='limited'?'Limited introductory placement; call before visiting':row[2]==='trial'?'Trial case placed; check availability':'Product placed; check current stock';
+  label.textContent=row[2]==='listed'?'Contact the store for current availability':row[2]==='samples'?'Samples only; retail stock not confirmed':row[2]==='limited'?'Limited introductory placement; call before visiting':row[2]==='trial'?'Trial case placed; check availability':'Product placed; check current stock';
   card.append(name,address,label);
   if(row[1]){const link=document.createElement('a');link.className='text-link';link.textContent='Get Directions';link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(row[0]+', '+row[1]);link.target='_blank';link.rel='noopener noreferrer';card.append(link);}
   list.append(card);
@@ -445,6 +448,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ["La Mesa & El Cajon", ["Golden Bagel Cafe", "Helix Liquor (Mama Liquor)", "Nutrimart, Parkway Plaza", "Sky Fuel", "Vine Ripe Market"], ""],
    ["Pacific Beach & La Jolla", ["High Vibes Smoke Shop PB", "7-Eleven, Garnet Avenue", "Nutrimart, La Jolla"], ""],
    ["Downtown & Barrio Logan", ["KRISP, Downtown", "ARCO", "shell-south-28th"], ""],
+   ["Los Angeles & Ventura County", ["Valley Marketplace — Reseda", "Valley Marketplace — Simi Valley", "Valley Marketplace — Valencia / Santa Clarita"], ""],
    ["Ramona", ["Ramona Chevron"], ""],
    ["Coronado", ["Boney’s Bayside Market"], ""],
    ["Imperial Beach", ["The Strand Liquor"], ""]
