@@ -312,6 +312,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
 (() => {
  const section=document.querySelector('#stores'); if(!section)return;
  const locations=[
+ ['Big Rock Liquor','8011 Mission Gorge Rd, Santee, CA 92071','placement'],
  ["Valley Marketplace — Reseda", "18345 Vanowen Street, Reseda, CA 91335", "listed"],
  ["Valley Marketplace — Simi Valley", "1117 E. Los Angeles Ave, Simi Valley, CA 93065", "listed"],
  ["Valley Marketplace — Valencia / Santa Clarita", "23975 Newhall Ranch Road, Valencia, CA 91355", "listed"],
@@ -401,7 +402,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const intro=section.querySelector('.section-heading .lead');
   if(intro)intro.textContent='Find Cal-0 in 50+ stores, from neighborhood markets to convenience stores and gas stations. Contact the store to check availability before visiting.';
   const note=section.querySelector('[data-stores-intro]');
-  if(note)note.textContent='Store list updated November 9, 2026. Availability varies; contact the store before visiting.';
+  if(note)note.textContent='Store list updated November 10, 2026. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
   const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
   const featured=section.querySelector('.featured-stores');
@@ -451,7 +452,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
    ["Los Angeles & Ventura County", ["Valley Marketplace — Reseda", "Valley Marketplace — Simi Valley", "Valley Marketplace — Valencia / Santa Clarita"], ""],
    ["Ramona", ["Ramona Chevron"], ""],
    ["Coronado", ["Boney’s Bayside Market"], ""],
-   ["Imperial Beach", ["The Strand Liquor"], ""]
+   ["Imperial Beach", ["The Strand Liquor"], ""],
+   ["Santee", ["Big Rock Liquor"], ""]
   ];
   const cards=Array.from(list.querySelectorAll('.store-card'));
   const lookup=new Map(cards.map(card=>[card.dataset.storeKey||card.querySelector('h3').textContent,card]));
