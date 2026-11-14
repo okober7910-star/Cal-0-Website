@@ -113,7 +113,7 @@
 <style>
 /* A product-first shop, using the same photography, colors and checkout as home. */
 .catalog-page .catalog-product { padding: 24px 0 32px; }
-.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 720px; align-items: start; }
 .catalog-layout > * { min-width: 0; }
 .catalog-gallery .rounded-photo { margin: 0; }
 .catalog-gallery .rounded-photo img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 22px; }
@@ -125,7 +125,7 @@
 .catalog-summary .eyebrow { margin: 0 0 12px; }
 .catalog-highlights { color: var(--green); font-weight: 700; font-size: .95rem; }
 .catalog-highlights span { color: #99721c; padding: 0 3px; }
-.catalog-purchase { order: -1; margin: 0 0 24px; }
+.catalog-purchase { margin: 0 0 20px; }
 .catalog-proof { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; font-size: .8rem; line-height: 1.4; }
 .catalog-proof-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
 .catalog-stars { position: relative; display: inline-block; color: #b87800; font-family: Arial, sans-serif; letter-spacing: .02em; line-height: 1; }
@@ -141,17 +141,14 @@
 .catalog-actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
 .catalog-purchase .button { width: 100%; min-height: 52px; font-size: .9rem; padding-inline: 12px; text-align: center; }
 .catalog-purchase .catalog-pack-note { margin: 8px 0 0; text-align: center; }
-/* Desktop: lead with the product, keep nutrition beside its name, and place social proof after details. */
-@media (min-width: 801px) {
- .catalog-purchase { display: contents; }
- .catalog-summary > .eyebrow { order: -5; }
- .catalog-summary h1 { order: -4; margin-bottom: 12px; }
- .catalog-benefit-headline { order: -3; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.25; margin-bottom: 20px; }
- .catalog-actions { order: -2; }
- .catalog-purchase .catalog-pack-note { order: -1; margin: 8px 0 20px; }
- .catalog-highlights { display: none; }
- .catalog-proof { order: 1; margin: 20px 0 0; padding-top: 20px; border-top: 1px solid #C7D4CB; }
-}
+/* Keep the purchase information attached to the gallery at every width. */
+.catalog-highlights { display: none; }
+.catalog-gallery .photo-slide { aspect-ratio: auto; height: min(60svh, 560px); }
+.catalog-gallery .photo-slide img { height: 100%; max-height: 560px; }
+.catalog-gallery .photo-thumbs img { max-height: 64px; }
+.catalog-summary > .catalog-proof { margin: 0 0 20px; padding: 0; border: 0; }
+.catalog-summary h1 { font-size: clamp(2rem, 3.7vw, 3rem); }
+.catalog-benefit-headline { font-size: clamp(1.65rem, 3vw, 2.3rem); }
 @media (max-width: 800px) {
  .catalog-page .announcement-bar { font-size: .68rem; padding: 6px 12px; letter-spacing: .03em; }
  .catalog-page .site-header .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; min-height: 0; padding-block: 7px 0; }
@@ -160,6 +157,7 @@
  .catalog-page .site-header .header-inner > .button { grid-column: 2; grid-row: 1; min-height: 36px; padding: 8px 14px; font-size: .78rem; }
  .catalog-page .catalog-product { padding: 12px 0 24px; }
  .catalog-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+ .catalog-highlights { display: block; margin: 0; font-size: .8rem; text-align: center; }
  .catalog-gallery .photo-slide { aspect-ratio: auto; height: min(48svh, calc(100vw - 32px)); }
  .catalog-gallery .rounded-photo img { max-height: 48svh; width: 100%; border-radius: 16px; }
  .catalog-gallery .photo-thumbs img { max-height: 64px; }
@@ -198,6 +196,7 @@
 <main id="main-content">
 <section class="catalog-product" aria-labelledby="product-title">
 <div class="container catalog-layout">
+<p class="catalog-highlights">10 calories <span>·</span> 300mg Vitamin C <span>·</span> No artificial sweeteners</p>
 <div class="catalog-gallery">
 <figure class="rounded-photo">
 <img src="assets/images/case-and-pouch.webp" alt="Cal-0 Mango Konjac Jelly 10-pack box and pouch" width="800" height="800" fetchpriority="high" data-product-image>
@@ -210,6 +209,8 @@
 </nav>
 </div>
 <div class="catalog-summary">
+<p class="eyebrow">Mango · 10-pouch case</p>
+<h1 id="product-title">CAL-0 Mango Konjac Jelly</h1>
 <div class="catalog-purchase">
 
 <p class="catalog-benefit-headline"><span class="catalog-benefit-line"><span><span class="catalog-number">300mg</span> Vitamin C.</span><span class="catalog-squiggle" aria-hidden="true"></span></span><span class="catalog-benefit-line catalog-calories"><span class="catalog-squiggle" aria-hidden="true"></span><span>Just <span class="catalog-number">10</span> calories.</span></span></p>
@@ -219,9 +220,7 @@
 </div>
 <p class="small muted catalog-pack-note">10 pouches · 150 mL each. Shipping calculated at checkout.</p>
 </div>
-<p class="eyebrow">Mango · 10-pouch case</p>
-<h1 id="product-title">CAL-0 Mango Konjac Jelly</h1>
-<p class="catalog-highlights">10 calories <span>·</span> 300mg Vitamin C <span>·</span> Best chilled</p>
+<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
 <p>A squeezable mango-flavored konjac jelly snack. Best served chilled and enjoyed a little at a time.</p>
 <ul class="product-details">
 <li>10 individually packaged pouches</li>
@@ -236,7 +235,7 @@
 <p class="small muted">Made in China. Distributed by Cal-0 LLC, San Diego, California.</p>
 <a class="text-link" href="#product-details">Ingredients and nutrition →</a>
 <p class="small"><a class="text-link" href="/what-is-konjac-jelly">What is konjac jelly? Read the guide →</a></p>
-<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
+
 </div>
 </div>
 </section>
