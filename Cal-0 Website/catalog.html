@@ -126,8 +126,15 @@
 .catalog-highlights { color: var(--green); font-weight: 700; font-size: .95rem; }
 .catalog-highlights span { color: #99721c; padding: 0 3px; }
 .catalog-purchase { order: -1; margin: 0 0 24px; }
-.catalog-purchase .button { width: 100%; min-height: 52px; font-size: 1rem; }
-.catalog-purchase p { margin: 8px 0 0; text-align: center; }
+.catalog-proof { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; font-size: .8rem; line-height: 1.4; }
+.catalog-proof-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.catalog-stars { position: relative; display: inline-block; color: #b87800; font-family: Arial, sans-serif; letter-spacing: .02em; line-height: 1; }
+.catalog-stars-empty { opacity: .22; }
+.catalog-stars-fill { position: absolute; left: 0; top: 0; width: 98%; overflow: hidden; white-space: nowrap; }
+.catalog-benefit-headline { margin: 0 0 18px; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 850; line-height: 1.08; letter-spacing: -.045em; }
+.catalog-actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
+.catalog-purchase .button { width: 100%; min-height: 52px; font-size: .9rem; padding-inline: 12px; text-align: center; }
+.catalog-purchase .catalog-pack-note { margin: 8px 0 0; text-align: center; }
 @media (max-width: 800px) {
  .catalog-page .announcement-bar { font-size: .68rem; padding: 6px 12px; letter-spacing: .03em; }
  .catalog-page .site-header .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; min-height: 0; padding-block: 7px 0; }
@@ -140,6 +147,9 @@
  .catalog-gallery .rounded-photo img { max-height: 48svh; width: 100%; border-radius: 16px; }
  .catalog-gallery .photo-thumbs img { max-height: 64px; }
  .catalog-purchase { margin-bottom: 20px; }
+ .catalog-proof { font-size: .72rem; gap: 5px; }
+ .catalog-benefit-headline { font-size: clamp(1.9rem, 7.7vw, 2.8rem); }
+ .catalog-purchase .button { font-size: .78rem; padding-inline: 8px; }
  .catalog-summary h1 { font-size: clamp(2rem, 7.8vw, 2.6rem); }
  .catalog-page .seo-details { padding-top: 24px !important; }
 }
@@ -184,8 +194,13 @@
 </div>
 <div class="catalog-summary">
 <div class="catalog-purchase">
-<a class="button" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Buy the 10-Pack — $24.99</a>
-<p class="small muted">10 pouches · 150 mL each. Shipping calculated at checkout.</p>
+<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">Best served chilled</span></p>
+<p class="catalog-benefit-headline">300mg Vitamin C.<br>Just 10 calories.</p>
+<div class="catalog-actions">
+<a class="button button-outline" href="/where-to-buy-cal0">Find Cal-0 in Stores</a>
+<a class="button" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Buy 10-Pack — $24.99</a>
+</div>
+<p class="small muted catalog-pack-note">10 pouches · 150 mL each. Shipping calculated at checkout.</p>
 </div>
 <p class="eyebrow">Mango · 10-pouch case</p>
 <h1 id="product-title">CAL-0 Mango Konjac Jelly</h1>
