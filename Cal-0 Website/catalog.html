@@ -131,12 +131,14 @@
 @media (max-width: 800px) {
  .catalog-page .announcement-bar { font-size: .68rem; padding: 6px 12px; letter-spacing: .03em; }
  .catalog-page .site-header .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; min-height: 0; padding-block: 7px 0; }
- .catalog-page .site-header .header-inner .main-nav { grid-column: 1 / -1; grid-row: 2; order: initial; top: 0; width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; gap: 18px; font-size: .78rem; }
+ .catalog-page .site-header .header-inner .main-nav { grid-column: 1 / -1; grid-row: 2; order: initial; top: 0; width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; gap: clamp(8px, 3vw, 18px); font-size: .78rem; }
  .catalog-page .main-nav a { flex: 0 0 auto; min-height: 36px; }
- .catalog-page .header-inner > .button { min-height: 36px; padding: 8px 14px; font-size: .78rem; }
+ .catalog-page .site-header .header-inner > .button { grid-column: 2; grid-row: 1; min-height: 36px; padding: 8px 14px; font-size: .78rem; }
  .catalog-page .catalog-product { padding: 12px 0 24px; }
  .catalog-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+ .catalog-gallery .photo-slide { aspect-ratio: auto; height: min(48svh, calc(100vw - 32px)); }
  .catalog-gallery .rounded-photo img { max-height: 48svh; width: 100%; border-radius: 16px; }
+ .catalog-gallery .photo-thumbs img { max-height: 64px; }
  .catalog-purchase { margin-bottom: 20px; }
  .catalog-summary h1 { font-size: clamp(2rem, 7.8vw, 2.6rem); }
  .catalog-page .seo-details { padding-top: 24px !important; }
