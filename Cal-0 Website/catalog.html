@@ -113,7 +113,7 @@
 <style>
 /* A product-first shop, using the same photography, colors and checkout as home. */
 .catalog-page .catalog-product { padding: 24px 0 32px; }
-.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 720px; align-items: start; }
+.catalog-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 560px; align-items: start; }
 .catalog-layout > * { min-width: 0; }
 .catalog-gallery .rounded-photo { margin: 0; }
 .catalog-gallery .rounded-photo img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 22px; }
@@ -137,16 +137,20 @@
 .catalog-calories { justify-content: flex-end; }
 .catalog-number { background: linear-gradient(transparent 85%, rgba(242,179,49,.3) 85%, rgba(242,179,49,.3) 96%, transparent 96%); }
 .catalog-squiggle { flex: 1 1 0; min-width: 12px; height: 10px; opacity: .7; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x center; }
-.catalog-summary > .catalog-proof { margin: 20px 0 0; padding-top: 20px; border-top: 1px solid #C7D4CB; }
+
 .catalog-actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
 .catalog-purchase .button { width: 100%; min-height: 52px; font-size: .9rem; padding-inline: 12px; text-align: center; }
 .catalog-purchase .catalog-pack-note { margin: 8px 0 0; text-align: center; }
 /* Keep the purchase information attached to the gallery at every width. */
 .catalog-highlights { display: none; }
-.catalog-gallery .photo-slide { aspect-ratio: auto; height: min(60svh, 560px); }
-.catalog-gallery .photo-slide img { height: 100%; max-height: 560px; }
-.catalog-gallery .photo-thumbs img { max-height: 64px; }
-.catalog-summary > .catalog-proof { margin: 0 0 20px; padding: 0; border: 0; }
+.catalog-gallery .photo-slide { aspect-ratio: 1; height: auto; }
+.catalog-gallery .photo-slide img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.catalog-gallery .photo-thumbs img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
+.catalog-gallery .photo-thumbs { gap: 6px; margin-top: 6px; }
+.catalog-gallery .photo-thumbs button { aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; }
+.catalog-gallery .photo-controls { display: none; }
+.catalog-gallery > .catalog-proof { justify-content: space-between; flex-wrap: nowrap; gap: 4px; margin: 8px 0 0; font-size: clamp(.6rem, 2.55vw, .78rem); }
+.catalog-stars { color: #F2B331; }
 .catalog-summary h1 { font-size: clamp(2rem, 3.7vw, 3rem); }
 .catalog-benefit-headline { font-size: clamp(1.65rem, 3vw, 2.3rem); }
 @media (max-width: 800px) {
@@ -158,9 +162,9 @@
  .catalog-page .catalog-product { padding: 12px 0 24px; }
  .catalog-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
  .catalog-highlights { display: block; margin: 0; font-size: .8rem; text-align: center; }
- .catalog-gallery .photo-slide { aspect-ratio: auto; height: min(48svh, calc(100vw - 32px)); }
- .catalog-gallery .rounded-photo img { max-height: 48svh; width: 100%; border-radius: 16px; }
- .catalog-gallery .photo-thumbs img { max-height: 64px; }
+ .catalog-gallery .photo-slide { aspect-ratio: 1; height: auto; }
+ .catalog-gallery .rounded-photo img { max-height: none; width: 100%; border-radius: 16px; }
+ .catalog-gallery .photo-thumbs img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
  .catalog-purchase { margin-bottom: 20px; }
  .catalog-proof { font-size: .72rem; gap: 5px; }
  .catalog-benefit-headline { font-size: clamp(1.65rem, 6.8vw, 2.8rem); }
@@ -169,6 +173,18 @@
  .catalog-page .seo-details { padding-top: 24px !important; }
 }
 
+@media (max-width: 480px) {
+ .catalog-layout { gap: 10px; }
+ .catalog-summary .eyebrow { margin-bottom: 6px; font-size: .65rem; }
+ .catalog-summary h1 { font-size: clamp(1rem, 4.8vw, 1.4rem); line-height: 1.2; letter-spacing: -.035em; margin-bottom: 10px; }
+ .catalog-benefit-headline { font-size: clamp(1.15rem, 5.2vw, 1.45rem); line-height: 1.2; margin-bottom: 12px; }
+ .catalog-benefit-line { gap: 10px; }
+ .catalog-benefit-line + .catalog-benefit-line { margin-top: 4px; }
+ .catalog-actions { gap: 8px; }
+ .catalog-purchase .button { min-height: 44px; font-size: .73rem; padding: 8px; }
+ .catalog-purchase .catalog-pack-note { font-size: .72rem; line-height: 1.45; margin-top: 6px; }
+ .catalog-purchase { margin-bottom: 12px; }
+}
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
 <script src="assets/js/rebuild.js?v=instagram-20261105" defer></script>
@@ -207,6 +223,7 @@
 <a href="/assets/images/product-benefits-alt.webp?v=cal0-images-20261025" data-gallery-link data-gallery-alt="CAL-0 mango pouch and product benefits">Product Benefits</a>
 <a href="/assets/images/nutrition-label.webp?v=cal0-images-20261025" data-gallery-link data-gallery-alt="CAL-0 Nutrition Facts, serving size 150 mL">Nutrition Facts</a>
 </nav>
+<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
 </div>
 <div class="catalog-summary">
 <p class="eyebrow">Mango · 10-pouch case</p>
@@ -220,7 +237,7 @@
 </div>
 <p class="small muted catalog-pack-note">10 pouches · 150 mL each. Shipping calculated at checkout.</p>
 </div>
-<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
+
 <p>A squeezable mango-flavored konjac jelly snack. Best served chilled and enjoyed a little at a time.</p>
 <ul class="product-details">
 <li>10 individually packaged pouches</li>
