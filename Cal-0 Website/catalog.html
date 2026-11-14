@@ -132,9 +132,26 @@
 .catalog-stars-empty { opacity: .22; }
 .catalog-stars-fill { position: absolute; left: 0; top: 0; width: 98%; overflow: hidden; white-space: nowrap; }
 .catalog-benefit-headline { margin: 0 0 18px; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 850; line-height: 1.08; letter-spacing: -.045em; }
+ .catalog-benefit-line { display: flex; align-items: center; gap: 12px; }
+.catalog-benefit-line > span:not(.catalog-squiggle) { flex: 0 0 auto; }
+.catalog-calories { justify-content: flex-end; }
+.catalog-number { background: linear-gradient(transparent 85%, rgba(242,179,49,.3) 85%, rgba(242,179,49,.3) 96%, transparent 96%); }
+.catalog-squiggle { flex: 1 1 0; min-width: 12px; height: 10px; opacity: .7; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x center; }
+.catalog-summary > .catalog-proof { margin: 20px 0 0; padding-top: 20px; border-top: 1px solid #C7D4CB; }
 .catalog-actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
 .catalog-purchase .button { width: 100%; min-height: 52px; font-size: .9rem; padding-inline: 12px; text-align: center; }
 .catalog-purchase .catalog-pack-note { margin: 8px 0 0; text-align: center; }
+/* Desktop: lead with the product, keep nutrition beside its name, and place social proof after details. */
+@media (min-width: 801px) {
+ .catalog-purchase { display: contents; }
+ .catalog-summary > .eyebrow { order: -5; }
+ .catalog-summary h1 { order: -4; margin-bottom: 12px; }
+ .catalog-benefit-headline { order: -3; font-size: clamp(1.4rem, 2vw, 1.8rem); line-height: 1.25; margin-bottom: 20px; }
+ .catalog-actions { order: -2; }
+ .catalog-purchase .catalog-pack-note { order: -1; margin: 8px 0 20px; }
+ .catalog-highlights { display: none; }
+ .catalog-proof { order: 1; margin: 20px 0 0; padding-top: 20px; border-top: 1px solid #C7D4CB; }
+}
 @media (max-width: 800px) {
  .catalog-page .announcement-bar { font-size: .68rem; padding: 6px 12px; letter-spacing: .03em; }
  .catalog-page .site-header .header-inner { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; min-height: 0; padding-block: 7px 0; }
@@ -148,7 +165,7 @@
  .catalog-gallery .photo-thumbs img { max-height: 64px; }
  .catalog-purchase { margin-bottom: 20px; }
  .catalog-proof { font-size: .72rem; gap: 5px; }
- .catalog-benefit-headline { font-size: clamp(1.9rem, 7.7vw, 2.8rem); }
+ .catalog-benefit-headline { font-size: clamp(1.65rem, 6.8vw, 2.8rem); }
  .catalog-purchase .button { font-size: .78rem; padding-inline: 8px; }
  .catalog-summary h1 { font-size: clamp(2rem, 7.8vw, 2.6rem); }
  .catalog-page .seo-details { padding-top: 24px !important; }
@@ -194,8 +211,8 @@
 </div>
 <div class="catalog-summary">
 <div class="catalog-purchase">
-<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">Best served chilled</span></p>
-<p class="catalog-benefit-headline">300mg Vitamin C.<br>Just 10 calories.</p>
+
+<p class="catalog-benefit-headline"><span class="catalog-benefit-line"><span><span class="catalog-number">300mg</span> Vitamin C.</span><span class="catalog-squiggle" aria-hidden="true"></span></span><span class="catalog-benefit-line catalog-calories"><span class="catalog-squiggle" aria-hidden="true"></span><span>Just <span class="catalog-number">10</span> calories.</span></span></p>
 <div class="catalog-actions">
 <a class="button button-outline" href="/where-to-buy-cal0">Find Cal-0 in Stores</a>
 <a class="button" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Buy 10-Pack — $24.99</a>
@@ -219,6 +236,7 @@
 <p class="small muted">Made in China. Distributed by Cal-0 LLC, San Diego, California.</p>
 <a class="text-link" href="#product-details">Ingredients and nutrition →</a>
 <p class="small"><a class="text-link" href="/what-is-konjac-jelly">What is konjac jelly? Read the guide →</a></p>
+<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
 </div>
 </div>
 </section>
