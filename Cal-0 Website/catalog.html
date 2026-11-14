@@ -141,7 +141,7 @@
 .catalog-actions { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; }
 .catalog-purchase .button { width: 100%; min-height: 52px; font-size: .9rem; padding-inline: 12px; text-align: center; }
 .catalog-purchase .catalog-pack-note { margin: 8px 0 0; text-align: center; }
-/* Keep the purchase information attached to the gallery at every width. */
+/* Preserve square photography and keep social proof with the gallery. */
 .catalog-highlights { display: none; }
 .catalog-gallery .photo-slide { aspect-ratio: 1; height: auto; }
 .catalog-gallery .photo-slide img { width: 100%; height: 100%; max-height: none; object-fit: contain; }
@@ -185,6 +185,20 @@
  .catalog-purchase .catalog-pack-note { font-size: .72rem; line-height: 1.45; margin-top: 6px; }
  .catalog-purchase { margin-bottom: 12px; }
 }
+.catalog-proof-dot { font-size: 2.1em; font-weight: 900; line-height: 1; }
+@media (min-width: 801px) {
+ .catalog-layout { max-width: 1180px; grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr); gap: 32px; }
+ .catalog-summary { grid-column: 1; grid-row: 1; }
+ .catalog-gallery { grid-column: 2; grid-row: 1; }
+}
+@media (max-width: 800px) {
+ .catalog-summary h1 { text-align: center; }
+ .catalog-benefit-headline { position: relative; padding-inline: 32px; }
+ .catalog-benefit-line { justify-content: center; gap: 0; }
+ .catalog-benefit-line + .catalog-benefit-line { margin-top: 0; }
+ .catalog-benefit-line .catalog-squiggle { position: absolute; top: calc(50% - 5px); right: 0; width: 24px; }
+ .catalog-calories .catalog-squiggle { left: 0; right: auto; }
+}
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
 <script src="assets/js/rebuild.js?v=instagram-20261105" defer></script>
@@ -223,7 +237,7 @@
 <a href="/assets/images/product-benefits-alt.webp?v=cal0-images-20261025" data-gallery-link data-gallery-alt="CAL-0 mango pouch and product benefits">Product Benefits</a>
 <a href="/assets/images/nutrition-label.webp?v=cal0-images-20261025" data-gallery-link data-gallery-alt="CAL-0 Nutrition Facts, serving size 150 mL">Nutrition Facts</a>
 </nav>
-<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span aria-hidden="true">·</span><span class="catalog-proof-item">No artificial sweeteners</span></p>
+<p class="catalog-proof"><span class="catalog-proof-item" role="img" aria-label="4.9 out of 5 stars"><span class="catalog-stars" aria-hidden="true"><span class="catalog-stars-empty">★★★★★</span><span class="catalog-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span class="catalog-proof-dot" aria-hidden="true">·</span><span class="catalog-proof-item"><strong>50+</strong> stores</span><span class="catalog-proof-dot" aria-hidden="true">·</span><span class="catalog-proof-item"><strong>No</strong> artificial sweeteners</span></p>
 </div>
 <div class="catalog-summary">
 <p class="eyebrow">Mango · 10-pouch case</p>
