@@ -192,13 +192,15 @@
  .catalog-gallery { grid-column: 2; grid-row: 1; }
 }
 @media (max-width: 800px) {
- .catalog-summary h1 { text-align: center; }
- .catalog-benefit-headline { position: relative; padding-inline: 32px; }
- .catalog-benefit-line { justify-content: center; gap: 0; }
+ .catalog-summary .eyebrow, .catalog-summary h1 { text-align: center; }
+ .catalog-benefit-headline { padding-inline: 0; }
+ .catalog-benefit-line { display: grid; grid-template-columns: minmax(0, .8fr) auto minmax(0, 1.2fr); align-items: center; gap: 8px; }
+ .catalog-calories { grid-template-columns: minmax(0, 1.2fr) auto minmax(0, .8fr); }
  .catalog-benefit-line + .catalog-benefit-line { margin-top: 0; }
- .catalog-benefit-line .catalog-squiggle { position: absolute; top: calc(50% - 5px); right: 0; width: 24px; }
- .catalog-calories .catalog-squiggle { left: 0; right: auto; }
+ .catalog-benefit-line .catalog-squiggle { display: none; }
+ .catalog-benefit-line::before, .catalog-benefit-line::after { content: ""; display: block; width: 100%; max-width: 64px; height: 10px; justify-self: center; opacity: .67; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M-2 8L3 2L8 8L13 2L18 8L23 2' fill='none' stroke='%23F2B331' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x center; background-size: 20px 10px; pointer-events: none; }
 }
+
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
 <script src="assets/js/rebuild.js?v=instagram-20261105" defer></script>
