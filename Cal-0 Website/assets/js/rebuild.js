@@ -495,7 +495,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  document.head.append(style);
 })();
 
-/* One scrollable mobile menu on every page; touch and keyboard always take priority. */
+/* One gently scrolling menu on every page; touch and keyboard always take priority. */
 (() => {
   'use strict';
   const nav = document.querySelector('.site-header .main-nav');
@@ -512,7 +512,15 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const style = document.createElement('style');
   style.id = 'cal0-shared-nav-motion';
   style.textContent = `
-    .nav-motion-toggle { display: none; }
+    .announcement-bar:has(.nav-motion-toggle) { position: relative; padding-right: 32px; }
+    .nav-motion-toggle { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #FFFAF0; opacity: .65; font: 10px/1 Arial, sans-serif; }
+    .nav-motion-toggle:hover, .nav-motion-toggle:focus-visible { opacity: 1; }
+    @media (min-width: 801px) {
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready { display: flex; width: min(100%,350px); min-width: 0; max-width: 100%; justify-self: center; justify-content: flex-start; flex-wrap: nowrap; gap: 10px; padding: 4px 0; overflow-x: auto; overflow-y: hidden; scroll-behavior: auto; scroll-snap-type: none; scrollbar-width: none; overscroll-behavior-x: contain; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a { flex: 0 0 auto; min-height: 34px; padding: 5px 9px; border: 1px solid rgba(15,77,63,.1); border-radius: 999px; background: rgba(15,77,63,.022); line-height: 1.2; white-space: nowrap; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a:hover { background: rgba(15,77,63,.045); border-color: rgba(15,77,63,.2); text-decoration: none; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a:focus-visible { outline-offset: -3px; }
+    }
     @media (max-width: 800px) {
       body .site-header .header-inner.nav-scroll-header { display: grid; grid-template-columns: 104px minmax(0,1fr) 120px; gap: 10px; align-items: center; min-height: 64px; padding-block: 8px; }
       body .site-header .header-inner.nav-scroll-header > .site-logo { grid-column: 1; grid-row: 1; width: 104px; min-width: 0; margin: 0; }
@@ -556,7 +564,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     lastTime = 0;
   }
   function canMove() {
-    return mobile.matches && !reducedMotion.matches && !document.hidden &&
+    return !reducedMotion.matches && !document.hidden &&
       !document.body.classList.contains('header-motion-paused') &&
       !pointerHeld && !(hoverPointer.matches && hovered) && !keyboardFocus &&
       nav.scrollWidth > nav.clientWidth + 1;
@@ -566,7 +574,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     if (!canMove()) { lastTime = 0; return; }
     const maximum = nav.scrollWidth - nav.clientWidth;
     if (lastTime) {
-      position += direction * Math.min(now - lastTime, 50) * .012;
+      position += direction * Math.min(now - lastTime, 50) * (mobile.matches ? .012 : .004);
       if (position >= maximum) { position = maximum; direction = -1; }
       else if (position <= 0) { position = 0; direction = 1; }
       lastAutoScroll = now;
