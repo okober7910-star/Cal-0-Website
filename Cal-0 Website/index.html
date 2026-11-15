@@ -368,6 +368,29 @@
  #main-content #stores .retail-photos::before { content: ""; position: absolute; z-index: 1; left: 50%; top: 50%; width: clamp(96px,12vw,180px); height: 180px; transform: translate(-50%,-50%); pointer-events: none; opacity: .7; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='160' viewBox='0 0 120 160'%3E%3Cg transform='rotate(-28 60 80)' fill='none' stroke='%23D49B21' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M10 50Q15 40 20 50T40 50T60 50T80 50T100 50T110 50'/%3E%3Cpath d='M10 80Q15 70 20 80T40 80T60 80T80 80T100 80T110 80'/%3E%3Cpath d='M10 110Q15 100 20 110T40 110T60 110T80 110T100 110T110 110'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain; }
 }
 </style>
+<style>
+/* Frame the founder story on desktop as on mobile. */
+@media (min-width: 801px) {
+ #main-content #story .founder-grid { border-left: 4px solid #0F4D3F; padding-left: 16px; }
+ /* Five upright waves in the center, with horizontal waves in the outer margins. */
+ #main-content #stores .retail-photos::before { left: 50%; top: 16px; bottom: 16px; width: 80px; height: auto; transform: translateX(-50%); opacity: .64; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='32' viewBox='0 0 80 32'%3E%3Cg fill='none' stroke='%23D49B21' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M6 -8Q-1 0 6 8T6 24T6 40'/%3E%3Cpath d='M23 -8Q16 0 23 8T23 24T23 40'/%3E%3Cpath d='M40 -8Q33 0 40 8T40 24T40 40'/%3E%3Cpath d='M57 -8Q50 0 57 8T57 24T57 40'/%3E%3Cpath d='M74 -8Q67 0 74 8T74 24T74 40'/%3E%3C/g%3E%3C/svg%3E") repeat-y center top / 80px 32px; }
+ #main-content #stores .retail-photos figure { position: relative; }
+ #main-content #stores .retail-photos figure::before { content: ""; position: absolute; z-index: 1; top: 24px; bottom: 24px; width: calc(21.875% - 20px); min-width: 30px; max-width: 150px; pointer-events: none; opacity: .56; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='32' viewBox='0 0 24 32'%3E%3Cpath d='M-6 16Q0 9 6 16T18 16T30 16' fill='none' stroke='%23D49B21' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat center / 24px 32px; }
+ #main-content #stores .retail-photos figure:first-child::before { left: 10px; }
+ #main-content #stores .retail-photos figure:last-child::before { right: 10px; }
+}
+/* Restore the approved compact homepage opening, with one mobile action row. */
+@media (max-width: 800px) {
+ #main-content #shop .hero-photo .photo-controls { display: none; }
+ #main-content #shop .hero-copy .hero-desktop-actions,
+ #main-content #shop .hero-copy .hero-desktop-eyebrow { display: none; }
+ #main-content #shop .hero-copy .hero-mobile-actions { display: grid; grid-template-columns: minmax(0,3fr) minmax(0,5fr); gap: 8px; width: 100%; margin: 0 0 18px; }
+ #main-content #shop .hero-copy .hero-mobile-actions .button { box-sizing: border-box; display: flex; align-items: center; justify-content: center; width: 100%; min-width: 0; height: 46px; min-height: 46px; padding: 8px; font-size: 13px; line-height: 1.15; white-space: normal; }
+ #main-content #shop .hero-copy .hero-mobile-actions .button-outline { display: block; align-content: center; }
+ #main-content #shop .hero-copy .hero-mobile-actions .button-outline span { display: block; }
+ #main-content #shop .hero-copy .hero-mobile-actions .hero-mobile-shop { display: inline-flex; font-size: 15px; }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
