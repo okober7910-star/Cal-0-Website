@@ -343,6 +343,16 @@
 .header-motion-paused #main-content #story .founder-waves > span { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { #main-content #story .founder-waves > span { animation: none; } }
 </style>
+<style>
+.hero-desktop-enjoy { display: none; }
+@media (min-width: 801px) {
+ #main-content #shop .hero-desktop-enjoy { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(15,77,63,.22); }
+ .hero-desktop-enjoy > div { min-width: 0; }
+ .hero-desktop-enjoy span { display: block; color: #AF7812; font-size: .75rem; font-weight: 800; letter-spacing: .1em; margin-bottom: 8px; }
+ .hero-desktop-enjoy strong { display: block; color: #0F4D3F; font-size: .95rem; line-height: 1.45; }
+ .hero-desktop-enjoy small { display: block; margin-top: 6px; font-size: .8rem; color: #4F6B61; }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -358,6 +368,7 @@
 <div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-first-line"><span class="hero-line-text"><span class="hero-number hero-number-main">300mg</span> Vitamin C.</span><span class="hero-blank" aria-hidden="true"></span></span><br><span class="hero-calories"><span class="hero-blank hero-blank-reverse" aria-hidden="true"></span><span class="hero-line-text">Just <span class="hero-number">10</span> calories.</span></span></h1>
 <div class="button-row hero-mobile-actions"><a class="button button-outline" href="#stores">Find Cal-0 <span>in Stores</span></a><a class="button hero-mobile-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack for $24.99">Shop Now</a></div>
 <p class="eyebrow hero-mobile-eyebrow">Mango Konjac Jelly</p><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row hero-desktop-actions"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div>
+<div class="hero-desktop-enjoy" aria-label="How to enjoy CAL-0"><div><span>01</span><strong>Chill it.</strong></div><div><span>02</span><strong>Gently squeeze the closed pouch.</strong></div><div><span>03</span><strong>Enjoy a little at a time.</strong><small>Chew thoroughly.</small></div></div>
 </div>
 </div>
 <div class="container facts" aria-label="Product facts per pouch"><div><strong>10</strong><span>calories</span></div><div><strong>300mg</strong><span>Vitamin C</span></div><div><strong>3g</strong><span>added sugar</span></div><div><strong>150mL</strong><span>individual pouch</span></div></div>
