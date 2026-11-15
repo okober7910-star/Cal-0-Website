@@ -311,7 +311,7 @@
  .catalog-copy .catalog-title-art h1::after { width: calc(100% + 36px); margin-inline: -18px; margin-top: 14px; background: linear-gradient(90deg, rgba(15,77,63,.12) 0 calc(50% - 78px), #E9AD2D calc(50% - 78px) calc(50% + 78px), rgba(15,77,63,.12) calc(50% + 78px) 100%); }
  .catalog-title-pack { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 8px; font-size: .8em; line-height: 1.2; }
  .catalog-title-separator { display: none; }
- .catalog-title-pack::before, .catalog-title-pack::after { content: ""; display: block; flex: 0 0 32px; height: 8px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M-4 4Q0 -1 4 4T12 4T20 4' fill='none' stroke='%23D49B21' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; opacity: .8; }
+ .catalog-title-pack::before, .catalog-title-pack::after { content: ""; display: block; flex: 1 1 0; min-width: 24px; max-width: 72px; height: 8px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M-4 4Q0 -1 4 4T12 4T20 4' fill='none' stroke='%23D49B21' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; opacity: .8; }
  .catalog-title-art::before, .catalog-title-art::after { content: ""; position: absolute; top: 14px; width: 15px; height: 48px; pointer-events: none; opacity: .68; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='48' viewBox='0 0 16 48'%3E%3Cpath d='M8 -4Q-1 2 8 8T8 20T8 32T8 44T8 56' fill='none' stroke='%23D49B21' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat; }
  .catalog-title-art::before { left: 1px; transform: rotate(24deg); }
  .catalog-title-art::after { right: 1px; transform: rotate(-24deg); }
@@ -321,6 +321,31 @@
  .catalog-actions { grid-template-columns: minmax(0, 5fr) minmax(0, 3fr); gap: 8px; }
  .catalog-purchase .button { min-height: 48px; font-size: clamp(.75rem, 2.9vw, .875rem); padding: 10px 7px; }
 }
+
+
+/* Mobile browses by swiping or thumbnails; desktop retains the numbered controls. */
+@media (max-width: 800px) {
+ .catalog-page .catalog-gallery .photo-controls { display: none; }
+}
+/* Use the spare desktop copy height for upright mango waves. */
+@media (min-width: 801px) {
+ .catalog-copy-wave {
+  flex: 1 1 120px;
+  height: auto;
+  min-height: 90px;
+  max-height: none;
+  margin-top: 0;
+  padding: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='32' viewBox='0 0 20 32'%3E%3Cpath d='M10 -8Q3 0 10 8T10 24T10 40' fill='none' stroke='%23D49B21' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 20px 32px;
+  background-repeat: repeat;
+  background-position: center 0;
+  opacity: .52;
+  animation: catalog-copy-vertical 14s linear infinite;
+ }
+}
+@keyframes catalog-copy-vertical { to { background-position-y: 32px; } }
+@media (prefers-reduced-motion: reduce) { .catalog-copy-wave { animation: none; } }
 
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
