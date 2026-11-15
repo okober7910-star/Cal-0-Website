@@ -236,7 +236,7 @@
  const stores = [
   {name:'Windmill Farms', area:'Del Cerro', address:'6386 Del Cerro Blvd, San Diego, CA 92120'},
   {name:"Boney’s Bayside Market", area:'Coronado', address:'155 Orange Ave, Coronado, CA 92118'},
-  {name:'Vine Ripe Market', area:'La Mesa', address:'8191 Fletcher Parkway, La Mesa, CA 91942'},
+  {name:'Valley Marketplace', area:'Reseda · Los Angeles', address:'18345 Vanowen Street, Reseda, CA 91335'},
   {name:'KRISP', area:'Ocean Beach', address:'4976 Newport Ave, San Diego, CA 92107'}
  ];
  const maps = store => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(store.name + ', ' + store.address);
@@ -396,7 +396,6 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   if(row[1]){const link=document.createElement('a');link.className='text-link';link.textContent='Get Directions';link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(row[0]+', '+row[1]);link.target='_blank';link.rel='noopener noreferrer';card.append(link);}
   list.append(card);
  });
- const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa · Trial samples';
 })();
 /* Review: concise availability wording, fifth featured market and compact story. */
 (() => {
@@ -407,7 +406,6 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   const note=section.querySelector('[data-stores-intro]');
   if(note)note.textContent='Store list updated November 10, 2026. Availability varies; contact the store before visiting.';
   section.querySelectorAll('.store-card .small').forEach(label=>{label.textContent='Contact the store for current availability';});
-  const vine=section.querySelector('.featured-stores a:nth-child(3) span');if(vine)vine.textContent='La Mesa';
   const featured=section.querySelector('.featured-stores');
   if(featured){
    const link=document.createElement('a');link.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("Keil's Fresh Foods, 7403 Jackson Dr, San Diego, CA 92119");link.target='_blank';link.rel='noopener noreferrer';
