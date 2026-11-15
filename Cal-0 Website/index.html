@@ -90,10 +90,10 @@
 <link rel="preload" href="assets/fonts/barlow-condensed-bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="assets/css/rebuild.css?v=logo-20261028">
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
-<script src="assets/js/rebuild.js?v=catalog-layout-20261115" defer></script>
+<script src="assets/js/rebuild.js?v=nav-swipe-20261115" defer></script>
 <link rel="stylesheet" href="assets/css/subtle-motion.css?v=reviews-mobile-20261025">
 <script src="assets/js/subtle-motion.js?v=reviews-mobile-20261025" defer></script>
-<script src="assets/js/header-motion.js?v=finishing-20261025" defer></script>
+<script src="assets/js/header-motion.js?v=nav-swipe-20261115" defer></script>
 <style>
 @font-face { font-family: 'CAL0 Condensed'; src: url('assets/fonts/barlow-condensed-bold.woff') format('woff'); font-style: normal; font-weight: 700; font-display: swap; }
 /* A continuous warm canvas, tighter rhythm and quieter section changes. */
@@ -263,11 +263,11 @@
 <style>
 /* Founder section: align the photograph with the copy without the inherited inset. */
 @media (min-width: 801px) {
- #main-content #story .founder-grid { max-width: 1000px; grid-template-columns: 260px minmax(0, 1fr); column-gap: 28px; padding-top: 8px; padding-left: 0; border-left: 0; align-items: center; }
+ #main-content #story .founder-grid { width: min(1180px, calc(100% - 48px)); max-width: 1180px; grid-template-columns: 260px minmax(0, 1fr); column-gap: 36px; padding-top: 8px; padding-left: 0; border-left: 0; align-items: center; }
  #main-content #story .founder-photo { justify-self: start; margin: 0; padding: 0; border: 0; }
  #main-content #story .founder-photo figcaption { margin-top: 8px; line-height: 1.45; }
  #main-content #story .founder-grid > div { min-width: 0; }
- #main-content #story .founder-grid > div::after { content: ""; display: block; width: 92px; height: 10px; margin-top: 20px; opacity: .58; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='10' viewBox='0 0 92 10'%3E%3Cpath d='M1 7Q6 1 11 7T21 7T31 7T41 7T51 7T61 7T71 7T81 7T91 7' fill='none' stroke='%23F2B331' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center; pointer-events: none; }
+ #main-content #story .founder-grid > div::after { content: ""; display: block; width: clamp(120px, 18vw, 200px); height: 10px; margin-top: 20px; opacity: .58; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='10' viewBox='0 0 92 10'%3E%3Cpath d='M1 7Q6 1 11 7T21 7T31 7T41 7T51 7T61 7T71 7T81 7T91 7' fill='none' stroke='%23F2B331' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; pointer-events: none; }
 }
 </style>
 </head>

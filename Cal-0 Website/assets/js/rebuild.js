@@ -495,85 +495,167 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
  document.head.append(style);
 })();
 
-/* Shared mobile navigation motion; the homepage keeps its existing controller. */
+/* One scrollable mobile menu on every page; touch and keyboard always take priority. */
 (() => {
   'use strict';
   const nav = document.querySelector('.site-header .main-nav');
-  if (!nav || document.querySelector('script[src*="header-motion.js"]')) return;
-  if (nav.classList.contains('nav-motion-ready')) return;
+  if (!nav || nav.dataset.cal0ScrollReady === 'true') return;
+  const oldGroup = nav.querySelector('.nav-motion-group:not(.nav-motion-clone)');
+  if (oldGroup) nav.replaceChildren(...oldGroup.querySelectorAll('a'));
   const links = Array.from(nav.children).filter(node => node.tagName === 'A');
   if (!links.length) return;
+  nav.dataset.cal0ScrollReady = 'true';
+  nav.classList.add('nav-scroll-ready', 'nav-motion-ready');
+  const header = nav.closest('.header-inner');
+  if (header) header.classList.add('nav-scroll-header');
 
   const style = document.createElement('style');
   style.id = 'cal0-shared-nav-motion';
   style.textContent = `
-    .site-header .header-inner .main-nav .nav-motion-track,
-    .site-header .header-inner .main-nav .nav-motion-group { display: contents; }
-    .site-header .header-inner .main-nav .nav-motion-clone { display: none; }
     .nav-motion-toggle { display: none; }
-    @keyframes cal0-shared-nav-right {
-      from { transform: translateX(-50%); }
-      to { transform: translateX(0); }
-    }
     @media (max-width: 800px) {
-      .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: hidden; scrollbar-width: none; }
-      .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { display: flex; flex: 0 0 auto; width: max-content; min-width: 200%; gap: 0; animation: cal0-shared-nav-right 54s linear infinite; }
-      .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-group { display: flex; align-items: center; flex: 1 0 auto; gap: 10px; padding-inline: 5px; }
-      .site-header .header-inner .main-nav.nav-motion-ready a { min-height: 34px; padding: 5px 9px; border: 1px solid rgba(15,77,63,.1); border-radius: 999px; background: rgba(15,77,63,.022); line-height: 1.2; }
-      .site-header .header-inner .main-nav.nav-motion-ready a:hover { background: rgba(15,77,63,.045); border-color: rgba(15,77,63,.2); text-decoration: none; }
-      .site-header .header-inner .main-nav.nav-motion-ready:hover .nav-motion-track { animation-play-state: paused; }
-      .site-header .header-inner .main-nav.nav-motion-ready a:focus-visible { outline-offset: -3px; }
-      .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible),
-      .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: auto; }
-      .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible) .nav-motion-track,
-      .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { animation: none; transform: none; min-width: 100%; }
-      .site-header .header-inner .main-nav.nav-motion-ready:has(a:focus-visible) .nav-motion-clone,
-      .header-motion-paused .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-clone { display: none; }
+      body .site-header .header-inner.nav-scroll-header { display: grid; grid-template-columns: 104px minmax(0,1fr) 120px; gap: 10px; align-items: center; min-height: 64px; padding-block: 8px; }
+      body .site-header .header-inner.nav-scroll-header > .site-logo { grid-column: 1; grid-row: 1; width: 104px; min-width: 0; margin: 0; }
+      body .site-header .header-inner.nav-scroll-header > .site-logo img { width: 100%; height: auto; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready { display: flex; grid-column: 2; grid-row: 1; order: initial; position: static; top: auto; width: 100%; min-width: 0; max-width: 100%; flex-wrap: nowrap; justify-content: flex-start; gap: 10px; padding: 3px 0 5px; overflow-x: auto; overflow-y: hidden; scroll-behavior: auto; scroll-snap-type: none; scrollbar-width: thin; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; overscroll-behavior-x: contain; font-size: .8rem; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a { flex: 0 0 auto; min-height: 34px; padding: 5px 9px; border: 1px solid rgba(15,77,63,.1); border-radius: 999px; background: rgba(15,77,63,.022); line-height: 1.2; white-space: nowrap; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a:hover { background: rgba(15,77,63,.045); border-color: rgba(15,77,63,.2); text-decoration: none; }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready > a:focus-visible { outline-offset: -3px; }
+      body .site-header .header-inner.nav-scroll-header > .button { grid-column: 3; grid-row: 1; justify-self: end; width: 100%; min-height: 36px; padding: 8px 10px; font-size: .78rem; white-space: nowrap; }
       .announcement-bar:has(.nav-motion-toggle) { position: relative; padding-right: 32px; }
       .nav-motion-toggle { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #FFFAF0; opacity: .65; font: 10px/1 Arial, sans-serif; }
       .nav-motion-toggle:hover, .nav-motion-toggle:focus-visible { opacity: 1; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .site-header .header-inner .main-nav.nav-motion-ready { overflow-x: auto; }
-      .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-track { animation: none; transform: none; min-width: 100%; }
-      .site-header .header-inner .main-nav.nav-motion-ready .nav-motion-clone,
-      .nav-motion-toggle { display: none; }
+    @media (max-width: 480px) {
+      body .site-header .header-inner.nav-scroll-header { grid-template-columns: 98px minmax(0,1fr) 105px; column-gap: 8px; }
+      body .site-header .header-inner.nav-scroll-header > .site-logo { width: 98px; }
     }
+    @media (max-width: 360px) {
+      body .site-header .header-inner.nav-scroll-header { grid-template-columns: 88px minmax(0,1fr) 105px; }
+      body .site-header .header-inner.nav-scroll-header > .site-logo { width: 88px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .nav-motion-toggle { display: none; } }
   `;
   document.head.append(style);
 
-  const track = document.createElement('div');
-  track.className = 'nav-motion-track';
-  const group = document.createElement('div');
-  group.className = 'nav-motion-group';
-  links.forEach(link => group.append(link));
-  const duplicate = group.cloneNode(true);
-  duplicate.classList.add('nav-motion-clone');
-  duplicate.setAttribute('aria-hidden', 'true');
-  duplicate.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
-  duplicate.querySelectorAll('a').forEach(link => { link.tabIndex = -1; });
-  track.append(group, duplicate);
-  nav.replaceChildren(track);
-  nav.classList.add('nav-motion-ready');
-  nav.addEventListener('focusout', event => {
-    if (!nav.contains(event.relatedTarget)) nav.scrollLeft = 0;
+  const mobile = window.matchMedia('(max-width: 800px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let frame = 0;
+  let timer = 0;
+  let lastTime = 0;
+  let position = nav.scrollLeft;
+  let direction = 1;
+  let pointerHeld = false;
+  let hovered = false;
+  function stop() {
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
+    lastTime = 0;
+  }
+  function canMove() {
+    return mobile.matches && !reducedMotion.matches && !document.hidden &&
+      !document.body.classList.contains('header-motion-paused') &&
+      !pointerHeld && !hovered && !nav.contains(document.activeElement) &&
+      nav.scrollWidth > nav.clientWidth + 1;
+  }
+  function tick(now) {
+    frame = 0;
+    if (!canMove()) { lastTime = 0; return; }
+    const maximum = nav.scrollWidth - nav.clientWidth;
+    if (lastTime) {
+      position += direction * Math.min(now - lastTime, 50) * .012;
+      if (position >= maximum) { position = maximum; direction = -1; }
+      else if (position <= 0) { position = 0; direction = 1; }
+      nav.scrollLeft = position;
+    }
+    lastTime = now;
+    frame = requestAnimationFrame(tick);
+  }
+  function start() {
+    if (frame || timer || !canMove()) return;
+    position = nav.scrollLeft;
+    lastTime = 0;
+    frame = requestAnimationFrame(tick);
+  }
+  function resumeAfter(delay = 5000) {
+    stop();
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => { timer = 0; start(); }, delay);
+  }
+  function refresh() {
+    stop();
+    window.clearTimeout(timer);
+    timer = 0;
+    start();
+  }
+  nav.addEventListener('pointerdown', () => { pointerHeld = true; resumeAfter(); }, {passive: true});
+  function releasePointer() {
+    if (!pointerHeld) return;
+    pointerHeld = false;
+    resumeAfter();
+  }
+  window.addEventListener('pointerup', releasePointer, {passive: true});
+  window.addEventListener('pointercancel', releasePointer, {passive: true});
+  nav.addEventListener('wheel', () => resumeAfter(), {passive: true});
+  nav.addEventListener('scroll', () => { if (!frame) resumeAfter(); }, {passive: true});
+  nav.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse') return;
+    hovered = true;
+    stop();
   });
+  nav.addEventListener('pointerleave', event => {
+    if (event.pointerType !== 'mouse') return;
+    hovered = false;
+    resumeAfter();
+  });
+  nav.addEventListener('focusin', () => {
+    stop();
+    window.clearTimeout(timer);
+    timer = 0;
+  });
+  nav.addEventListener('focusout', event => { if (!nav.contains(event.relatedTarget)) resumeAfter(); });
+  nav.addEventListener('keydown', event => {
+    resumeAfter();
+    const current = links.indexOf(event.target.closest('a'));
+    if (current < 0) return;
+    let next;
+    if (event.key === 'ArrowRight') next = Math.min(links.length - 1, current + 1);
+    else if (event.key === 'ArrowLeft') next = Math.max(0, current - 1);
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = links.length - 1;
+    else return;
+    event.preventDefault();
+    links[next].focus({preventScroll: true});
+    links[next].scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'auto'});
+  });
+  mobile.addEventListener('change', refresh);
+  reducedMotion.addEventListener('change', refresh);
+  document.addEventListener('visibilitychange', refresh);
+  window.addEventListener('resize', () => resumeAfter(250), {passive: true});
+  window.addEventListener('blur', stop);
+  window.addEventListener('focus', () => resumeAfter());
+  document.addEventListener('cal0-header-motion-change', refresh);
 
   const announcement = document.querySelector('.announcement-bar');
-  if (announcement) {
+  if (announcement && !announcement.querySelector('.header-motion-toggle, .nav-motion-toggle')) {
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'nav-motion-toggle';
-    toggle.setAttribute('aria-label', 'Pause navigation motion');
+    toggle.setAttribute('aria-label', 'Pause header motion');
     toggle.setAttribute('aria-pressed', 'false');
     toggle.textContent = 'Ⅱ';
-    toggle.addEventListener('click', () => {
-      const paused = document.body.classList.toggle('header-motion-paused');
-      nav.scrollLeft = 0;
-      toggle.setAttribute('aria-pressed', String(paused));
-      toggle.setAttribute('aria-label', paused ? 'Resume navigation motion' : 'Pause navigation motion');
-      toggle.textContent = paused ? '▶' : 'Ⅱ';
-    });
     announcement.append(toggle);
   }
+  document.querySelectorAll('.header-motion-toggle, .nav-motion-toggle').forEach(toggle => {
+    if (toggle.dataset.cal0MotionBound === 'true') return;
+    toggle.dataset.cal0MotionBound = 'true';
+    toggle.addEventListener('click', () => {
+      const paused = document.body.classList.toggle('header-motion-paused');
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.setAttribute('aria-label', paused ? 'Resume header motion' : 'Pause header motion');
+      toggle.textContent = paused ? '▶' : 'Ⅱ';
+      document.dispatchEvent(new Event('cal0-header-motion-change'));
+    });
+  });
+  start();
 })();
