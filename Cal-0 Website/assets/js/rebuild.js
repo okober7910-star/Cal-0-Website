@@ -205,7 +205,10 @@
       const label = (current + 1) + " / 4";
       if (status.textContent !== label) status.textContent = label;
     }, {passive: true});
-    host.replaceChildren(track, thumbs, controls);
+    const proof = host.parentElement.querySelector('.hero-proof, .catalog-proof');
+    // Keep the product proof beside the photos it supports, before the controls.
+    if (proof) host.replaceChildren(track, thumbs, proof, controls);
+    else host.replaceChildren(track, thumbs, controls);
     const oldNav = document.querySelector(".gallery-nav");
     if (oldNav) oldNav.remove();
   }

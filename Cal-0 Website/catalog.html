@@ -298,9 +298,30 @@
  #product-details .seo-detail-card--storage { grid-area: storage; }
 }
 
+
+/* Give the product title a little mango energy and keep mobile actions in view. */
+.catalog-title-art { position: relative; min-width: 0; }
+.catalog-title-flavor { background: linear-gradient(transparent 78%, rgba(242,179,49,.23) 78% 95%, transparent 95%); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.catalog-title-pack { white-space: nowrap; color: #0F4D3F; }
+@media (max-width: 800px) {
+ .catalog-page .catalog-layout { grid-template-areas: "title" "purchase" "gallery" "benefits" "description" "details"; gap: 14px; }
+ .catalog-copy .catalog-intro { display: contents; }
+ .catalog-title-art { grid-area: title; padding: 0 18px; }
+ .catalog-copy .catalog-title-art h1 { font-size: clamp(1.4rem, 5.7vw, 1.9rem); line-height: 1.16; }
+ .catalog-copy .catalog-title-art h1::after { width: calc(100% + 36px); margin-inline: -18px; margin-top: 14px; }
+ .catalog-title-art::before, .catalog-title-art::after { content: ""; position: absolute; top: 14px; width: 15px; height: 48px; pointer-events: none; opacity: .68; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='48' viewBox='0 0 16 48'%3E%3Cpath d='M8 -4Q-1 2 8 8T8 20T8 32T8 44T8 56' fill='none' stroke='%23D49B21' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat; }
+ .catalog-title-art::before { left: 1px; transform: rotate(24deg); }
+ .catalog-title-art::after { right: 1px; transform: rotate(-24deg); }
+ .catalog-benefits { grid-area: benefits; margin: 2px 0 0; }
+ .catalog-description { grid-area: description; }
+ .catalog-purchase { margin: 0; padding: 0; border: 0; background: transparent; }
+ .catalog-actions { grid-template-columns: minmax(0, 5fr) minmax(0, 3fr); gap: 8px; }
+ .catalog-purchase .button { min-height: 48px; font-size: clamp(.75rem, 2.9vw, .875rem); padding: 10px 7px; }
+}
+
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
-<script src="assets/js/rebuild.js?v=desktop-balance-20261115" defer></script>
+<script src="assets/js/rebuild.js?v=gallery-flow-20261115" defer></script>
 <meta name="twitter:title" content="CAL-0 Mango Konjac Jelly 10-Pack | 150 mL Pouches">
 <meta name="twitter:description" content="Shop CAL-0 mango konjac jelly: ten 150 mL pouches with 10 calories and 300 mg Vitamin C per pouch. See ingredients, nutrition and how to enjoy it.">
 <meta name="twitter:image" content="https://cal-0.com/assets/images/case-and-pouch.webp">
@@ -327,7 +348,7 @@
 <div class="container catalog-layout">
 <div class="catalog-copy">
 <div class="catalog-intro">
-<h1 id="product-title">CAL-0 Mango Konjac Jelly · 10-Pack</h1>
+<div class="catalog-title-art"><h1 id="product-title">CAL-0 <span class="catalog-title-flavor">Mango Konjac Jelly</span> <span class="catalog-title-pack">· 10-Pack</span></h1></div>
 <p class="catalog-benefits" aria-label="Nutrition per pouch"><span><span class="catalog-benefit-text"><strong>300mg</strong> Vitamin C.</span></span><span><span class="catalog-benefit-text">Just <strong>10</strong> calories.</span></span></p>
 <p class="catalog-description">A squeezable mango-flavored konjac jelly snack. Best served chilled and enjoyed a little at a time.</p>
 </div>
@@ -364,7 +385,6 @@
 <a class="button" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Buy 10-Pack — $24.99</a>
 <a class="button button-outline" href="/where-to-buy-cal0">Find Cal-0 in Stores</a>
 </div>
-<p class="small muted catalog-pack-note">10 pouches · 150 mL each. Shipping calculated at checkout.</p>
 </div>
 </div>
 </section>
