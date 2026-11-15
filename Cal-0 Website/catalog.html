@@ -255,9 +255,30 @@
 }
 @media (prefers-reduced-motion: reduce) { .catalog-benefits > span::after { animation: none; } }
 
+
+/* Center the catalog hierarchy and keep every photo inside its visible bounds. */
+.catalog-copy .catalog-intro h1 { text-align: center; }
+.catalog-copy .catalog-intro h1::after { margin-inline: auto; background: linear-gradient(90deg, rgba(15,77,63,.12) 0 calc(50% - 45px), #E9AD2D calc(50% - 45px) calc(50% + 45px), rgba(15,77,63,.12) calc(50% + 45px)); }
+.catalog-benefits > span, .catalog-benefits > span + span { justify-content: center; gap: 12px; }
+.catalog-benefits > span::before, .catalog-benefits > span::after { content: ""; display: block; flex: 1 1 0; min-width: 12px; height: 10px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M-6 5Q0 -2 6 5T18 5T30 5' fill='none' stroke='%23D49B21' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; opacity: .8; animation: catalog-wave 12s linear infinite; }
+.catalog-benefits > span::after, .catalog-benefits > span + span::before { animation-direction: reverse; }
+.catalog-benefits > span + span::after { animation-direction: normal; }
+.catalog-benefits .catalog-benefit-text { flex: 0 0 auto; text-align: center; }
+.catalog-page .catalog-gallery .photo-thumbs button { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); min-width: 0; min-height: 0; }
+.catalog-page .catalog-gallery .photo-thumbs button img { width: 100%; height: 100%; min-width: 0; min-height: 0; max-height: none; aspect-ratio: auto; object-fit: contain; }
+.catalog-page .catalog-gallery .photo-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 8px; }
+.catalog-page .catalog-gallery .photo-controls span { font-variant-numeric: tabular-nums; text-align: center; min-width: 4ch; }
+.catalog-page .catalog-gallery .photo-controls button { min-height: 40px; padding: 8px 16px; font-size: .8rem; }
+@media (max-width: 800px) {
+ .catalog-benefits { font-size: clamp(1.6rem, 6.7vw, 2rem); }
+ .catalog-benefits > span, .catalog-benefits > span + span { gap: 10px; }
+ .catalog-page .catalog-gallery .photo-controls button { min-height: 40px; padding: 8px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .catalog-benefits > span::before, .catalog-benefits > span::after { animation: none; } }
+
 </style>
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
-<script src="assets/js/rebuild.js?v=nav-swipe-20261115" defer></script>
+<script src="assets/js/rebuild.js?v=gallery-motion-20261115" defer></script>
 <meta name="twitter:title" content="CAL-0 Mango Konjac Jelly 10-Pack | 150 mL Pouches">
 <meta name="twitter:description" content="Shop CAL-0 mango konjac jelly: ten 150 mL pouches with 10 calories and 300 mg Vitamin C per pouch. See ingredients, nutrition and how to enjoy it.">
 <meta name="twitter:image" content="https://cal-0.com/assets/images/case-and-pouch.webp">

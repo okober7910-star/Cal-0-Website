@@ -90,7 +90,7 @@
 <link rel="preload" href="assets/fonts/barlow-condensed-bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="assets/css/rebuild.css?v=logo-20261028">
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
-<script src="assets/js/rebuild.js?v=nav-swipe-20261115" defer></script>
+<script src="assets/js/rebuild.js?v=gallery-motion-20261115" defer></script>
 <link rel="stylesheet" href="assets/css/subtle-motion.css?v=reviews-mobile-20261025">
 <script src="assets/js/subtle-motion.js?v=reviews-mobile-20261025" defer></script>
 <script src="assets/js/header-motion.js?v=nav-swipe-20261115" defer></script>
@@ -192,10 +192,7 @@
   #main-content #story { padding-top: 6px; }
   #main-content #story .founder-grid { padding-top: 0; gap: 14px; }
 }
-@media (max-width: 720px) and (max-height: 740px) {
-  #main-content .hero-photo .photo-slide { aspect-ratio: auto; height: min(calc(100svh - 400px), calc(100vw - 32px)); min-height: 160px; }
-  #main-content .hero-photo .photo-slide img { width: auto; height: 100%; max-width: 100%; margin-inline: auto; object-fit: contain; }
-}
+
 @media (prefers-reduced-motion: reduce) {
   .site-header .header-inner .main-nav a,
   #main-content .hero-photo .photo-thumbs button,
@@ -268,6 +265,36 @@
  #main-content #story .founder-photo figcaption { margin-top: 8px; line-height: 1.45; }
  #main-content #story .founder-grid > div { min-width: 0; }
  #main-content #story .founder-grid > div::after { content: ""; display: block; width: clamp(120px, 18vw, 200px); height: 10px; margin-top: 20px; opacity: .58; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='10' viewBox='0 0 92 10'%3E%3Cpath d='M1 7Q6 1 11 7T21 7T31 7T41 7T51 7T61 7T71 7T81 7T91 7' fill='none' stroke='%23F2B331' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; pointer-events: none; }
+}
+</style>
+<style>
+/* Full-width square product photos: no side gutters or cropped packaging. */
+@media (max-width: 720px) {
+ #main-content .hero-photo .photo-track { background: transparent; scrollbar-width: none; }
+ #main-content .hero-photo .photo-slide { flex: 0 0 100%; width: 100%; aspect-ratio: 1; height: auto; min-height: 0; background: transparent; }
+ #main-content .hero-photo .photo-slide img { display: block; width: 100%; height: 100%; aspect-ratio: auto; max-width: 100%; max-height: none; margin: 0; object-fit: contain; }
+}
+/* The approved mobile benefit arrangement stays intact; desktop gains motion. */
+@media (min-width: 801px) {
+ #main-content .hero-copy h1 .hero-first-line, #main-content .hero-copy h1 .hero-calories { display: flex; align-items: center; gap: 14px; width: 100%; }
+ #main-content .hero-copy h1 > br { display: none; }
+ #main-content .hero-copy h1 .hero-line-text { flex: 0 0 auto; white-space: nowrap; }
+ #main-content .hero-copy h1 .hero-blank { display: grid; align-items: center; flex: 1 1 0; min-width: 24px; align-self: stretch; }
+ #main-content .hero-copy h1 .hero-blank::before { content: ""; display: block; width: 100%; height: 10px; opacity: .78; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M-6 5Q0 -2 6 5T18 5T30 5' fill='none' stroke='%23D49B21' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; animation: cal0-zigzag 10s linear infinite; }
+ #main-content .hero-copy h1 .hero-blank-reverse::before { animation-direction: reverse; }
+ .announcement-zigzag { flex-basis: clamp(80px, 13vw, 180px); }
+}
+/* On mobile, put the founder photo at the left with a wave in its right margin. */
+@media (max-width: 800px) {
+ #main-content #story .founder-grid { position: relative; grid-template-columns: minmax(0, 1fr); border-left: 0; padding-left: 0; gap: 16px; }
+ #main-content #story .founder-photo { width: min(68%, 260px); max-width: none; justify-self: start; margin: 0; padding: 0; border: 0; }
+ #main-content #story .founder-photo figcaption { margin-top: 8px; font-size: clamp(.65rem, 2.4vw, .8rem); line-height: 1.45; }
+ #main-content #story .founder-grid::before { content: ""; position: absolute; left: calc(min(68%, 260px) + 18px); width: min(calc(100% - min(68%, 260px) - 18px), 180px); top: clamp(95px, 27vw, 155px); height: 20px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpath d='M-6 5Q0 -2 6 5T18 5T30 5' fill='none' stroke='%23D49B21' stroke-width='1.7' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center; opacity: .78; animation: cal0-zigzag 10s linear infinite reverse; pointer-events: none; }
+}
+.header-motion-paused #main-content .hero-copy h1 .hero-blank::before,
+.header-motion-paused #main-content #story .founder-grid::before { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+ #main-content .hero-copy h1 .hero-blank::before, #main-content #story .founder-grid::before { animation: none; }
 }
 </style>
 </head>
