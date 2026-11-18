@@ -395,12 +395,14 @@
 <style id="faq-mobile-accent">
 /* Mobile gold waves aligned to the nearest label or link underline. */
 .faq-intro { position: relative; }
-.faq-squiggle, .stores-squiggle, .copy-squiggle, .hero-intro-squiggle, .nutrition-link-squiggle, .safety-squiggle, .directory-link-squiggle, .hero-mobile-intro { display: none; }
+.faq-squiggle, .stores-squiggle, .copy-squiggle, .hero-intro-squiggle, .nutrition-link-squiggle, .safety-squiggle, .directory-link-squiggle, .pack-squiggle, .hero-mobile-intro { display: none; }
 .accent-copy, .nutrition-action, .directory-action { position: relative; }
 #stores > .container { position: relative; }
 @media (max-width: 720px) {
   .directory-link-squiggle { display: block; position: absolute; bottom: -3px; width: 50px; height: 12px; color: #F2B331; pointer-events: none; }
   @media (max-width: 360px) { .directory-link-squiggle { width: 28px; } }
+  .hero-copy .pack-detail { position: relative; }
+  .pack-squiggle { display: block; position: absolute; top: -6px; width: 15%; max-width: 64px; height: 42px; color: #F2B331; pointer-events: none; }
   #about .safety { position: relative; }
   .safety-squiggle { display: block; position: absolute; bottom: 9px; width: 46px; height: 34px; color: #F2B331; pointer-events: none; }
   .hero-mobile-intro { display: block; position: relative; }
@@ -410,7 +412,7 @@
   .nutrition-link-squiggle { display: block; position: absolute; bottom: 0; right: 9%; width: 30%; max-width: 130px; height: 58px; color: #F2B331; pointer-events: none; }
   .faq-squiggle { display: block; position: absolute; top: 64px; right: 8px; width: 30%; max-width: 130px; height: 84px; color: #F2B331; pointer-events: none; }
   /* All added wave endpoints share the same mobile right-hand guide. */
-  .hero-intro-squiggle, .copy-squiggle, .stores-squiggle, .nutrition-link-squiggle, .faq-squiggle, .safety-squiggle, .directory-link-squiggle { right: 24px; }
+  .hero-intro-squiggle, .copy-squiggle, .stores-squiggle, .nutrition-link-squiggle, .faq-squiggle, .safety-squiggle, .directory-link-squiggle, .pack-squiggle { right: 24px; }
 }
 </style>
 </head>
@@ -427,7 +429,7 @@
 <p class="hero-proof"><span class="hero-proof-item hero-rating" role="img" aria-label="4.9 out of 5 stars"><span class="hero-stars" aria-hidden="true"><span class="hero-stars-empty">★★★★★</span><span class="hero-stars-fill">★★★★★</span></span><strong aria-hidden="true">4.9</strong></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>50+</strong><span>stores</span></span><span class="hero-proof-dot" aria-hidden="true">·</span><span class="hero-proof-item"><strong>No</strong><span>artificial sweeteners</span></span></p>
 <div class="hero-copy"><p class="eyebrow hero-desktop-eyebrow">Mango Konjac Jelly</p><h1><span class="hero-first-line"><span class="hero-line-text"><span class="hero-number hero-number-main">300mg</span> Vitamin C.</span><span class="hero-blank" aria-hidden="true"></span></span><br><span class="hero-calories"><span class="hero-blank hero-blank-reverse" aria-hidden="true"></span><span class="hero-line-text">Just <span class="hero-number">10</span> calories.</span></span></h1>
 <div class="button-row hero-mobile-actions"><a class="button button-outline" href="#stores">Find Cal-0 <span>in Stores</span></a><a class="button hero-mobile-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link aria-label="Shop Now — CAL-0 Mango 10-Pack for $24.99">Shop Now</a></div>
-<div class="hero-mobile-intro"><p class="eyebrow hero-mobile-eyebrow">Mango Konjac Jelly</p><svg class="hero-intro-squiggle" viewBox="0 0 66 58" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0 Q6 -6 12 0 T24 0 T36 0 T48 0 T60 0 T72 0" transform="translate(8.845 5) rotate(40)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></div><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong></p><div class="button-row hero-desktop-actions"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div>
+<div class="hero-mobile-intro"><p class="eyebrow hero-mobile-eyebrow">Mango Konjac Jelly</p><svg class="hero-intro-squiggle" viewBox="0 0 66 58" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0 Q6 -6 12 0 T24 0 T36 0 T48 0 T60 0 T72 0" transform="translate(8.845 5) rotate(40)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></div><p class="lead">A refreshing mango jelly snack in a squeezable pouch. Best served chilled.</p><p class="pack-detail">10 pouches · 150 mL each · <strong>$24.99</strong><svg class="pack-squiggle" viewBox="0 0 66 58" preserveAspectRatio="none" aria-hidden="true" focusable="false"><g transform="translate(0 56.281) scale(1 -1)"><path d="M0 0 Q6 -6 12 0 T24 0 T36 0 T48 0 T60 0 T72 0" transform="translate(8.845 5) rotate(40)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/></g></svg></p><div class="button-row hero-desktop-actions"><a class="button hero-desktop-shop" href="https://buy.stripe.com/00wfZg40F77vbUeeJ11ck01" data-checkout-link>Shop the 10-Pack · $24.99</a><a class="button button-outline" href="#stores">Find Cal-0 in Stores</a></div>
 <div class="hero-desktop-enjoy" aria-label="How to enjoy CAL-0"><div><span>01</span><strong>Chill it.</strong></div><div><span>02</span><strong>Gently squeeze the closed pouch.</strong></div><div><span>03</span><strong>Enjoy a little at a time.</strong><small>Chew thoroughly.</small></div></div>
 </div>
 </div>
