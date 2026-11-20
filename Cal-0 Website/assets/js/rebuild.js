@@ -544,19 +544,23 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
       body .site-header .header-inner.nav-scroll-header > .site-logo { width: 88px; }
     }
     body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
-      display: flex; width: min(100%, 350px); justify-self: center; gap: 10px;
-      scroll-snap-type: x mandatory;
+      display: flex; width: min(100%, 350px); justify-self: center; gap: 8px;
+      --cal0-nav-visible: 3; scroll-snap-type: x mandatory;
     }
     body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] > a {
-      flex: 0 0 calc((100% - 20px) / 3); min-width: 0; box-sizing: border-box;
+      flex: 0 0 calc((100% + 8px) / var(--cal0-nav-visible) - 8px); min-width: 0; box-sizing: border-box;
       display: grid; align-content: center; text-align: center; padding-inline: 3px;
       scroll-snap-align: start;
     }
-    @media (max-width: 560px) {
+    @media (max-width: 480px) {
       body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
-        grid-column: 1 / -1; grid-row: 2; padding-block: 0 2px;
+        --cal0-nav-visible: 2;
       }
-      body .site-header .header-inner.nav-scroll-header:has(> .main-nav[data-nav-three-at-once]) { row-gap: 4px; }
+    }
+    @media (max-width: 365px) {
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
+        --cal0-nav-visible: 1;
+      }
     }
     @media (prefers-reduced-motion: reduce) { .nav-motion-toggle { display: none; } }
   `;
@@ -605,11 +609,12 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   }
   function advanceWholeLink() {
     stepTimer = 0;
-    if (!canMove() || links.length <= 3) return;
+    const visible = Number(getComputedStyle(nav).getPropertyValue('--cal0-nav-visible')) || 3;
+    if (!canMove() || links.length <= visible) return;
     const first = links[0].getBoundingClientRect().left;
     const slot = links[1].getBoundingClientRect().left - first;
     if (slot <= 0) return;
-    const last = links.length - 3;
+    const last = links.length - visible;
     const current = Math.max(0, Math.min(last, Math.round(nav.scrollLeft / slot)));
     if (current === 0) direction = 1;
     else if (current === last) direction = -1;
