@@ -91,7 +91,7 @@
 (() => {
   const images = [
     ["case-and-pouch.webp?v=cal0-images-20261025", "Cal-0 10-pack box and mango pouch", "10-Pack"],
-    ["product-back-approved.webp?v=approved-back-20261025", "Back of the CAL-0 mango konjac jelly pouch", "Back of Pouch"],
+    ["product-back-approved.webp?v=label-corrections-20261120", "Back of the CAL-0 mango konjac jelly pouch", "Back of Pouch"],
     ["product-benefits-alt.webp?v=cal0-images-20261025", "Cal-0 mango pouch and product benefits", "Product Benefits"],
     ["nutrition-label.webp?v=cal0-images-20261025", "Cal-0 Nutrition Facts", "Nutrition Facts"]
   ];
@@ -214,13 +214,13 @@
   }
   const nutrition = document.querySelector(".nutrition-photo img");
   if (nutrition) {
-    nutrition.src = "assets/images/nutrition-composite.webp";
+    nutrition.src = "assets/images/nutrition-composite.webp?v=label-corrections-20261120";
     nutrition.alt = "Cal-0 mango pouch with full Nutrition Facts and ingredients";
     nutrition.width = 1254;
     nutrition.height = 1254;
     const link = nutrition.closest("a");
     if (link) link.href = nutrition.src;
-    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp?v=cal0-images-20261025"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp"; });
+    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp?v=cal0-images-20261025"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp?v=label-corrections-20261120"; });
   }
 })();
 /* Keep the retailer inquiry last, just above the footer. */
