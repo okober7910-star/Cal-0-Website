@@ -453,6 +453,12 @@
     transform: translateX(calc(-100% + 4px));
   }
 }
+/* Reduce only the two large gaps inside the mobile wholesale card. */
+@media (max-width: 720px) {
+  #wholesale .wholesale-card { row-gap: 16px; }
+  #wholesale .wholesale-card > div:first-child > h2 { margin-block-end: 12px; }
+  #wholesale .wholesale-card > div:nth-child(2) > p.lead { margin-block-end: 10px; }
+}
 </style>
 </head>
 <body>
