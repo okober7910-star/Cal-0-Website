@@ -269,7 +269,7 @@ details p { margin: 16px 0 0; }
 
 /* Tighten the homepage’s closing stack on phones without shrinking the buttons. */
 @media (max-width: 720px) {
-  #main-content .closing-section { padding-block: 28px; }
-  #main-content .instagram-strip .instagram-inner { padding-block: 16px; }
-  #main-content .instagram-strip { padding-bottom: 14px; }
+  body:has(.main-nav[data-nav-three-at-once]) #main-content .closing-section { padding-block: 28px; }
+  body:has(.main-nav[data-nav-three-at-once]) #main-content .instagram-strip .instagram-inner { padding-block: 16px; }
+  body:has(.main-nav[data-nav-three-at-once]) #main-content .instagram-strip { padding-bottom: 14px; }
 }
