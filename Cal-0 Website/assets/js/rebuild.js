@@ -543,31 +543,12 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
       body .site-header .header-inner.nav-scroll-header { grid-template-columns: 88px minmax(0,1fr) 105px; }
       body .site-header .header-inner.nav-scroll-header > .site-logo { width: 88px; }
     }
-    body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
-      display: flex; width: min(100%, 350px); justify-self: center; gap: 8px;
-      --cal0-nav-visible: 3; scroll-snap-type: x mandatory;
-    }
-    body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] > a {
-      flex: 0 0 calc((100% + 8px) / var(--cal0-nav-visible) - 8px); min-width: 0; box-sizing: border-box;
-      display: grid; align-content: center; text-align: center; padding-inline: 3px;
-      scroll-snap-align: start;
-    }
     @media (min-width: 801px) {
       body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
         width: 100%; overflow: visible; scroll-snap-type: none;
       }
       body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] > a {
         flex: 1 1 0; scroll-snap-align: none;
-      }
-    }
-    @media (max-width: 480px) {
-      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
-        --cal0-nav-visible: 2;
-      }
-    }
-    @media (max-width: 365px) {
-      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
-        --cal0-nav-visible: 1;
       }
     }
     @media (prefers-reduced-motion: reduce) { .nav-motion-toggle { display: none; } }
@@ -586,14 +567,10 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   let hovered = false;
   let keyboardFocus = false;
   let lastAutoScroll = -Infinity;
-  let stepTimer = 0;
   const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   function stop() {
     if (frame) cancelAnimationFrame(frame);
-    clearTimeout(stepTimer);
-    if (threeAtOnce) nav.style.removeProperty('scroll-snap-type');
     frame = 0;
-    stepTimer = 0;
     lastTime = 0;
   }
   function canMove() {
@@ -616,43 +593,8 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     lastTime = now;
     frame = requestAnimationFrame(tick);
   }
-  function advanceWholeLink() {
-    stepTimer = 0;
-    const visible = Number(getComputedStyle(nav).getPropertyValue('--cal0-nav-visible')) || 3;
-    if (!canMove() || links.length <= visible) return;
-    const first = links[0].getBoundingClientRect().left;
-    const slot = links[1].getBoundingClientRect().left - first;
-    if (slot <= 0) return;
-    const last = links.length - visible;
-    const current = Math.max(0, Math.min(last, Math.round(nav.scrollLeft / slot)));
-    if (current === 0) direction = 1;
-    else if (current === last) direction = -1;
-    const from = nav.scrollLeft;
-    const to = Math.max(0, Math.min(nav.scrollWidth - nav.clientWidth, (current + direction) * slot));
-    const begun = performance.now();
-    const duration = 1350;
-    nav.style.scrollSnapType = 'none';
-    function glide(now) {
-      frame = 0;
-      if (!canMove()) { stop(); return; }
-      const progress = Math.min((now - begun) / duration, 1);
-      const eased = progress * progress * (3 - 2 * progress);
-      lastAutoScroll = now;
-      nav.scrollLeft = from + (to - from) * eased;
-      if (progress < 1) frame = requestAnimationFrame(glide);
-      else {
-        nav.style.removeProperty('scroll-snap-type');
-        start();
-      }
-    }
-    frame = requestAnimationFrame(glide);
-  }
   function start() {
-    if (frame || timer || stepTimer || !canMove()) return;
-    if (threeAtOnce) {
-      stepTimer = setTimeout(advanceWholeLink, 2900);
-      return;
-    }
+    if (frame || timer || !canMove()) return;
     position = nav.scrollLeft;
     lastTime = 0;
     frame = requestAnimationFrame(tick);
