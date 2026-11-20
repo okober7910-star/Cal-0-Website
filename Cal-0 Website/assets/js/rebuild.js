@@ -214,13 +214,13 @@
   }
   const nutrition = document.querySelector(".nutrition-photo img");
   if (nutrition) {
-    nutrition.src = "assets/images/nutrition-composite.webp?v=ingredient-spacing-20261120";
+    nutrition.src = "assets/images/nutrition-composite.webp?v=ingredient-squiggle-20261120";
     nutrition.alt = "Cal-0 mango pouch with full Nutrition Facts and ingredients";
     nutrition.width = 1254;
     nutrition.height = 1254;
     const link = nutrition.closest("a");
     if (link) link.href = nutrition.src;
-    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp?v=cal0-images-20261025"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp?v=ingredient-spacing-20261120"; });
+    document.querySelectorAll('#nutrition a[href="assets/images/nutrition-label.webp?v=cal0-images-20261025"]').forEach(link => { link.href = "assets/images/nutrition-composite.webp?v=ingredient-squiggle-20261120"; });
   }
 })();
 /* Keep the retailer inquiry last, just above the footer. */
