@@ -266,3 +266,10 @@ details p { margin: 16px 0 0; }
 @media (max-width: 360px) {
  .site-header .site-logo { width: 88px; flex-basis: 88px; }
 }
+
+/* Tighten the homepage’s closing stack on phones without shrinking the buttons. */
+@media (max-width: 720px) {
+  #main-content .closing-section { padding-block: 28px; }
+  #main-content .instagram-strip .instagram-inner { padding-block: 16px; }
+  #main-content .instagram-strip { padding-bottom: 14px; }
+}
