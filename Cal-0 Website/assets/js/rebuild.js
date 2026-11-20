@@ -543,10 +543,26 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
       body .site-header .header-inner.nav-scroll-header { grid-template-columns: 88px minmax(0,1fr) 105px; }
       body .site-header .header-inner.nav-scroll-header > .site-logo { width: 88px; }
     }
+    body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
+      display: flex; width: min(100%, 350px); justify-self: center; gap: 10px;
+      scroll-snap-type: x mandatory;
+    }
+    body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] > a {
+      flex: 0 0 calc((100% - 20px) / 3); min-width: 0; box-sizing: border-box;
+      display: grid; align-content: center; text-align: center; padding-inline: 3px;
+      scroll-snap-align: start;
+    }
+    @media (max-width: 560px) {
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
+        grid-column: 1 / -1; grid-row: 2; padding-block: 0 2px;
+      }
+      body .site-header .header-inner.nav-scroll-header:has(> .main-nav[data-nav-three-at-once]) { row-gap: 4px; }
+    }
     @media (prefers-reduced-motion: reduce) { .nav-motion-toggle { display: none; } }
   `;
   document.head.append(style);
 
+  const threeAtOnce = nav.hasAttribute('data-nav-three-at-once');
   const mobile = window.matchMedia('(max-width: 800px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let frame = 0;
@@ -558,10 +574,13 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   let hovered = false;
   let keyboardFocus = false;
   let lastAutoScroll = -Infinity;
+  let stepTimer = 0;
   const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   function stop() {
     if (frame) cancelAnimationFrame(frame);
+    clearTimeout(stepTimer);
     frame = 0;
+    stepTimer = 0;
     lastTime = 0;
   }
   function canMove() {
@@ -584,8 +603,26 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     lastTime = now;
     frame = requestAnimationFrame(tick);
   }
+  function advanceWholeLink() {
+    stepTimer = 0;
+    if (!canMove() || links.length <= 3) return;
+    const first = links[0].getBoundingClientRect().left;
+    const slot = links[1].getBoundingClientRect().left - first;
+    if (slot <= 0) return;
+    const last = links.length - 3;
+    const current = Math.max(0, Math.min(last, Math.round(nav.scrollLeft / slot)));
+    if (current === 0) direction = 1;
+    else if (current === last) direction = -1;
+    lastAutoScroll = performance.now();
+    nav.scrollLeft = (current + direction) * slot;
+    start();
+  }
   function start() {
-    if (frame || timer || !canMove()) return;
+    if (frame || timer || stepTimer || !canMove()) return;
+    if (threeAtOnce) {
+      stepTimer = setTimeout(advanceWholeLink, 3600);
+      return;
+    }
     position = nav.scrollLeft;
     lastTime = 0;
     frame = requestAnimationFrame(tick);
