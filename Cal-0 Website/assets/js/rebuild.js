@@ -583,6 +583,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   function stop() {
     if (frame) cancelAnimationFrame(frame);
     clearTimeout(stepTimer);
+    if (threeAtOnce) nav.style.removeProperty('scroll-snap-type');
     frame = 0;
     stepTimer = 0;
     lastTime = 0;
@@ -618,14 +619,30 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     const current = Math.max(0, Math.min(last, Math.round(nav.scrollLeft / slot)));
     if (current === 0) direction = 1;
     else if (current === last) direction = -1;
-    lastAutoScroll = performance.now();
-    nav.scrollLeft = (current + direction) * slot;
-    start();
+    const from = nav.scrollLeft;
+    const to = Math.max(0, Math.min(nav.scrollWidth - nav.clientWidth, (current + direction) * slot));
+    const begun = performance.now();
+    const duration = 1350;
+    nav.style.scrollSnapType = 'none';
+    function glide(now) {
+      frame = 0;
+      if (!canMove()) { stop(); return; }
+      const progress = Math.min((now - begun) / duration, 1);
+      const eased = progress * progress * (3 - 2 * progress);
+      lastAutoScroll = now;
+      nav.scrollLeft = from + (to - from) * eased;
+      if (progress < 1) frame = requestAnimationFrame(glide);
+      else {
+        nav.style.removeProperty('scroll-snap-type');
+        start();
+      }
+    }
+    frame = requestAnimationFrame(glide);
   }
   function start() {
     if (frame || timer || stepTimer || !canMove()) return;
     if (threeAtOnce) {
-      stepTimer = setTimeout(advanceWholeLink, 3600);
+      stepTimer = setTimeout(advanceWholeLink, 2900);
       return;
     }
     position = nav.scrollLeft;
