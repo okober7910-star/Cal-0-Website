@@ -465,6 +465,19 @@
   .site-footer .footer-top { row-gap: 22px; padding-block-end: 22px; }
   .site-footer .footer-top nav { row-gap: 3px; }
 }
+/* Refine the icon placement on the four mobile CTA buttons without reflow. */
+@media (max-width: 720px) {
+  .closing-section .cal0-cta-icon,
+  #wholesale .button-mango .cal0-cta-icon,
+  .instagram-strip .instagram-inner > a.button::before {
+    transform: translateX(-3px) scale(1.15);
+    transform-origin: center;
+  }
+  .site-header .button-small .cal0-cta-icon {
+    transform: translateX(-1px) scale(1.18);
+    transform-origin: center;
+  }
+}
 </style>
 </head>
 <body>
