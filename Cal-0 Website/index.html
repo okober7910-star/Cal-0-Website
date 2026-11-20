@@ -90,7 +90,7 @@
 <link rel="preload" href="assets/fonts/barlow-condensed-bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="assets/css/rebuild.css?v=mobile-spacing-20261120">
 <script src="assets/js/config.js?v=seo-deep-20261031" defer></script>
-<script src="assets/js/rebuild.js?v=desktop-five-mobile-glide-20261120" defer></script>
+<script src="assets/js/rebuild.js?v=desktop-five-mobile-continuous-20261120" defer></script>
 <link rel="stylesheet" href="assets/css/subtle-motion.css?v=reviews-mobile-20261025">
 <script src="assets/js/subtle-motion.js?v=reviews-mobile-20261025" defer></script>
 <script src="assets/js/header-motion.js?v=nav-swipe-20261115" defer></script>
@@ -445,6 +445,13 @@
 .instagram-strip .instagram-inner > a.button:hover::before,
 .instagram-strip .instagram-inner > a.button:focus-visible::before {
   background: linear-gradient(35deg, #FFB14B 10%, #FF78A7 48%, #CAA0FF 86%);
+}
+/* Align only the desktop wholesale CTA to the Follow button’s right edge. */
+@media (min-width: 801px) {
+  #wholesale .wholesale-card > div > .button-mango {
+    position: relative; inset-inline-start: 100%;
+    transform: translateX(calc(-100% + 4px));
+  }
 }
 </style>
 </head>
