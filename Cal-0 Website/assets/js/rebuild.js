@@ -551,6 +551,11 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
         flex: 1 1 0; scroll-snap-align: none;
       }
     }
+    @media (max-width: 800px) {
+      body .site-header .header-inner.nav-scroll-header > .main-nav[data-nav-three-at-once].nav-ring-moving > a {
+        translate: var(--cal0-nav-offset, 0px) 0; will-change: translate;
+      }
+    }
     @media (prefers-reduced-motion: reduce) { .nav-motion-toggle { display: none; } }
   `;
   document.head.append(style);
@@ -567,21 +572,69 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
   let hovered = false;
   let keyboardFocus = false;
   let lastAutoScroll = -Infinity;
+  let ring = [];
+  let cycleWidth = 0;
   const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   function stop() {
     if (frame) cancelAnimationFrame(frame);
+    if (threeAtOnce) {
+      nav.classList.remove('nav-ring-moving');
+      nav.style.removeProperty('--cal0-nav-offset');
+    }
     frame = 0;
     lastTime = 0;
+  }
+  function setupRing() {
+    if (!threeAtOnce) return;
+    const first = links[0].getBoundingClientRect();
+    const last = links[links.length - 1].getBoundingClientRect();
+    if (!mobile.matches || reducedMotion.matches || last.right - first.left <= nav.clientWidth + 1) {
+      if (ring.length) {
+        ring.forEach(link => link.remove());
+        ring = [];
+        nav.scrollLeft = 0;
+      }
+      cycleWidth = 0;
+      return;
+    }
+    if (!ring.length) {
+      const copyLinks = () => links.map(link => {
+        const copy = link.cloneNode(true);
+        copy.removeAttribute('id');
+        copy.tabIndex = -1;
+        copy.setAttribute('aria-hidden', 'true');
+        return copy;
+      });
+      const before = copyLinks(), after = copyLinks();
+      nav.prepend(...before);
+      nav.append(...after);
+      ring = [...before, ...after];
+      lastAutoScroll = performance.now();
+      nav.scrollLeft = links[0].getBoundingClientRect().left - before[0].getBoundingClientRect().left;
+    }
+    cycleWidth = ring[links.length].getBoundingClientRect().left - links[0].getBoundingClientRect().left;
   }
   function canMove() {
     return (!threeAtOnce || mobile.matches) && !reducedMotion.matches && !document.hidden &&
       !document.body.classList.contains('header-motion-paused') &&
       !pointerHeld && !(hoverPointer.matches && hovered) && !keyboardFocus &&
-      nav.scrollWidth > nav.clientWidth + 1;
+      (threeAtOnce ? cycleWidth > 0 : nav.scrollWidth > nav.clientWidth + 1);
   }
   function tick(now) {
     frame = 0;
     if (!canMove()) { lastTime = 0; return; }
+    if (threeAtOnce && cycleWidth > 0) {
+      if (lastTime) {
+        position -= Math.min(now - lastTime, 50) * .016;
+        position = cycleWidth + ((position - cycleWidth) % cycleWidth + cycleWidth) % cycleWidth;
+        lastAutoScroll = now;
+        nav.scrollLeft = Math.round(position);
+        nav.style.setProperty('--cal0-nav-offset', (nav.scrollLeft - position) + 'px');
+      }
+      lastTime = now;
+      frame = requestAnimationFrame(tick);
+      return;
+    }
     const maximum = nav.scrollWidth - nav.clientWidth;
     if (lastTime) {
       position += direction * Math.min(now - lastTime, 50) * (mobile.matches ? .012 : .004);
@@ -594,7 +647,10 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     frame = requestAnimationFrame(tick);
   }
   function start() {
-    if (frame || timer || !canMove()) return;
+    if (frame || timer) return;
+    setupRing();
+    if (!canMove()) return;
+    if (threeAtOnce) nav.classList.add('nav-ring-moving');
     position = nav.scrollLeft;
     lastTime = 0;
     frame = requestAnimationFrame(tick);
