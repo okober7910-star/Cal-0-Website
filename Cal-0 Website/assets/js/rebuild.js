@@ -552,6 +552,14 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
       display: grid; align-content: center; text-align: center; padding-inline: 3px;
       scroll-snap-align: start;
     }
+    @media (min-width: 801px) {
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
+        width: 100%; overflow: visible; scroll-snap-type: none;
+      }
+      body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] > a {
+        flex: 1 1 0; scroll-snap-align: none;
+      }
+    }
     @media (max-width: 480px) {
       body .site-header .header-inner.nav-scroll-header > .main-nav.nav-scroll-ready[data-nav-three-at-once] {
         --cal0-nav-visible: 2;
@@ -589,7 +597,7 @@ document.querySelectorAll('.retail-photos img').forEach(image => {
     lastTime = 0;
   }
   function canMove() {
-    return !reducedMotion.matches && !document.hidden &&
+    return (!threeAtOnce || mobile.matches) && !reducedMotion.matches && !document.hidden &&
       !document.body.classList.contains('header-motion-paused') &&
       !pointerHeld && !(hoverPointer.matches && hovered) && !keyboardFocus &&
       nav.scrollWidth > nav.clientWidth + 1;
